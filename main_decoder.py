@@ -139,6 +139,35 @@ def step5_unmask_builtins(source: str, keep: set[str] | None = None) -> str:
     return text if isinstance(text, str) else text.decode()
 
 
+
+def step5a_drop_builtin_assignments(src: str) -> str:
+    try:
+        module = ast.parse(src)
+    except SyntaxError:
+        return src
+    new_body: list[ast.stmt] = []
+    changed = False
+    for stmt in module.body:
+        remove = False
+        if (
+            isinstance(stmt, ast.Assign)
+            and len(stmt.targets) == 1
+            and isinstance(stmt.targets[0], ast.Tuple)
+            and isinstance(stmt.value, ast.Tuple)
+            and len(stmt.targets[0].elts) == len(stmt.value.elts)
+            and all(isinstance(l, ast.Name) for l in stmt.targets[0].elts)
+            and len(stmt.targets[0].elts) > 30
+        ):
+            remove = True
+        if remove:
+            changed = True
+            continue
+        new_body.append(stmt)
+    if not changed:
+        return src
+    module.body = new_body
+    return unparse(module)
+
 _DECODER_NAME = "u1KQ2EguJKQ7"
 
 
@@ -220,9 +249,10 @@ def step6_decode_u1_calls(code: str) -> str:
                 isinstance(node.func, ast.Name)
                 and node.func.id == _DECODER_NAME
                 and len(node.args) == 1
-                and isinstance(node.args[0], ast.Bytes)
+                and isinstance(node.args[0], ast.Constant)
+                and isinstance(node.args[0].value, (bytes, bytearray))
             ):
-                raw = node.args[0].s
+                raw = node.args[0].value
                 try:
                     s = decode(raw).decode("utf-8", "replace")  # type: ignore[arg-type]
                     return ast.copy_location(ast.Constant(s), node)
@@ -238,7 +268,7 @@ def step6_decode_u1_calls(code: str) -> str:
     class UsedFinder(ast.NodeVisitor):
         def visit_Name(self, n: ast.Name):
             nonlocal used
-            if n.id == _DECODER_NAME:
+            if n.id == _DECODER_NAME and isinstance(n.ctx, ast.Load):
                 used = True
 
     UsedFinder().visit(new_tree)
@@ -386,8 +416,11 @@ _SAFE_FUNCS = {"chr": chr, "ord": ord, "len": len, "int": int, "str": str, "byte
 
 
 def _try_eval_const(node: ast.AST) -> ast.AST:
-    if any(isinstance(n, (ast.Name, ast.Attribute)) for n in ast.walk(node)):
-        return node
+    for n in ast.walk(node):
+        if isinstance(n, ast.Name) and n.id not in _SAFE_FUNCS:
+            return node
+        if isinstance(n, ast.Attribute):
+            return node
     try:
         v = eval(compile(ast.Expression(node), "<eval>", "eval"), {"__builtins__": _SAFE_FUNCS}, {})
         return ast.Constant(v)
@@ -435,6 +468,16 @@ class _ConstAndGetattrFolder(ast.NodeTransformer):
         ):
             obj, name = f.args[0], f.args[1].value
             return ast.copy_location(ast.Call(func=ast.Attribute(value=obj, attr=name, ctx=ast.Load()), args=node.args, keywords=node.keywords), node)
+        if (
+            isinstance(node.func, ast.Name)
+            and node.func.id == "getattr"
+            and len(node.args) >= 2
+            and isinstance(node.args[1], ast.Constant)
+            and isinstance(node.args[1].value, str)
+            and not node.keywords
+        ):
+            obj, name = node.args[0], node.args[1].value
+            return ast.copy_location(ast.Attribute(value=obj, attr=name, ctx=ast.Load()), node)
         return node
 
     def visit_Expr(self, node: ast.Expr):
@@ -464,6 +507,21 @@ def step7_fold_consts_and_getattr(src: str) -> str:
 
 
 def _resolve_name_from_expr(node: ast.AST) -> str | None:
+    if isinstance(node, ast.Name):
+        return node.id
+    if isinstance(node, ast.Attribute):
+        return node.attr
+    if (
+        isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and isinstance(node.func.value, ast.Name)
+        and node.func.value.id == "importlib"
+        and node.func.attr == "import_module"
+        and node.args
+        and isinstance(node.args[0], ast.Constant)
+        and isinstance(node.args[0].value, str)
+    ):
+        return node.args[0].value.split(".")[-1]
     if (
         isinstance(node, ast.Call)
         and isinstance(node.func, ast.Name)
@@ -511,36 +569,33 @@ def step8_rename_from_tuple_assignments(src: str) -> str:
 
 
 def _importlib_from_attr(node: ast.AST) -> tuple[str, str] | None:
-    # importlib.import_module('pkg').attr → ('pkg', 'attr')
-    if isinstance(node, ast.Attribute):
-        attr = node.attr
-        head = node.value
-        if isinstance(head, ast.Attribute) and head.attr == attr:
-            head = head.value
-        if (
-            isinstance(head, ast.Call)
-            and isinstance(head.func, ast.Attribute)
-            and isinstance(head.func.value, ast.Name)
-            and head.func.value.id == "importlib"
-            and head.func.attr == "import_module"
-            and head.args
-            and isinstance(head.args[0], ast.Constant)
-            and isinstance(head.args[0].value, str)
-        ):
-            return head.args[0].value, attr
-    # importlib.import_module('pkg') → ('pkg', 'pkg')  (обычный import)
+    # Walk chain like importlib.import_module('pkg').attr1.attr2 → ('pkg', 'attr2')
+    attrs: list[str] = []
+    cur = node
+    while isinstance(cur, ast.Attribute):
+        attrs.append(cur.attr)
+        cur = cur.value
     if (
-        isinstance(node, ast.Call)
-        and isinstance(node.func, ast.Attribute)
-        and isinstance(node.func.value, ast.Name)
-        and node.func.value.id == "importlib"
-        and node.func.attr == "import_module"
-        and node.args
-        and isinstance(node.args[0], ast.Constant)
-        and isinstance(node.args[0].value, str)
+        isinstance(cur, ast.Call)
+        and cur.args
+        and isinstance(cur.args[0], ast.Constant)
+        and isinstance(cur.args[0].value, str)
     ):
-        pkg = node.args[0].value
-        return pkg, pkg
+        if (
+            isinstance(cur.func, ast.Attribute)
+            and isinstance(cur.func.value, ast.Name)
+            and cur.func.value.id == "importlib"
+            and cur.func.attr == "import_module"
+        ):
+            pkg = cur.args[0].value
+            if attrs:
+                return pkg, attrs[0] if len(attrs) == 1 else attrs[-1]
+            return pkg, pkg
+        if isinstance(cur.func, ast.Name) and cur.func.id == "__import__":
+            pkg = cur.args[0].value
+            if attrs:
+                return pkg, attrs[-1]
+            return pkg, pkg.split(".")[-1]
     return None
 
 
@@ -553,6 +608,8 @@ def step9_flatten_import_assigns(src: str) -> str:
         handled = False
         if isinstance(node, ast.Assign) and len(node.targets) == 1:
             lhs, rhs = node.targets[0], node.value
+            if isinstance(lhs, ast.Tuple) and len(lhs.elts) == 1:
+                lhs = lhs.elts[0]
             if isinstance(rhs, ast.Tuple) and len(rhs.elts) == 1:
                 rhs = rhs.elts[0]
             if isinstance(lhs, ast.Tuple) and isinstance(rhs, ast.Tuple) and len(lhs.elts) == len(rhs.elts):
@@ -569,7 +626,10 @@ def step9_flatten_import_assigns(src: str) -> str:
                 info = _importlib_from_attr(rhs)
                 if info:
                     pkg, a = info
-                    imports.append(f"from {pkg} import {a}")
+                    if pkg == a:
+                        imports.append(f"import {pkg}")
+                    else:
+                        imports.append(f"from {pkg} import {a}")
                     rename[lhs.id] = a
                     handled = True
         if not handled:
@@ -608,6 +668,8 @@ RENAME_GLOBAL = {
     "fPSFiLwtmvLO": "bg_tasks",
     "JezwpIWfYHOX": "expected_secret",
     "_SvfhKl8rD1_": "is_valid_code",
+    "OJeYPsgEnfYk": "Exception",
+    "Re5W1iJwYiL7": "__name__",
 }
 
 
@@ -635,6 +697,12 @@ def step10_global_rename(src: str) -> str:
         def visit_arg(self, n: ast.arg):
             if n.arg in RENAME_GLOBAL:
                 n.arg = RENAME_GLOBAL[n.arg]
+            return n
+
+        def visit_ExceptHandler(self, n: ast.ExceptHandler):
+            if isinstance(n.name, str) and n.name in RENAME_GLOBAL:
+                n.name = RENAME_GLOBAL[n.name]
+            self.generic_visit(n)
             return n
 
     new = _Renamer().visit(tree)
@@ -667,6 +735,7 @@ LOCAL_RENAME = {
     "LjLi2w1n0i3h": "bin_dir",
     "DK9LsyO02L_J": "script_file",
     "HohFPgdHHRgg": "fh",
+    "fchr": "chr",
 }
 
 
@@ -690,9 +759,49 @@ def step12_locals_and_constants(src: str) -> str:
                 return ast.copy_location(ast.Constant(0o755), n)
             return n
 
+        def visit_Call(self, n: ast.Call):
+            self.generic_visit(n)
+            if (
+                isinstance(n.func, ast.Name)
+                and n.func.id == "chr"
+                and len(n.args) == 1
+                and isinstance(n.args[0], ast.Constant)
+                and isinstance(n.args[0].value, int)
+            ):
+                try:
+                    return ast.copy_location(ast.Constant(chr(n.args[0].value)), n)
+                except Exception:
+                    return n
+            return n
+
     new = _Cleanup().visit(tree)
     ast.fix_missing_locations(new)
     return unparse(new)
+
+
+def step13_drop_unused_funcs(src: str) -> str:
+    tree = ast.parse(src)
+
+    used: set[str] = set()
+
+    class Finder(ast.NodeVisitor):
+        def visit_Name(self, n: ast.Name):
+            if isinstance(n.ctx, ast.Load):
+                used.add(n.id)
+
+    Finder().visit(tree)
+    new_body: list[ast.stmt] = []
+    changed = False
+    for stmt in tree.body:
+        if isinstance(stmt, (ast.FunctionDef, ast.AsyncFunctionDef)) and stmt.name not in used:
+            changed = True
+            continue
+        new_body.append(stmt)
+    if not changed:
+        return src
+    tree.body = new_body
+    ast.fix_missing_locations(tree)
+    return unparse(tree)
 
 
 @dataclass
@@ -734,7 +843,9 @@ def build_pipeline() -> list[Step]:
                 },
             ),
         ),
+        Step("drop builtin self-assigns", step5a_drop_builtin_assignments),
         Step("decode u1KQ2EguJKQ7 calls", step6_decode_u1_calls),
+        Step("fold consts & getattr (pass1)", step7_fold_consts_and_getattr),
         Step("cleanup str decode", step6a_cleanup_str_decode),
         Step("fold consts & getattr (pre-import-fixes)", step7_fold_consts_and_getattr),
         Step("rewrite lazy import slBqQzRHEsUg", step6b_rewrite_lazy_import),
@@ -746,6 +857,8 @@ def build_pipeline() -> list[Step]:
         Step("global rename", step10_global_rename),
         Step("global text cleanup", step11_global_text_cleanup),
         Step("locals & constants", step12_locals_and_constants),
+        Step("drop unused functions", step13_drop_unused_funcs),
+        Step("fold consts & getattr (final)", step7_fold_consts_and_getattr),
     ]
 
 
@@ -801,10 +914,11 @@ def main(argv: list[str]) -> int:
         return 1
     original = src_path.read_text(encoding="utf-8", errors="ignore")
     final = run_pipeline(original, dump_layers=dump)
+    out_text = final if final.endswith("\n") else final + "\n"
     if out_path:
-        out_path.write_text(final, encoding="utf-8")
+        out_path.write_text(out_text, encoding="utf-8")
     else:
-        sys.stdout.write(final)
+        sys.stdout.write(out_text)
     return 0
 
 
