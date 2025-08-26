@@ -1,0 +1,82 @@
+<!-- ---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to
+The following is a project in which python code is deobfuscated, which has been heavily obfuscated in several steps in various ways. I've already uncovered several layers, but I need your help. Next, we will sequentially use the python code that you will write to deobfuscate each layer. Don't try to deobfuscate the code yourself in your own context. It is necessary to perform an analysis of the obfuscated layer and develop a deobfuscator that will work accurately. Then it is necessary to check the operability of such a layer deobfuscator for operability and the absence of errors during execution. For new layers, create a new layer file {layer number}.py, as well as for the deobfuscator of this layer by analogy. It is very important that deobfuscation occurs through python code and not through your context, so you should not deobfuscate it yourself. It is important to act consistently and take your time. Do not try to deobfuscate everything at once, act step by step and step by step each time analyzing the layer.
+
+
+- You can stop performing an action only if your result is completely deobfuscated and decoded.
+
+# План разработки автоматизированного деобфускатора Python‑кода на основе модуля `ast`
+
+## 1. Цель проекта
+- Создать скрипт/модуль на Python, автоматически распознающий и поэтапно развёртывающий тяжёлые уровни обфускации в исходном коде.
+- Свести к минимуму ручную доработку и обеспечить читаемость итогового кода.
+
+## 2. Ключевые задачи
+
+1. **Парсинг исходного файла**  
+   - Чтение `.py`‑файла в строку  
+   - Построение AST через `ast.parse`
+
+2. **Выявление «обёрток»**  
+   - Поиск узлов `ast.Call` с функциями:
+     - `eval(...)`  
+     - `exec(...)`  
+     - `compile(...)`  
+   - Детекция схем упаковки:
+     - `base64.b64decode → zlib.decompress → eval`  
+     - `marshal.loads → exec`  
+     - `bz2.decompress`  
+     - Встроенные вызовы `compile(..., flags=...)`
+
+3. **Преобразование/распаковка**  
+   - Последовательное декодирование и распаковка (без `exec` нативно):
+     1. `base64.b64decode`
+     2. `zlib.decompress`
+     3. `marshal.loads`
+     4. …и т. д.  
+   - Рекурсивный парсинг результата в AST и подмена узлов в исходном дереве
+
+4. **Итеративный проход**  
+   - Повторять «детекция → трансформация» до исчезновения обфускаторов
+   - Лимит итераций (например, 20) и логирование прогресса
+
+5. **Генерация «чистого» кода**  
+   - `ast.unparse` (Python 3.9+) или `astor/codegen`  
+   - Опциональное форматирование через `black`
+
+6. **Тестирование и валидация**  
+   - Проверка синтаксиса после каждой итерации (`python -m py_compile`)  
+   - Unit‑ и интеграционные тесты на типовых примерах  
+   - Исполнение итогового кода в изолированном окружении (Docker)
+
+## 3. Функциональные требования
+
+| №   | Требование                                                                                   |
+|-----|----------------------------------------------------------------------------------------------|
+| FR1 | Вход: путь к `.py`‑файлу. Выход: путь к deobfuscated-файлу.                                  |
+| FR2 | Обработка схем:  
+      - Base64 → zlib  
+      - Base64 → bz2  
+      - marshal.loads → exec  
+      - compile(…, exec)                                                                     |
+| FR3 | Итеративное раскрытие вложенных уровней до полного снятия обфускации                         |
+| FR4 | Логирование: количество найденных узлов, объём распакованного текста, итерация и т. д.        |
+| FR5 | Плагинная архитектура для лёгкого подключения новых схем (класс‑трансформер)                 |
+
+## 4. Нефункциональные требования
+- **Безопасность:** никакого нативного `exec`/`eval`  
+- **Производительность:** обработка файла до 10 000 строк за ≤5 сек  
+- **Модульность:** отдельные компоненты для парсинга, детекции, трансформации, генерации  
+- **Документированность:** docstring, README с примерами и описанием расширений
+
+## 5. Архитектурный дизайн
+
+ -->

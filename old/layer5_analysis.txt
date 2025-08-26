@@ -1,0 +1,224 @@
+# Отчет о декодировании layer5.py
+
+## Переназначения встроенных функций
+xomxdhQ3B0Ef = ArithmeticError
+rN3H8bcHN0rp = AssertionError
+CNCbLdw5ySGF = AttributeError
+YFGXaGdfzGK9 = BaseException
+xQ5Q5T2Epd8N = BaseExceptionGroup
+tVg28lnI8JWK = BlockingIOError
+RohdKa4hrBR7 = BrokenPipeError
+C80jTpjSELxU = BufferError
+GRex1QyEFrQO = BytesWarning
+ZD0QMxwkbOyh = ChildProcessError
+_a_GmETZyRaR = ConnectionAbortedError
+cA0YwFQ6Y3PV = ConnectionError
+Hnw_KuBYszVS = ConnectionRefusedError
+c6oNnYm2VZwG = ConnectionResetError
+Uz16NqxlO6pD = DeprecationWarning
+A5ReWkjFtYrX = EOFError
+QKIQ5T8vV85I = Ellipsis
+X7GlOHFjTT_H = EncodingWarning
+iIqleqRdTMae = EnvironmentError
+OJeYPsgEnfYk = Exception
+LL6cT9l8WtO7 = ExceptionGroup
+KGYe3fGGtb18 = False
+okClKa77Evl9 = FileExistsError
+O6YeOoHbqFyu = FileNotFoundError
+DGycAOCE1bEQ = FloatingPointError
+xyV9MzVIK_a5 = FutureWarning
+abhoo31BpsMa = GeneratorExit
+ixIaqwl7ivzy = IOError
+Cg8ngKrc6u6x = ImportError
+tM0ck5M0oseF = ImportWarning
+XhZPQ9Bts6L3 = IndentationError
+Yu_sAvXJBHwN = IndexError
+p1grLKNpMgRL = InterruptedError
+KYQtsmX2tMn6 = IsADirectoryError
+dqQWLR7x6pec = KeyError
+uUtWNTJcfUHr = KeyboardInterrupt
+HNGFEc4h1253 = LookupError
+HEJzGVZW5gob = MemoryError
+zfvgVoyCLm5c = ModuleNotFoundError
+AYVrdg1hwdro = NameError
+T3y3pOaNrhrL = None
+pnRUoeFBnvnr = NotADirectoryError
+TndrbSMQsHJz = NotImplemented
+tANJaQu9YWxU = NotImplementedError
+P1yK3zQIR8Lz = OSError
+iZjNP7daaBRW = OverflowError
+poT5VeCwHfS1 = PendingDeprecationWarning
+qIzisZ4oiYPU = PermissionError
+f9zDC7nbVLm3 = ProcessLookupError
+TwtarZzJQNYI = RecursionError
+u6oG3Jw1aEj0 = ReferenceError
+QaaUhdVaDEiD = ResourceWarning
+TZA4kvabeca8 = RuntimeError
+ImCkY2wazluk = RuntimeWarning
+xEwNcwmY7fTP = StopAsyncIteration
+UaJcegYTJkw9 = StopIteration
+YDN5I65UE7UQ = SyntaxError
+ndEiR0wvrD2C = SyntaxWarning
+U1nlKTm4Ev8y = SystemError
+vbC6R3Op_HdW = SystemExit
+nYPO03ha2IUr = TabError
+H9f6bNPAqZKi = TimeoutError
+bxeXJK9eg9zd = True
+nkO6VWhwa0sr = TypeError
+GC_kl4D8FA18 = UnboundLocalError
+IRtS_fRJTqZe = UnicodeDecodeError
+cExqcNntPl7E = UnicodeEncodeError
+Jjvsb5YDA8mB = UnicodeError
+qvXKDMVvhonW = UnicodeTranslateError
+SbfU5jRsOpb3 = UnicodeWarning
+Lo9bcxWi5PPL = UserWarning
+jUKaB4IxZO_z = ValueError
+FxvKQ0S3dnLe = Warning
+T9ExjAY_ceiB = ZeroDivisionError
+uy47gem7Uynt = __build_class__
+lw5y9rSm2yDX = __debug__
+xoi9roxm_uyH = __doc__
+JXzJajrdQAWB = __import__
+L67kKvWFvN95 = __loader__
+Re5W1iJwYiL7 = __name__
+PWDU427bdC36 = __package__
+FBqJmHdQLxGV = __spec__
+clswZIbK6P4W = abs
+YcJfDnbo_4yq = aiter
+xuOdxVMJp9Kg = all
+mLWHal49R5vw = anext
+zzX2mpWDBV5Z = any
+dQRnRSJ5T1I_ = ascii
+wy8d0RPdjhwK = bin
+_KLPIBCrM0F8 = bool
+uHFTxU0VtvJO = breakpoint
+nfWXApaDc77q = bytearray
+GrJ5wUJG79ow = bytes
+OHhRkSB4tyT4 = callable
+nzH9DiUTOjeW = chr
+gA7ByakIawh0 = classmethod
+bxd4J2CLVdzY = compile
+W_7URHkARmW5 = complex
+DPDmHZ13HEe4 = copyright
+DVMgnirwjHqs = credits
+d5NNDhoFaqN3 = delattr
+IVbMmpUZYv2P = dict
+oNb6Yt8fk4ew = dir
+I83uAgLYdEV7 = divmod
+k6hxCxet8C3O = enumerate
+jpGl5UhJmYZ_ = eval
+SmhaJg9CPrqN = exec
+nRZq5mRdzTDf = exit
+jESq9mxBwUks = filter
+vGHBFw02QSSG = float
+GvUgl1FQozXV = format
+N3J6GKJrKZeT = frozenset
+t5NjExmI3vgw = getattr
+uDB0zEP1xkJF = globals
+lXP6cCzuXQdC = hasattr
+AEWEqHPTHEUA = hash
+MjrHNJ9lVD2X = help
+DQuE_mWpXQYD = hex
+M3duNFr4XulA = id
+JGrelBeeF6J0 = input
+KRHh79PwpYac = int
+eINj7i1YuZTU = isinstance
+DnHJpv8HXyXJ = issubclass
+k1iKd1eL_TEo = iter
+W4XoGgxuS9ze = len
+OM8NlDJe38fh = license
+xH5f8y2MNlut = list
+PJnU777WR6C3 = locals
+C78E1QR4iweM = map
+wfnRqhtgluHy = max
+cXr9rjmtppFO = memoryview
+Nb4ibPzcgCt9 = min
+aOWPTDdXS9FO = next
+QPyUiT6bKluO = object
+XXdKarkTQZCt = oct
+ZQu7yFRKir7j = open
+oIoL1_h9ZJcX = ord
+VvYTgeepUhs7 = pow
+uNtyzzuTTOje = print
+HYCorqt7s6PU = property
+aX6mko3iPq4c = quit
+C8ZDNuWSdwSD = range
+Esu7uozDMMfi = repr
+KtY7dfhvby8r = reversed
+Xw8bctDlNUr3 = round
+lNa5PCy1NquT = set
+yr0ZqoQ7A2Hr = setattr
+UN1ugthLH6di = slice
+eI7YypQeRi72 = sorted
+FJ8VGkPGAHXv = staticmethod
+ERUX4AlHWwF9 = str
+dhU60M0D2ji9 = sum
+v2E0QR0WMejJ = super
+mpPeuYNJZUoH = tuple
+PHOYsZ0zm5Jj = type
+y551gAgfw10E = vars
+zKjqh0inbsoQ = zip
+VgXEFHny8eqC = __builtins__
+VpBo5a2ARLBa = __cached__
+TlcUtn5NinzF = __file__
+
+## Основные обфускаторные функции
+### u1KQ2EguJKQ7
+- Описание: Функция декодирования бинарных данных
+- Количество вызовов: 200
+- Аргументы: UWdGO89tcyS7
+
+### slBqQzRHEsUg
+- Описание: Функция для обработки исключений или расширенного импорта
+- Количество вызовов: 33
+- Аргументы: I3TrM73hju6F, sXfSEpzNzWP5
+
+
+## Анализ бинарных строк
+### Бинарная строка 1
+- Строка: `\x1a...`
+- Результаты анализа:
+  - base64: b''...
+
+### Бинарная строка 2
+- Строка: `U\x1d\x96\xfeO@\xf0...`
+- Результаты анализа:
+
+### Бинарная строка 3
+- Строка: `G\x07\x88\xfeME...`
+- Результаты анализа:
+
+### Бинарная строка 4
+- Строка: `U\x07\x80\xf7^H\xf2etc\rE`\x87n\xa6\xdb\x0c\xe7\xa...`
+- Результаты анализа:
+  - base64: b'Pw\xadpI\xfc8,|'...
+  - strings: etc
+
+### Бинарная строка 5
+- Строка: `g\x07\x82\xe0@L\xcd.rs\n^{\xa0d\xe6\xde\t\xed\xb5...`
+- Результаты анализа:
+  - marshal: 1.026939061933686e+242...
+
+### Бинарная строка 6
+- Строка: `C\x0b\x8d\xf8CF\xf4...`
+- Результаты анализа:
+
+### Бинарная строка 7
+- Строка: `U\x07\x80\xf8X]\xef\x14pc\x1d[j\x9a...`
+- Результаты анализа:
+
+### Бинарная строка 8
+- Строка: `g\x07\x82\xe0@L\xcd.rs\n^{\xa0d\xe6\xde\t\xed\xb5...`
+- Результаты анализа:
+  - marshal: 1.026939061933686e+242...
+
+### Бинарная строка 9
+- Строка: `U\x07\x80\xf7^H\xf2etc\rE`\x87n\xa6\xdb\x0c\xe7\xa...`
+- Результаты анализа:
+  - base64: b'Pw\xadpI\xfc8,|'...
+  - strings: etc
+
+### Бинарная строка 10
+- Строка: `G\x0b\x9b\xe5\\v\xfe;sj\x06Nn\x9cl\xe7\xd4...`
+- Результаты анализа:
+
