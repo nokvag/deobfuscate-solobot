@@ -78,66 +78,66 @@ if os.path.abspath(sys.executable) != os.path.abspath(qSlLeyQ7VdNv):
 gRRvVbYhM0LB = Console()
 
 def Pib7Isbe5Piv():
-    i_5gN_6A5Aqj = Path('alembic/env.py')
-    if i_5gN_6A5Aqj.exists():
+    alembic_env_path = Path('alembic/env.py')
+    if alembic_env_path.exists():
         print('ℹAlembic инициализирован.')
         return
     print('🛠️ Инициализация Alembic...')
     subprocess.run(['venv/bin/alembic', 'init', 'alembic'], check=1)
-    if i_5gN_6A5Aqj.exists():
-        fvX0NPd8gKqD = i_5gN_6A5Aqj.read_text()
+    if alembic_env_path.exists():
+        fvX0NPd8gKqD = alembic_env_path.read_text()
         dvrwJuLJSlIR = 'from database.models import Base\nfrom config import DATABASE_URL\n# Заменяем asyncpg на psycopg2 только для миграций\nsync_url = DATABASE_URL.replace("postgresql+asyncpg", "postgresql+psycopg2")\nconfig.set_main_option("sqlalchemy.url", sync_url)\n\ntarget_metadata = Base.metadata'
-        i_5gN_6A5Aqj.write_text(fvX0NPd8gKqD.replace('target_metadata = None', dvrwJuLJSlIR))
+        alembic_env_path.write_text(fvX0NPd8gKqD.replace('target_metadata = None', dvrwJuLJSlIR))
     print('✅ Alembic инициализирован.')
 
 def Yx6Nrcbtb4PN():
     xqQbR3mcDJZE = DATABASE_URL.replace('postgresql+asyncpg', 'postgresql+psycopg2')
-    ya1W7oAVx8Q4 = create_engine(xqQbR3mcDJZE)
+    engine = create_engine(xqQbR3mcDJZE)
     try:
-        with ya1W7oAVx8Q4.connect() as y3mYlbnvULnu:
-            Erx7KqRlGK6W = y3mYlbnvULnu.execute(text('DELETE FROM notifications WHERE tg_id NOT IN (SELECT tg_id FROM users);')).rowcount
-            dWyzIwk5ehXI = y3mYlbnvULnu.execute(text('\n                    DELETE FROM referrals \n                    WHERE referred_tg_id NOT IN (SELECT tg_id FROM users)\n                       OR referrer_tg_id NOT IN (SELECT tg_id FROM users);\n                ')).rowcount
-            y3mYlbnvULnu.commit()
+        with engine.connect() as conn:
+            Erx7KqRlGK6W = conn.execute(text('DELETE FROM notifications WHERE tg_id NOT IN (SELECT tg_id FROM users);')).rowcount
+            dWyzIwk5ehXI = conn.execute(text('\n                    DELETE FROM referrals \n                    WHERE referred_tg_id NOT IN (SELECT tg_id FROM users)\n                       OR referrer_tg_id NOT IN (SELECT tg_id FROM users);\n                ')).rowcount
+            conn.commit()
         print(f'Очистка завершена. Удалено {Erx7KqRlGK6W} уведомлений и {dWyzIwk5ehXI} рефералов.')
-    except Exception as umvpgGZGd92J:
+    except Exception as exc:
         pass
 
 def ot1STj0Fihnd():
-    CRFlXIWSq7W1 = Config('alembic.ini')
-    fkMzg2r6XODx = ScriptDirectory.from_config(CRFlXIWSq7W1)
+    config = Config('alembic.ini')
+    script_dir = ScriptDirectory.from_config(config)
     xqQbR3mcDJZE = DATABASE_URL.replace('postgresql+asyncpg', 'postgresql+psycopg2')
-    ya1W7oAVx8Q4 = create_engine(xqQbR3mcDJZE)
-    with ya1W7oAVx8Q4.connect() as y3mYlbnvULnu:
+    engine = create_engine(xqQbR3mcDJZE)
+    with engine.connect() as conn:
         try:
-            FCcaVPw_BfBa = y3mYlbnvULnu.execute(text('SELECT version_num FROM alembic_version'))
+            FCcaVPw_BfBa = conn.execute(text('SELECT version_num FROM alembic_version'))
             v8h0Nrd1Zgij = FCcaVPw_BfBa.scalar()
         except Exception:
             print('ℹТаблица alembic_version не найдена — пропускаем проверку.')
             return
         try:
-            fkMzg2r6XODx.get_revision(v8h0Nrd1Zgij)
+            script_dir.get_revision(v8h0Nrd1Zgij)
         except Exception:
             print(f'Ревизия {v8h0Nrd1Zgij} отсутствует. Удаляем запись из alembic_version...')
-            y3mYlbnvULnu.execute(text('DELETE FROM alembic_version'))
-            y3mYlbnvULnu.commit()
+            conn.execute(text('DELETE FROM alembic_version'))
+            conn.commit()
             print('Запись alembic_version удалена. Миграции будут пересозданы.')
     subprocess.run(['venv/bin/alembic', 'stamp', 'head'], check=1, env={**os.environ, 'ALEMBIC_SAFE_BOOT': '1'})
 
 def NrMxwt71pAGc():
-    i_5gN_6A5Aqj = Path('alembic/env.py')
-    P2gKpi9RnARy = Path('alembic/env_backup.py')
-    if not i_5gN_6A5Aqj.exists():
+    alembic_env_path = Path('alembic/env.py')
+    path = Path('alembic/env_backup.py')
+    if not alembic_env_path.exists():
         raise kkr6asGQBbL4('env.py не найден')
-    shutil.copy(i_5gN_6A5Aqj, P2gKpi9RnARy)
-    GAGG3SzhZoAk = i_5gN_6A5Aqj.read_text()
-    guKuVpoPOUK0 = '\nfrom pathlib import Path\nimport importlib\n\nmodules_dir = Path("modules")\nfor module_path in modules_dir.iterdir():\n    if (module_path / "models.py").exists():\n        module_name = module_path.name\n        try:\n            importlib.import_module(f"modules.{module_name}.models")\n        except Exception as e:\n            print(f"[Alembic] ❌ Ошибка импорта {module_name}: {e}")\n'
-    i_5gN_6A5Aqj.write_text(guKuVpoPOUK0 + '\n\n' + GAGG3SzhZoAk)
+    shutil.copy(alembic_env_path, path)
+    GAGG3SzhZoAk = alembic_env_path.read_text()
+    path_2 = '\nfrom pathlib import Path\nimport importlib\n\nmodules_dir = Path("modules")\nfor module_path in modules_dir.iterdir():\n    if (module_path / "models.py").exists():\n        module_name = module_path.name\n        try:\n            importlib.import_module(f"modules.{module_name}.models")\n        except Exception as e:\n            print(f"[Alembic] ❌ Ошибка импорта {module_name}: {e}")\n'
+    alembic_env_path.write_text(path_2 + '\n\n' + GAGG3SzhZoAk)
 
 def o2KdGgnRtgxA():
-    i_5gN_6A5Aqj = Path('alembic/env.py')
-    P2gKpi9RnARy = Path('alembic/env_backup.py')
-    if P2gKpi9RnARy.exists():
-        shutil.move(P2gKpi9RnARy, i_5gN_6A5Aqj)
+    alembic_env_path = Path('alembic/env.py')
+    path = Path('alembic/env_backup.py')
+    if path.exists():
+        shutil.move(path, alembic_env_path)
 
 def yfTW9tS0_kHo():
     print('Генерация и применение миграций...')
@@ -197,15 +197,15 @@ def XpF3sTj6yajP():
                 if os.path.exists(HBWnJvBDhafr):
                     print(f'❌ Команда `{FN9v93eKE8N0}` уже существует. Установка прервана.')
                     return
-        except Exception as umvpgGZGd92J:
-            print(f'⚠️ Ошибка при чтении команды {FN9v93eKE8N0}: {umvpgGZGd92J}')
+        except Exception as exc:
+            print(f'⚠️ Ошибка при чтении команды {FN9v93eKE8N0}: {exc}')
             return
     try:
         with open(HBWnJvBDhafr, 'w') as VD5XtVzFLHb2:
             VD5XtVzFLHb2.write(f"""#!/bin/bash\n'{MtRx3rujhwU4}' '{sXk2F8EV6LJl}' "$@"\n""")
         os.chmod(HBWnJvBDhafr, 493)
         print(f'✅ Команда `{FN9v93eKE8N0}` установлена! Используйте: {FN9v93eKE8N0}')
-    except Exception as umvpgGZGd92J:
+    except Exception as exc:
         pass
 
 async def wM4UKfLL5p4k():
@@ -215,9 +215,9 @@ async def wM4UKfLL5p4k():
         await asyncio.sleep(BACKUP_TIME)
 
 async def RnhunT1Pokyl():
-    CRFlXIWSq7W1 = uvicorn.Config('api.main:app', host=API_HOST, port=API_PORT, log_level='info' if API_LOGGING else 'critical')
-    bVWK7XMx6YQ8 = uvicorn.Server(CRFlXIWSq7W1)
-    await bVWK7XMx6YQ8.serve()
+    config = uvicorn.Config('api.main:app', host=API_HOST, port=API_PORT, log_level='info' if API_LOGGING else 'critical')
+    server = uvicorn.Server(config)
+    await server.serve()
 
 async def M7xmJlQpYzNB(Kzqgqt2OnbBD):
     print('⚙️ Установка вебхука...')
@@ -244,19 +244,19 @@ async def M7xmJlQpYzNB(Kzqgqt2OnbBD):
 async def Fklfk5LsFLlG(Kzqgqt2OnbBD):
     try:
         await run_hooks('shutdown', bot=bot, dp=dp, app=Kzqgqt2OnbBD)
-    except Exception as umvpgGZGd92J:
-        logger.error(f'Ошибка shutdown-хуков: {umvpgGZGd92J}')
+    except Exception as exc:
+        logger.error(f'Ошибка shutdown-хуков: {exc}')
     await bot.delete_webhook()
     for TQCuJzXXjNfR in asyncio.all_tasks():
         TQCuJzXXjNfR.cancel()
     try:
         await asyncio.gather(*asyncio.all_tasks(), return_exceptions=1)
-    except Exception as umvpgGZGd92J:
-        logger.error(f'Ошибка при завершении работы: {umvpgGZGd92J}')
+    except Exception as exc:
+        logger.error(f'Ошибка при завершении работы: {exc}')
 
 async def YyFOxjswwO6V(Wg4y0tl9UCps):
     logger.info('Остановка вебхуков...')
-    await Wg4y0tl9UCps.stop()
+    await site.stop()
     logger.info('Остановка бота.')
 
 async def of1m0QeKOPMV():
@@ -295,8 +295,8 @@ async def of1m0QeKOPMV():
         logger.info('Polling остановлен в режиме разработки. Отмена фоновых задач...')
         try:
             await run_hooks('shutdown', bot=bot, dp=dp, app=None)
-        except Exception as umvpgGZGd92J:
-            logger.error(f'Ошибка shutdown-хуков (dev): {umvpgGZGd92J}')
+        except Exception as exc:
+            logger.error(f'Ошибка shutdown-хуков (dev): {exc}')
         for TQCuJzXXjNfR in NZRpUosWW30x:
             TQCuJzXXjNfR.cancel()
         await asyncio.gather(*NZRpUosWW30x, return_exceptions=1)
@@ -322,17 +322,17 @@ async def of1m0QeKOPMV():
         await register_web_routes(Kzqgqt2OnbBD.router)
         SimpleRequestHandler(dispatcher=dp, bot=bot).register(Kzqgqt2OnbBD, path=WEBHOOK_PATH)
         setup_application(Kzqgqt2OnbBD, dp, bot=bot)
-        JUE22Ecu3lXC = web.AppRunner(Kzqgqt2OnbBD)
-        await JUE22Ecu3lXC.setup()
-        Wg4y0tl9UCps = web.TCPSite(JUE22Ecu3lXC, host=WEBAPP_HOST, port=WEBAPP_PORT)
-        await Wg4y0tl9UCps.start()
+        runner = web.AppRunner(Kzqgqt2OnbBD)
+        await runner.setup()
+        site = web.TCPSite(runner, host=WEBAPP_HOST, port=WEBAPP_PORT)
+        await site.start()
         if API_ENABLE:
             asyncio.create_task(RnhunT1Pokyl())
         logger.info(f'URL вебхука: {g_ErmwCpaF7a}')
         pXePuUjRPloW = asyncio.Event()
-        WwAfJLQPh73Q = asyncio.get_event_loop()
-        for jp5EZWTihCJs in (signal.SIGINT, signal.SIGTERM):
-            WwAfJLQPh73Q.add_signal_handler(jp5EZWTihCJs, pXePuUjRPloW.set)
+        loop = asyncio.get_event_loop()
+        for sig in (signal.SIGINT, signal.SIGTERM):
+            loop.add_signal_handler(sig, pXePuUjRPloW.set)
         try:
             await pXePuUjRPloW.wait()
         finally:
@@ -340,12 +340,12 @@ async def of1m0QeKOPMV():
             for TQCuJzXXjNfR in q0B7Jzr9PNTf:
                 try:
                     TQCuJzXXjNfR.cancel()
-                except Exception as umvpgGZGd92J:
-                    logger.error(umvpgGZGd92J)
+                except Exception as exc:
+                    logger.error(exc)
             await asyncio.gather(*q0B7Jzr9PNTf, return_exceptions=1)
 if zL5BH9evDcio == '__main__':
     XpF3sTj6yajP()
     try:
         asyncio.run(of1m0QeKOPMV())
-    except Exception as umvpgGZGd92J:
-        logger.error(f'Ошибка при запуске приложения:\n{umvpgGZGd92J}')
+    except Exception as exc:
+        logger.error(f'Ошибка при запуске приложения:\n{exc}')

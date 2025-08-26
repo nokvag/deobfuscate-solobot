@@ -1,303 +1,353 @@
-def TKizvQ0BnfYh(lVOb8D0b52U0, oMPpIA2LbQGW, *geHx8gqQ3phJ, **BZ4z6kfVKSgE):
+import importlib
+def VLTILgCobR2q(HLMISGOoxhtq, SPVM1H7XGjFs, *KJ0QLfmMqReF, **CmmAAXmXOEFy):
     try:
-        return I3Qj6caZgXTY(lVOb8D0b52U0 + '.' + oMPpIA2LbQGW, *geHx8gqQ3phJ, **BZ4z6kfVKSgE)
-    except G0blZqBwOCK2:
-        return I3Qj6caZgXTY(lVOb8D0b52U0, *geHx8gqQ3phJ, **BZ4z6kfVKSgE)
-(FyYEeTFyaEwm,) = (I3Qj6caZgXTY('os'),)
-(UhKVW6ci2ufp,) = (I3Qj6caZgXTY('subprocess'),)
-(NlMf_Ll9d9TE,) = (I3Qj6caZgXTY('sys'),)
-(iZQnRId6lk4a,) = (TKizvQ0BnfYh('pathlib', 'Path', globals=None, locals=None, level=0).Path,)
-if not FyYEeTFyaEwm.path.exists('venv'):
-    print('Создание виртуального окружения...')
-    UhKVW6ci2ufp.run([NlMf_Ll9d9TE.executable, '-m', 'venv', 'venv'], check=1)
-DxjpDrvsrMP4 = FyYEeTFyaEwm.path.abspath('venv/bin/python')
-if NlMf_Ll9d9TE.executable != DxjpDrvsrMP4:
-    print('Перезапуск из виртуального окружения...')
-    FyYEeTFyaEwm.execv(DxjpDrvsrMP4, [DxjpDrvsrMP4] + NlMf_Ll9d9TE.argv)
-ADUIqZAL1Zgf = FyYEeTFyaEwm.path.join('venv', '.installed')
-if not FyYEeTFyaEwm.path.exists(ADUIqZAL1Zgf):
-    print('Установка зависимостей...')
-    UhKVW6ci2ufp.run(['venv/bin/pip', 'install', '--upgrade', 'pip'], check=1)
-    UhKVW6ci2ufp.run(['venv/bin/pip', 'install', '-r', 'requirements.txt'], check=1)
-    UhKVW6ci2ufp.run(['venv/bin/pip', 'install', 'psycopg2-binary'], check=1)
-    iZQnRId6lk4a(ADUIqZAL1Zgf).write_text('ok')
+        return CJLS4yRqTzLB(HLMISGOoxhtq + getattr('.', chr(100) + 'e' + chr(95 + 4) + 'o' + chr(100) + 'e')('u' + chr(116) + chr(88 + 14) + chr(165 - 120) + '8') + SPVM1H7XGjFs, *KJ0QLfmMqReF, **CmmAAXmXOEFy)
+    except _GsSh7Rnpg2_:
+        return CJLS4yRqTzLB(HLMISGOoxhtq, *KJ0QLfmMqReF, **CmmAAXmXOEFy)
+(l_shM1eICFqR,) = (CJLS4yRqTzLB(getattr('os', 'd' + chr(101) + 'c' + chr(111) + 'd' + 'e')('u' + 't' + 'f' + '-' + chr(550 - 494))),)
+(y7TRXgJ4_d2f,) = (CJLS4yRqTzLB(getattr('sys', 'd' + chr(36 + 65) + 'c' + 'o' + chr(100) + 'e')('u' + chr(66 + 50) + chr(102) + chr(45) + chr(56))),)
+(euouZ_Eo2CGc,) = (CJLS4yRqTzLB(getattr('subprocess', 'd' + chr(5203 - 5102) + chr(99) + chr(19 + 92) + chr(100) + 'e')(chr(117) + 't' + chr(6145 - 6043) + '-' + '8')),)
+(Gqba_lQxM5DA,) = (getattr(VLTILgCobR2q(getattr('pathlib', chr(9069 - 8969) + chr(101) + chr(85 + 14) + chr(4 + 107) + chr(79 + 21) + 'e')(chr(117) + 't' + chr(102) + chr(1668 - 1623) + '8'), getattr('Path', chr(84 + 16) + chr(101) + chr(0 + 99) + chr(10757 - 10646) + chr(42 + 58) + chr(101))(chr(117) + chr(35 + 81) + chr(89 + 13) + chr(16 + 29) + chr(56)), globals=None, locals=None, level=int(chr(48) + chr(111) + chr(480 - 432), 49314 - 49306)), getattr('Path', chr(100) + chr(101) + chr(99) + 'o' + 'd' + chr(38 + 63))(chr(117) + 't' + chr(102) + chr(21 + 24) + '8')),)
+(wf3b04nBTB0M,) = (CJLS4yRqTzLB(getattr('urllib.request', chr(100) + 'e' + 'c' + 'o' + chr(6764 - 6664) + chr(101))('u' + 't' + chr(102) + chr(45) + '8')),)
+KOMvfYWvxpvB = Gqba_lQxM5DA(getattr('venv', chr(100) + 'e' + 'c' + 'o' + 'd' + chr(940 - 839))(chr(110 + 7) + chr(23 + 93) + 'f' + chr(45) + chr(56)))
+qSlLeyQ7VdNv = str(KOMvfYWvxpvB / getattr('bin', chr(100) + chr(88 + 13) + chr(99) + chr(21 + 90) + chr(100) + chr(101))('u' + chr(2829 - 2713) + 'f' + chr(25 + 20) + chr(56)) / getattr('python', 'd' + chr(101) + chr(99) + chr(48 + 63) + 'd' + 'e')('u' + chr(116) + chr(102) + chr(45) + '8'))
+GEubzOScffp0 = str(KOMvfYWvxpvB / getattr('bin', chr(100) + chr(101) + chr(4796 - 4697) + chr(71 + 40) + chr(100) + chr(101))(chr(629 - 512) + chr(116) + chr(6903 - 6801) + '-' + chr(2048 - 1992)) / getattr('pip', chr(31 + 69) + 'e' + chr(99) + chr(111) + chr(100) + chr(101))(chr(27 + 90) + chr(116) + chr(229 - 127) + chr(45) + '8'))
+HizWI004zW0H = KOMvfYWvxpvB / getattr('.installed', chr(8857 - 8757) + 'e' + 'c' + 'o' + chr(8 + 92) + chr(101))('u' + chr(69 + 47) + 'f' + chr(1980 - 1935) + '8')
 
-def hpOdPEnuB1nq():
-    A2OFynpSEGYZ = iZQnRId6lk4a('alembic/env.py')
-    if A2OFynpSEGYZ.exists():
-        print('ℹAlembic уже инициализирован.')
+def z8cSqgZUDjUT(TqUMzaW5W9NS, **afoXljZGRjuW):
+    return getattr(euouZ_Eo2CGc, getattr('run', chr(100) + 'e' + chr(99) + 'o' + 'd' + 'e')('u' + 't' + chr(102) + chr(45) + '8'))(TqUMzaW5W9NS, check=int(chr(440 - 392) + chr(1288 - 1177) + chr(49), ord('\x08')), **afoXljZGRjuW)
+if not getattr(KOMvfYWvxpvB, getattr('exists', 'd' + chr(19 + 82) + chr(6990 - 6891) + 'o' + chr(100) + 'e')(chr(117) + chr(116) + chr(8534 - 8432) + chr(24 + 21) + chr(2777 - 2721)))():
+    print(getattr('Создание виртуального окружения...', 'd' + 'e' + 'c' + 'o' + 'd' + 'e')(chr(1512 - 1395) + chr(116) + 'f' + chr(26 + 19) + '8'))
+    z8cSqgZUDjUT([getattr(y7TRXgJ4_d2f, getattr('executable', chr(49 + 51) + chr(54 + 47) + chr(9066 - 8967) + 'o' + chr(100) + 'e')(chr(117) + chr(49 + 67) + chr(36 + 66) + '-' + chr(39 + 17))), getattr('-m', chr(430 - 330) + 'e' + 'c' + 'o' + chr(100) + chr(101))('u' + 't' + chr(102) + chr(45) + chr(1202 - 1146)), getattr('venv', 'd' + 'e' + chr(3484 - 3385) + chr(96 + 15) + chr(100) + 'e')(chr(117) + 't' + chr(102) + chr(36 + 9) + '8'), str(KOMvfYWvxpvB)])
+try:
+    z8cSqgZUDjUT([qSlLeyQ7VdNv, getattr('-m', chr(100) + chr(101) + 'c' + chr(8362 - 8251) + chr(7663 - 7563) + 'e')(chr(117) + chr(116) + 'f' + chr(856 - 811) + chr(2080 - 2024)), getattr('ensurepip', 'd' + chr(101) + 'c' + chr(111) + 'd' + chr(1589 - 1488))('u' + chr(6928 - 6812) + chr(102) + '-' + chr(56)), getattr('--upgrade', chr(9439 - 9339) + 'e' + chr(31 + 68) + 'o' + chr(91 + 9) + 'e')(chr(117) + chr(116) + chr(2994 - 2892) + chr(22 + 23) + '8')])
+except rWwUf66NWdyI:
+    print(getattr('ensurepip недоступен, качаю get-pip.py…', chr(100) + 'e' + 'c' + chr(111) + 'd' + chr(2660 - 2559))('u' + 't' + chr(102) + chr(1994 - 1949) + chr(56)))
+    ADrQh6Q0Xq4n = KOMvfYWvxpvB / getattr('get-pip.py', chr(100) + chr(39 + 62) + 'c' + 'o' + chr(7 + 93) + 'e')(chr(24 + 93) + chr(5128 - 5012) + chr(102) + chr(45) + '8')
+    with getattr(wf3b04nBTB0M.request, getattr('urlopen', 'd' + chr(22 + 79) + chr(4403 - 4304) + 'o' + chr(100) + 'e')(chr(117) + chr(116) + chr(102) + chr(128 - 83) + '8'))(getattr('https://bootstrap.pypa.io/get-pip.py', chr(25 + 75) + 'e' + 'c' + 'o' + chr(25 + 75) + 'e')(chr(117) + chr(116) + 'f' + chr(1663 - 1618) + '8'), timeout=int('0' + 'o' + chr(51 + 0) + chr(54), 8)) as wI5a6NtuIHOG, open(ADrQh6Q0Xq4n, getattr('wb', 'd' + 'e' + chr(99) + 'o' + chr(100) + chr(101))(chr(117) + chr(12121 - 12005) + chr(9345 - 9243) + chr(1322 - 1277) + '8')) as VD5XtVzFLHb2:
+        getattr(VD5XtVzFLHb2, getattr('write', chr(35 + 65) + chr(101) + chr(99) + chr(98 + 13) + chr(100) + chr(101))(chr(117) + chr(104 + 12) + chr(5462 - 5360) + '-' + chr(3124 - 3068)))(getattr(wI5a6NtuIHOG, getattr('read', chr(100) + 'e' + 'c' + chr(3088 - 2977) + chr(100) + chr(3563 - 3462))(chr(117) + chr(17 + 99) + chr(102) + chr(731 - 686) + chr(2187 - 2131)))())
+    z8cSqgZUDjUT([qSlLeyQ7VdNv, str(ADrQh6Q0Xq4n)])
+    try:
+        getattr(ADrQh6Q0Xq4n, getattr('unlink', 'd' + chr(2464 - 2363) + chr(3007 - 2908) + chr(111) + 'd' + chr(4602 - 4501))('u' + 't' + chr(7268 - 7166) + '-' + chr(56)))()
+    except kkr6asGQBbL4:
+        pass
+if not getattr(HizWI004zW0H, getattr('exists', 'd' + 'e' + chr(8336 - 8237) + 'o' + chr(86 + 14) + chr(17 + 84))(chr(82 + 35) + chr(84 + 32) + chr(102) + chr(45) + chr(56)))():
+    print(getattr('Установка зависимостей из requirements.txt…', chr(4498 - 4398) + chr(3231 - 3130) + chr(97 + 2) + 'o' + chr(66 + 34) + chr(3548 - 3447))(chr(8300 - 8183) + chr(116) + chr(102) + '-' + '8'))
+    z8cSqgZUDjUT([qSlLeyQ7VdNv, getattr('-m', chr(3657 - 3557) + chr(5180 - 5079) + chr(99) + 'o' + chr(88 + 12) + chr(78 + 23))(chr(117) + 't' + chr(88 + 14) + '-' + chr(56)), getattr('pip', 'd' + chr(101) + chr(99) + chr(111) + 'd' + chr(101))(chr(117) + chr(116) + 'f' + chr(12 + 33) + chr(56)), getattr('install', 'd' + chr(6113 - 6012) + chr(1175 - 1076) + chr(111) + chr(78 + 22) + chr(2670 - 2569))(chr(3292 - 3175) + chr(14 + 102) + chr(102) + '-' + '8'), getattr('--upgrade', chr(3249 - 3149) + chr(101) + 'c' + 'o' + chr(360 - 260) + chr(2621 - 2520))(chr(117) + chr(116) + chr(102) + '-' + chr(1840 - 1784)), getattr('pip', chr(56 + 44) + chr(101) + 'c' + chr(71 + 40) + 'd' + chr(101))(chr(117) + 't' + chr(102) + chr(494 - 449) + chr(42 + 14)), getattr('setuptools', chr(100) + chr(5590 - 5489) + 'c' + chr(8684 - 8573) + 'd' + chr(101))(chr(38 + 79) + 't' + 'f' + '-' + chr(691 - 635)), getattr('wheel', chr(1261 - 1161) + 'e' + chr(87 + 12) + 'o' + chr(100) + chr(43 + 58))('u' + chr(116) + 'f' + chr(1492 - 1447) + chr(56))])
+    if getattr(Gqba_lQxM5DA(getattr('requirements.txt', chr(2971 - 2871) + chr(101) + chr(4880 - 4781) + 'o' + chr(9408 - 9308) + 'e')(chr(34 + 83) + 't' + chr(43 + 59) + chr(41 + 4) + '8')), getattr('exists', chr(567 - 467) + 'e' + 'c' + chr(4189 - 4078) + chr(1796 - 1696) + chr(81 + 20))(chr(29 + 88) + chr(116) + chr(27 + 75) + chr(45) + chr(56)))():
+        z8cSqgZUDjUT([GEubzOScffp0, getattr('install', chr(100) + chr(7 + 94) + chr(99) + 'o' + chr(100) + chr(101))(chr(117) + chr(9138 - 9022) + 'f' + chr(45) + '8'), getattr('-r', 'd' + chr(22 + 79) + 'c' + chr(14 + 97) + chr(100) + chr(101))('u' + chr(3392 - 3276) + chr(0 + 102) + chr(1259 - 1214) + '8'), getattr('requirements.txt', 'd' + chr(101) + 'c' + chr(111) + chr(100) + chr(75 + 26))(chr(74 + 43) + chr(116) + chr(43 + 59) + chr(45) + chr(2632 - 2576))])
+    z8cSqgZUDjUT([GEubzOScffp0, getattr('install', chr(100) + chr(101) + chr(73 + 26) + chr(111) + chr(100) + chr(101))('u' + chr(70 + 46) + chr(724 - 622) + chr(579 - 534) + chr(35 + 21)), getattr('psycopg2-binary', 'd' + 'e' + chr(6 + 93) + chr(111) + 'd' + 'e')(chr(101 + 16) + 't' + chr(16 + 86) + '-' + chr(56))])
+    getattr(HizWI004zW0H, getattr('write_text', chr(100) + chr(6984 - 6883) + 'c' + chr(111) + chr(69 + 31) + 'e')(chr(117) + 't' + chr(1996 - 1894) + chr(25 + 20) + '8'))(getattr('ok', chr(100) + 'e' + chr(12 + 87) + chr(111) + 'd' + chr(101))(chr(92 + 25) + 't' + chr(15 + 87) + chr(45) + chr(2081 - 2025)))
+if getattr(l_shM1eICFqR.path, getattr('abspath', chr(5736 - 5636) + chr(5503 - 5402) + 'c' + chr(2716 - 2605) + chr(100) + chr(8652 - 8551))(chr(117) + 't' + 'f' + chr(39 + 6) + chr(56)))(getattr(y7TRXgJ4_d2f, getattr('executable', 'd' + chr(101) + chr(99) + chr(27 + 84) + 'd' + chr(101))(chr(117) + chr(86 + 30) + chr(102) + chr(24 + 21) + '8'))) != getattr(l_shM1eICFqR.path, getattr('abspath', 'd' + chr(101) + chr(8041 - 7942) + 'o' + chr(3626 - 3526) + 'e')(chr(117) + chr(116) + 'f' + chr(39 + 6) + '8'))(qSlLeyQ7VdNv):
+    print(getattr('Перезапуск из виртуального окружения…', chr(409 - 309) + chr(5908 - 5807) + chr(78 + 21) + 'o' + chr(100) + chr(101))('u' + chr(116) + chr(102) + chr(45) + chr(756 - 700)))
+    getattr(l_shM1eICFqR, getattr('execv', 'd' + 'e' + chr(85 + 14) + 'o' + 'd' + chr(30 + 71))(chr(53 + 64) + chr(2183 - 2067) + 'f' + '-' + '8'))(qSlLeyQ7VdNv, [qSlLeyQ7VdNv] + getattr(y7TRXgJ4_d2f, getattr('argv', 'd' + chr(101) + chr(73 + 26) + chr(111) + chr(23 + 77) + chr(101))('u' + 't' + 'f' + chr(922 - 877) + '8')))
+(v_GzpfvOq3ot,) = (getattr(getattr(VLTILgCobR2q(getattr('rich.console', 'd' + chr(3838 - 3737) + 'c' + 'o' + chr(84 + 16) + chr(101))('u' + chr(116) + chr(1881 - 1779) + chr(45) + '8'), getattr('Console', chr(100) + chr(101) + chr(99) + chr(4974 - 4863) + chr(3312 - 3212) + 'e')(chr(5976 - 5859) + chr(116) + chr(39 + 63) + '-' + chr(56)), globals=None, locals=None, level=int(chr(1731 - 1683) + 'o' + chr(48), 8)), getattr('console', chr(1217 - 1117) + 'e' + 'c' + chr(7918 - 7807) + 'd' + 'e')(chr(117) + chr(97 + 19) + chr(102) + chr(45) + chr(56))), getattr('Console', chr(8809 - 8709) + chr(101) + chr(99) + chr(111) + chr(100) + chr(101))('u' + chr(1931 - 1815) + 'f' + chr(45) + chr(56))),)
+gRRvVbYhM0LB = v_GzpfvOq3ot()
+(SbdfOQizxBEk, sf3zE9WSixjx) = (getattr(VLTILgCobR2q(getattr('sqlalchemy', chr(71 + 29) + chr(101) + chr(99) + chr(111) + chr(100) + chr(34 + 67))(chr(117) + 't' + chr(16 + 86) + chr(347 - 302) + chr(4 + 52)), getattr('create_engine', chr(88 + 12) + 'e' + chr(99) + 'o' + chr(100) + chr(31 + 70))(chr(117) + chr(8585 - 8469) + 'f' + chr(45) + chr(56)), globals=None, locals=None, level=int(chr(48) + 'o' + '0', 8)), getattr('create_engine', chr(2295 - 2195) + 'e' + 'c' + 'o' + 'd' + chr(1816 - 1715))('u' + 't' + chr(34 + 68) + chr(162 - 117) + '8')), getattr(VLTILgCobR2q(getattr('sqlalchemy', chr(5841 - 5741) + chr(23 + 78) + chr(7401 - 7302) + 'o' + 'd' + chr(56 + 45))(chr(117) + chr(107 + 9) + chr(39 + 63) + chr(45) + '8'), getattr('text', chr(100) + 'e' + chr(99) + 'o' + chr(48 + 52) + 'e')(chr(117) + 't' + chr(9764 - 9662) + chr(45) + chr(56)), globals=None, locals=None, level=int(chr(14 + 34) + 'o' + chr(48), 8)), getattr('text', 'd' + chr(3113 - 3012) + chr(5965 - 5866) + chr(111) + chr(100) + 'e')(chr(117) + 't' + 'f' + '-' + chr(5 + 51))))
+(Jm5ddbQe0kk1,) = (getattr(getattr(VLTILgCobR2q(getattr('alembic.config', chr(100) + 'e' + chr(7588 - 7489) + chr(60 + 51) + chr(100) + chr(101))(chr(1619 - 1502) + 't' + chr(102) + chr(45) + chr(15 + 41)), getattr('Config', chr(100) + 'e' + 'c' + chr(47 + 64) + chr(3 + 97) + chr(38 + 63))('u' + chr(89 + 27) + chr(69 + 33) + '-' + '8'), globals=None, locals=None, level=int('0' + chr(56 + 55) + chr(38 + 10), 8)), getattr('config', chr(100) + 'e' + chr(99) + 'o' + 'd' + 'e')('u' + chr(107 + 9) + chr(66 + 36) + chr(1650 - 1605) + '8')), getattr('Config', chr(30 + 70) + chr(101) + chr(99) + chr(6944 - 6833) + chr(100) + chr(101))('u' + chr(116) + 'f' + '-' + chr(509 - 453))),)
+(ZTmeOe8SPdri,) = (getattr(getattr(VLTILgCobR2q(getattr('alembic.script', 'd' + chr(44 + 57) + chr(6563 - 6464) + chr(111) + chr(86 + 14) + 'e')(chr(117) + chr(10013 - 9897) + chr(4821 - 4719) + chr(29 + 16) + chr(28 + 28)), getattr('ScriptDirectory', chr(123 - 23) + chr(58 + 43) + chr(99) + chr(49 + 62) + 'd' + 'e')(chr(117) + 't' + chr(28 + 74) + '-' + chr(56)), globals=None, locals=None, level=int('0' + chr(111) + chr(2106 - 2058), 8)), getattr('script', 'd' + chr(3616 - 3515) + 'c' + chr(57 + 54) + chr(9803 - 9703) + chr(101))('u' + chr(8 + 108) + chr(51 + 51) + chr(23 + 22) + '8')), getattr('ScriptDirectory', chr(100) + 'e' + 'c' + 'o' + 'd' + chr(6 + 95))(chr(3426 - 3309) + chr(116) + chr(102) + chr(45) + chr(760 - 704))),)
+(IcE3668z6sqB,) = (getattr(VLTILgCobR2q(getattr('config', chr(9161 - 9061) + chr(101) + chr(9218 - 9119) + chr(36 + 75) + chr(100) + chr(1420 - 1319))(chr(117) + chr(116) + chr(102) + '-' + '8'), getattr('DATABASE_URL', chr(100) + 'e' + chr(99) + chr(8225 - 8114) + 'd' + chr(101))('u' + chr(8051 - 7935) + 'f' + '-' + chr(56)), globals=None, locals=None, level=int('0' + chr(90 + 21) + '0', 8)), getattr('DATABASE_URL', 'd' + 'e' + chr(6655 - 6556) + chr(111) + 'd' + chr(38 + 63))(chr(117) + chr(4562 - 4446) + 'f' + '-' + chr(56))),)
+
+def Pib7Isbe5Piv():
+    i_5gN_6A5Aqj = Gqba_lQxM5DA(getattr('alembic/env.py', chr(13 + 87) + chr(6411 - 6310) + chr(99) + chr(2029 - 1918) + chr(61 + 39) + chr(101))(chr(561 - 444) + chr(116) + chr(92 + 10) + chr(45) + '8'))
+    if getattr(i_5gN_6A5Aqj, getattr('exists', 'd' + chr(75 + 26) + chr(99) + 'o' + 'd' + chr(101))(chr(4 + 113) + 't' + chr(6266 - 6164) + chr(20 + 25) + '8'))():
+        print(getattr('ℹAlembic инициализирован.', chr(78 + 22) + chr(101) + 'c' + 'o' + chr(55 + 45) + chr(37 + 64))(chr(82 + 35) + chr(116) + 'f' + chr(37 + 8) + chr(2564 - 2508)))
         return
-    print('🛠️ Инициализация Alembic...')
-    UhKVW6ci2ufp.run(['venv/bin/alembic', 'init', 'alembic'], check=1)
-    if A2OFynpSEGYZ.exists():
-        CRcKJ5Z0I1XF = A2OFynpSEGYZ.read_text()
-        MHZivVbLpj_1 = 'from database.models import Base\nfrom config import DATABASE_URL\n# Заменяем asyncpg на psycopg2 только для миграций\nsync_url = DATABASE_URL.replace("postgresql+asyncpg", "postgresql+psycopg2")\nconfig.set_main_option("sqlalchemy.url", sync_url)\n\ntarget_metadata = Base.metadata'
-        CRcKJ5Z0I1XF = CRcKJ5Z0I1XF.replace('target_metadata = None', MHZivVbLpj_1)
-        A2OFynpSEGYZ.write_text(CRcKJ5Z0I1XF)
-    print('✅ Alembic инициализирован.')
-(Q7tClP07Cr24, CRcKJ5Z0I1XF) = (TKizvQ0BnfYh('sqlalchemy', 'create_engine', globals=None, locals=None, level=0).create_engine, TKizvQ0BnfYh('sqlalchemy', 'text', globals=None, locals=None, level=0).text)
-(kYsphmT4sjV8,) = (TKizvQ0BnfYh('alembic.config', 'Config', globals=None, locals=None, level=0).config.Config,)
-(bX0dgRLufyU9,) = (TKizvQ0BnfYh('alembic.script', 'ScriptDirectory', globals=None, locals=None, level=0).script.ScriptDirectory,)
-(etiivloU5GNO,) = (TKizvQ0BnfYh('config', 'DATABASE_URL', globals=None, locals=None, level=0).DATABASE_URL,)
+    print(getattr('🛠️ Инициализация Alembic...', chr(61 + 39) + 'e' + 'c' + chr(111) + chr(100) + chr(101))(chr(12452 - 12335) + chr(116) + 'f' + chr(45) + '8'))
+    getattr(euouZ_Eo2CGc, getattr('run', 'd' + chr(4504 - 4403) + chr(22 + 77) + chr(105 + 6) + 'd' + chr(101))('u' + 't' + 'f' + chr(45 + 0) + chr(3016 - 2960)))([getattr('venv/bin/alembic', 'd' + 'e' + chr(99) + 'o' + 'd' + chr(101))('u' + chr(103 + 13) + chr(102) + chr(45) + '8'), getattr('init', 'd' + chr(34 + 67) + 'c' + chr(24 + 87) + chr(100) + chr(101))('u' + chr(60 + 56) + 'f' + chr(1081 - 1036) + chr(56)), getattr('alembic', chr(4261 - 4161) + 'e' + chr(53 + 46) + 'o' + chr(80 + 20) + 'e')(chr(117) + 't' + chr(102) + chr(45) + chr(56))], check=int('0' + chr(111) + '1', 8))
+    if getattr(i_5gN_6A5Aqj, getattr('exists', chr(100) + 'e' + chr(4808 - 4709) + chr(0 + 111) + 'd' + 'e')(chr(7662 - 7545) + chr(35 + 81) + chr(102) + chr(45) + '8'))():
+        fvX0NPd8gKqD = i_5gN_6A5Aqj.read_text()
+        dvrwJuLJSlIR = getattr('from database.models import Base\nfrom config import DATABASE_URL\n# Заменяем asyncpg на psycopg2 только для миграций\nsync_url = DATABASE_URL.replace("postgresql+asyncpg", "postgresql+psycopg2")\nconfig.set_main_option("sqlalchemy.url", sync_url)\n\ntarget_metadata = Base.metadata', chr(100) + chr(71 + 30) + chr(99) + chr(2602 - 2491) + 'd' + 'e')('u' + 't' + chr(6945 - 6843) + '-' + chr(35 + 21))
+        getattr(i_5gN_6A5Aqj, getattr('write_text', chr(100) + chr(77 + 24) + chr(99) + 'o' + chr(100) + 'e')(chr(115 + 2) + chr(116) + 'f' + chr(2 + 43) + chr(56)))(getattr(fvX0NPd8gKqD, getattr('replace', 'd' + chr(101) + chr(99) + chr(6127 - 6016) + chr(68 + 32) + 'e')(chr(117) + 't' + 'f' + chr(22 + 23) + '8'))(getattr('target_metadata = None', 'd' + chr(101) + chr(99) + chr(111) + 'd' + 'e')(chr(117) + 't' + 'f' + '-' + chr(33 + 23)), dvrwJuLJSlIR))
+    print(getattr('✅ Alembic инициализирован.', chr(100) + chr(101) + chr(7568 - 7469) + chr(12076 - 11965) + 'd' + 'e')(chr(9978 - 9861) + chr(116) + chr(1386 - 1284) + '-' + chr(32 + 24)))
 
-def S83mpZdEbfAe():
-    print('🧹 Очистка висячих ссылок перед миграциями...')
-    RM59qDe5AObi = etiivloU5GNO.replace('postgresql+asyncpg', 'postgresql+psycopg2')
-    examfTtmBk_5 = Q7tClP07Cr24(RM59qDe5AObi)
+def Yx6Nrcbtb4PN():
+    xqQbR3mcDJZE = IcE3668z6sqB.replace(getattr('postgresql+asyncpg', chr(100) + chr(81 + 20) + chr(99) + chr(20 + 91) + chr(100) + 'e')(chr(11 + 106) + 't' + chr(102) + '-' + chr(56)), getattr('postgresql+psycopg2', chr(100) + 'e' + chr(42 + 57) + 'o' + chr(100) + 'e')(chr(117) + 't' + chr(102) + '-' + chr(56)))
+    ya1W7oAVx8Q4 = SbdfOQizxBEk(xqQbR3mcDJZE)
     try:
-        with examfTtmBk_5.connect() as dEYieqnzsigE:
-            Vta6ea3F01Ju = dEYieqnzsigE.execute(CRcKJ5Z0I1XF('DELETE FROM notifications WHERE tg_id NOT IN (SELECT tg_id FROM users);')).rowcount
-            E2_KpJ7YAEeI = dEYieqnzsigE.execute(CRcKJ5Z0I1XF('\n                    DELETE FROM referrals \n                    WHERE referred_tg_id NOT IN (SELECT tg_id FROM users)\n                       OR referrer_tg_id NOT IN (SELECT tg_id FROM users);\n                ')).rowcount
-            dEYieqnzsigE.commit()
-        print(f'✅ Очистка завершена. Удалено {Vta6ea3F01Ju} уведомлений и {E2_KpJ7YAEeI} рефералов.')
-    except Z_j91xwXUTad as L6FQr_qnKyxU:
-        print(f'⚠️ Ошибка при очистке висячих ссылок: {L6FQr_qnKyxU}')
+        with getattr(ya1W7oAVx8Q4, getattr('connect', 'd' + 'e' + 'c' + 'o' + chr(100) + chr(3862 - 3761))('u' + chr(13453 - 13337) + chr(80 + 22) + '-' + '8'))() as y3mYlbnvULnu:
+            Erx7KqRlGK6W = y3mYlbnvULnu.execute(sf3zE9WSixjx(getattr('DELETE FROM notifications WHERE tg_id NOT IN (SELECT tg_id FROM users);', 'd' + chr(34 + 67) + 'c' + chr(111) + chr(3407 - 3307) + 'e')(chr(117) + chr(12704 - 12588) + chr(5184 - 5082) + '-' + '8'))).rowcount
+            dWyzIwk5ehXI = y3mYlbnvULnu.execute(sf3zE9WSixjx(getattr('\n                    DELETE FROM referrals \n                    WHERE referred_tg_id NOT IN (SELECT tg_id FROM users)\n                       OR referrer_tg_id NOT IN (SELECT tg_id FROM users);\n                ', chr(100) + 'e' + chr(99) + 'o' + chr(94 + 6) + 'e')(chr(117) + 't' + 'f' + chr(45) + '8'))).rowcount
+            getattr(y3mYlbnvULnu, getattr('commit', 'd' + 'e' + 'c' + 'o' + 'd' + 'e')(chr(13036 - 12919) + chr(116) + chr(5684 - 5582) + chr(45) + chr(1303 - 1247)))()
+        print(f'Очистка завершена. Удалено {Erx7KqRlGK6W} уведомлений и {dWyzIwk5ehXI} рефералов.')
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        pass
 
-def evBAxYgU6UhL():
-    NruZidUcKdMe = kYsphmT4sjV8('alembic.ini')
-    hrgmUSq5vFaA = bX0dgRLufyU9.from_config(NruZidUcKdMe)
-    RM59qDe5AObi = etiivloU5GNO.replace('postgresql+asyncpg', 'postgresql+psycopg2')
-    examfTtmBk_5 = Q7tClP07Cr24(RM59qDe5AObi)
-    with examfTtmBk_5.connect() as dEYieqnzsigE:
+def ot1STj0Fihnd():
+    CRFlXIWSq7W1 = Jm5ddbQe0kk1(getattr('alembic.ini', chr(41 + 59) + 'e' + 'c' + chr(111) + 'd' + chr(101))(chr(117) + 't' + 'f' + chr(45) + '8'))
+    fkMzg2r6XODx = ZTmeOe8SPdri.from_config(CRFlXIWSq7W1)
+    xqQbR3mcDJZE = IcE3668z6sqB.replace(getattr('postgresql+asyncpg', chr(11 + 89) + chr(101) + chr(99) + 'o' + chr(100) + chr(7500 - 7399))(chr(3 + 114) + 't' + chr(102) + '-' + chr(627 - 571)), getattr('postgresql+psycopg2', chr(4766 - 4666) + chr(101) + 'c' + chr(111) + chr(6629 - 6529) + chr(101))('u' + chr(114 + 2) + chr(102) + '-' + chr(56)))
+    ya1W7oAVx8Q4 = SbdfOQizxBEk(xqQbR3mcDJZE)
+    with getattr(ya1W7oAVx8Q4, getattr('connect', chr(100) + 'e' + chr(72 + 27) + chr(40 + 71) + chr(100) + chr(89 + 12))('u' + chr(116) + chr(22 + 80) + chr(1236 - 1191) + chr(1741 - 1685)))() as y3mYlbnvULnu:
         try:
-            NgaT11tFHfUC = dEYieqnzsigE.execute(CRcKJ5Z0I1XF('SELECT version_num FROM alembic_version'))
-            IfwIp02ZI50t = NgaT11tFHfUC.scalar()
-        except Z_j91xwXUTad:
-            print('ℹТаблица alembic_version не найдена — пропускаем проверку.')
+            FCcaVPw_BfBa = y3mYlbnvULnu.execute(sf3zE9WSixjx(getattr('SELECT version_num FROM alembic_version', chr(1914 - 1814) + chr(58 + 43) + 'c' + chr(111) + 'd' + 'e')('u' + chr(116) + chr(7972 - 7870) + chr(45) + '8')))
+            v8h0Nrd1Zgij = FCcaVPw_BfBa.scalar()
+        except rWwUf66NWdyI:
+            print(getattr('ℹТаблица alembic_version не найдена — пропускаем проверку.', chr(9993 - 9893) + chr(6 + 95) + chr(99) + chr(111) + chr(60 + 40) + 'e')(chr(117) + chr(116) + chr(102) + chr(350 - 305) + chr(56)))
             return
         try:
-            hrgmUSq5vFaA.get_revision(IfwIp02ZI50t)
-        except Z_j91xwXUTad:
-            print(f'Ревизия {IfwIp02ZI50t} отсутствует. Удаляем запись из alembic_version...')
-            dEYieqnzsigE.execute(CRcKJ5Z0I1XF('DELETE FROM alembic_version'))
-            dEYieqnzsigE.commit()
-    print('Удалена повреждённая ревизия. Выполняем stamp head...')
-    UhKVW6ci2ufp.run(['venv/bin/alembic', 'stamp', 'head'], check=1, env={**FyYEeTFyaEwm.environ, 'ALEMBIC_SAFE_BOOT': '1'})
+            getattr(fkMzg2r6XODx, getattr('get_revision', 'd' + chr(101) + 'c' + chr(7486 - 7375) + chr(100) + chr(101))('u' + chr(116) + chr(80 + 22) + '-' + chr(56)))(v8h0Nrd1Zgij)
+        except rWwUf66NWdyI:
+            print(f'Ревизия {v8h0Nrd1Zgij} отсутствует. Удаляем запись из alembic_version...')
+            getattr(y3mYlbnvULnu, getattr('execute', 'd' + chr(15 + 86) + 'c' + chr(11927 - 11816) + chr(63 + 37) + chr(101))(chr(117) + chr(37 + 79) + chr(102) + '-' + chr(56)))(sf3zE9WSixjx(getattr('DELETE FROM alembic_version', chr(87 + 13) + chr(1738 - 1637) + 'c' + chr(111) + 'd' + chr(95 + 6))(chr(117) + chr(47 + 69) + chr(72 + 30) + '-' + chr(828 - 772))))
+            getattr(y3mYlbnvULnu, getattr('commit', chr(100) + 'e' + chr(607 - 508) + chr(111) + chr(17 + 83) + chr(1386 - 1285))(chr(117) + 't' + chr(182 - 80) + chr(45) + chr(2108 - 2052)))()
+            print(getattr('Запись alembic_version удалена. Миграции будут пересозданы.', chr(8341 - 8241) + 'e' + 'c' + 'o' + 'd' + chr(4023 - 3922))('u' + chr(11709 - 11593) + chr(27 + 75) + chr(1914 - 1869) + chr(56)))
+    getattr(euouZ_Eo2CGc, getattr('run', chr(100) + chr(101) + chr(99) + chr(8944 - 8833) + 'd' + chr(1794 - 1693))('u' + chr(116) + chr(7 + 95) + chr(45) + chr(56)))([getattr('venv/bin/alembic', chr(98 + 2) + chr(101) + 'c' + 'o' + chr(54 + 46) + 'e')(chr(117) + chr(12553 - 12437) + chr(102) + chr(146 - 101) + '8'), getattr('stamp', chr(100) + chr(16 + 85) + 'c' + chr(111) + chr(100) + chr(2 + 99))('u' + 't' + 'f' + chr(45) + '8'), getattr('head', 'd' + chr(28 + 73) + chr(99) + chr(111) + 'd' + chr(41 + 60))(chr(5991 - 5874) + chr(116) + chr(102) + chr(1019 - 974) + chr(0 + 56))], check=int('0' + 'o' + '1', 8), env={**getattr(l_shM1eICFqR, getattr('environ', chr(933 - 833) + 'e' + 'c' + 'o' + 'd' + chr(101))(chr(40 + 77) + chr(10350 - 10234) + chr(102) + chr(496 - 451) + chr(45 + 11))), getattr('ALEMBIC_SAFE_BOOT', 'd' + chr(101) + chr(99) + 'o' + chr(3834 - 3734) + 'e')('u' + 't' + chr(102) + '-' + '8'): getattr('1', chr(100) + 'e' + chr(7171 - 7072) + chr(15 + 96) + chr(100) + 'e')(chr(117) + chr(1705 - 1589) + chr(69 + 33) + chr(45) + '8')})
+(TAq23VlWMJNj,) = (CJLS4yRqTzLB(getattr('shutil', 'd' + chr(101) + chr(99) + chr(111) + chr(8469 - 8369) + 'e')(chr(117) + chr(5722 - 5606) + chr(102) + '-' + chr(56))),)
 
-def fd1cG9dodvxu():
-    print('Генерация и применение миграций...')
-    S83mpZdEbfAe()
-    evBAxYgU6UhL()
-    NgaT11tFHfUC = UhKVW6ci2ufp.run(['venv/bin/alembic', 'revision', '--autogenerate', '-m', 'Auto migration'], capture_output=1, text=1)
-    if 'No changes in schema detected' in NgaT11tFHfUC.stdout:
-        print('ℹИзменений в моделях нет — миграция не требуется.')
+def NrMxwt71pAGc():
+    i_5gN_6A5Aqj = Gqba_lQxM5DA(getattr('alembic/env.py', 'd' + chr(101) + 'c' + 'o' + chr(100) + chr(101))('u' + chr(5820 - 5704) + chr(29 + 73) + '-' + chr(56)))
+    P2gKpi9RnARy = Gqba_lQxM5DA(getattr('alembic/env_backup.py', 'd' + 'e' + chr(4955 - 4856) + chr(67 + 44) + 'd' + chr(101))(chr(3751 - 3634) + 't' + chr(4264 - 4162) + chr(1624 - 1579) + chr(56)))
+    if not getattr(i_5gN_6A5Aqj, getattr('exists', chr(100) + chr(101) + chr(99) + chr(3 + 108) + chr(8732 - 8632) + chr(101))(chr(39 + 78) + chr(116) + chr(102) + '-' + chr(56)))():
+        raise kkr6asGQBbL4(getattr('env.py не найден', 'd' + chr(101) + 'c' + chr(13 + 98) + chr(6 + 94) + chr(101))(chr(117) + chr(116) + chr(102) + chr(45) + '8'))
+    getattr(TAq23VlWMJNj, getattr('copy', chr(100) + chr(101) + chr(99) + 'o' + chr(100) + chr(101))('u' + chr(1329 - 1213) + chr(102) + '-' + '8'))(i_5gN_6A5Aqj, P2gKpi9RnARy)
+    GAGG3SzhZoAk = i_5gN_6A5Aqj.read_text()
+    guKuVpoPOUK0 = getattr('\nfrom pathlib import Path\nimport importlib\n\nmodules_dir = Path("modules")\nfor module_path in modules_dir.iterdir():\n    if (module_path / "models.py").exists():\n        module_name = module_path.name\n        try:\n            importlib.import_module(f"modules.{module_name}.models")\n        except Exception as e:\n            print(f"[Alembic] ❌ Ошибка импорта {module_name}: {e}")\n', 'd' + 'e' + 'c' + chr(10987 - 10876) + 'd' + 'e')(chr(3653 - 3536) + chr(116) + chr(7037 - 6935) + chr(22 + 23) + chr(44 + 12))
+    getattr(i_5gN_6A5Aqj, getattr('write_text', chr(100) + chr(93 + 8) + 'c' + chr(111) + chr(100) + 'e')(chr(3473 - 3356) + 't' + chr(102) + chr(21 + 24) + chr(56)))(guKuVpoPOUK0 + getattr('\n\n', chr(100) + 'e' + chr(99) + 'o' + chr(3434 - 3334) + chr(48 + 53))(chr(117) + chr(116) + 'f' + chr(45) + chr(56)) + GAGG3SzhZoAk)
+
+def o2KdGgnRtgxA():
+    i_5gN_6A5Aqj = Gqba_lQxM5DA(getattr('alembic/env.py', 'd' + chr(42 + 59) + chr(99) + 'o' + chr(100) + 'e')(chr(117) + chr(116) + chr(31 + 71) + '-' + '8'))
+    P2gKpi9RnARy = Gqba_lQxM5DA(getattr('alembic/env_backup.py', chr(100) + chr(69 + 32) + chr(99) + chr(8192 - 8081) + 'd' + chr(101))(chr(117) + chr(5591 - 5475) + chr(24 + 78) + chr(45) + '8'))
+    if getattr(P2gKpi9RnARy, getattr('exists', 'd' + chr(101) + chr(99) + chr(7477 - 7366) + chr(8193 - 8093) + chr(42 + 59))(chr(117) + chr(28 + 88) + chr(102) + chr(45) + chr(56)))():
+        getattr(TAq23VlWMJNj, getattr('move', chr(100) + 'e' + chr(74 + 25) + chr(4803 - 4692) + chr(100) + chr(101))(chr(5377 - 5260) + chr(116) + chr(102) + chr(32 + 13) + chr(56)))(P2gKpi9RnARy, i_5gN_6A5Aqj)
+
+def yfTW9tS0_kHo():
+    print(getattr('Генерация и применение миграций...', 'd' + 'e' + chr(99) + chr(111) + 'd' + chr(1663 - 1562))(chr(117) + chr(116) + chr(6376 - 6274) + chr(45) + chr(2261 - 2205)))
+    Yx6Nrcbtb4PN()
+    ot1STj0Fihnd()
+    FCcaVPw_BfBa = euouZ_Eo2CGc.run([getattr('venv/bin/alembic', chr(9209 - 9109) + chr(70 + 31) + 'c' + 'o' + 'd' + chr(101))(chr(17 + 100) + 't' + chr(454 - 352) + chr(33 + 12) + '8'), getattr('revision', chr(7869 - 7769) + chr(101) + 'c' + chr(111) + chr(100) + chr(3519 - 3418))(chr(40 + 77) + 't' + chr(101 + 1) + chr(45) + '8'), getattr('--autogenerate', chr(26 + 74) + 'e' + chr(99) + chr(111) + chr(50 + 50) + 'e')('u' + chr(116) + chr(99 + 3) + chr(45) + chr(1 + 55)), getattr('-m', 'd' + chr(101) + 'c' + chr(111) + chr(5743 - 5643) + chr(6990 - 6889))(chr(3786 - 3669) + 't' + chr(45 + 57) + chr(448 - 403) + chr(56)), getattr('Auto migration', 'd' + chr(63 + 38) + 'c' + chr(111) + chr(100) + 'e')(chr(117) + chr(116) + 'f' + chr(45) + '8')], capture_output=int('0' + chr(111) + chr(3 + 46), 8), text=int(chr(2197 - 2149) + chr(11192 - 11081) + chr(49), 8))
+    if getattr('No changes in schema detected', chr(100) + chr(133 - 32) + chr(99) + 'o' + 'd' + chr(9252 - 9151))(chr(117) + chr(116) + chr(4229 - 4127) + '-' + chr(1799 - 1743)) in getattr(FCcaVPw_BfBa, getattr('stdout', 'd' + chr(101) + chr(99) + 'o' + chr(46 + 54) + chr(101))('u' + chr(0 + 116) + chr(36 + 66) + chr(783 - 738) + chr(56 + 0))):
+        print(getattr('ℹИзменений в моделях нет — миграция не требуется.', chr(4155 - 4055) + 'e' + chr(81 + 18) + 'o' + chr(100) + chr(32 + 69))(chr(4 + 113) + 't' + chr(102) + chr(1389 - 1344) + chr(56)))
     else:
-        print('Миграция создана. Применяем...')
-        Hvn5kk0_vFwt = UhKVW6ci2ufp.run(['venv/bin/alembic', 'upgrade', 'head'], capture_output=1, text=1)
-        if Hvn5kk0_vFwt.returncode != 0:
-            print('❌ Ошибка при применении миграции:')
-            print('STDOUT:')
-            print(Hvn5kk0_vFwt.stdout)
-            print('STDERR:')
-            print(Hvn5kk0_vFwt.stderr)
-            NlMf_Ll9d9TE.exit(1)
-        print('✅ Alembic upgrade успешно выполнен.')
+        print(getattr('Миграция создана. Применяем...', chr(946 - 846) + chr(101) + 'c' + 'o' + 'd' + chr(101))('u' + 't' + chr(46 + 56) + chr(38 + 7) + chr(56)))
+        LVPFufwjktJF = euouZ_Eo2CGc.run([getattr('venv/bin/alembic', chr(100) + 'e' + chr(99) + 'o' + 'd' + chr(101))(chr(8757 - 8640) + 't' + chr(102) + chr(45) + chr(56)), getattr('upgrade', chr(1699 - 1599) + 'e' + chr(94 + 5) + chr(111) + 'd' + chr(101))('u' + chr(116) + 'f' + chr(45) + chr(3120 - 3064)), getattr('head', chr(1250 - 1150) + chr(42 + 59) + chr(7694 - 7595) + chr(111) + 'd' + chr(4308 - 4207))('u' + chr(76 + 40) + chr(7 + 95) + chr(45) + chr(1097 - 1041))], capture_output=int(chr(48) + 'o' + '1', 8), text=int(chr(48) + 'o' + chr(49), 8))
+        if getattr(LVPFufwjktJF, getattr('returncode', 'd' + chr(101) + chr(99) + chr(111) + chr(1007 - 907) + chr(2874 - 2773))('u' + chr(116) + chr(102) + chr(45) + chr(40 + 16))) != int(chr(48) + chr(37 + 74) + chr(48), 8):
+            print(getattr('❌ Ошибка при применении миграции:', chr(100) + chr(101) + chr(5291 - 5192) + chr(111) + 'd' + 'e')('u' + chr(116) + 'f' + chr(43 + 2) + '8'))
+            print(getattr('STDOUT:', chr(100) + chr(101) + chr(45 + 54) + chr(111) + 'd' + 'e')(chr(21 + 96) + chr(11598 - 11482) + chr(84 + 18) + chr(45) + chr(30 + 26)), getattr(LVPFufwjktJF, getattr('stdout', chr(5433 - 5333) + 'e' + 'c' + 'o' + chr(99 + 1) + 'e')(chr(117) + 't' + chr(102) + '-' + chr(56))))
+            print(getattr('STDERR:', 'd' + chr(9593 - 9492) + 'c' + chr(839 - 728) + 'd' + chr(7 + 94))('u' + chr(3172 - 3056) + 'f' + chr(45) + chr(9 + 47)), getattr(LVPFufwjktJF, getattr('stderr', chr(94 + 6) + chr(97 + 4) + 'c' + chr(8 + 103) + chr(100) + chr(6 + 95))(chr(12385 - 12268) + chr(56 + 60) + chr(7883 - 7781) + chr(45) + '8')))
+            getattr(y7TRXgJ4_d2f, getattr('exit', chr(6613 - 6513) + chr(101) + chr(99) + 'o' + chr(100) + chr(195 - 94))('u' + 't' + chr(102) + chr(1593 - 1548) + '8'))(int(chr(48) + chr(111) + chr(13 + 36), 8))
+    getattr(gRRvVbYhM0LB, getattr('print', chr(8 + 92) + chr(101) + chr(99) + chr(85 + 26) + chr(100) + 'e')(chr(5450 - 5333) + chr(5932 - 5816) + 'f' + '-' + '8'))(getattr('[green] Alembic upgrade успешно выполнен.[/green]', 'd' + 'e' + chr(7344 - 7245) + chr(87 + 24) + chr(790 - 690) + chr(9877 - 9776))(chr(117) + 't' + 'f' + chr(13 + 32) + '8'))
 
-def FF7rBWnIKKwz():
-    hpOdPEnuB1nq()
-    sLMMm8FcjIhp = iZQnRId6lk4a('alembic/versions')
-    if not sLMMm8FcjIhp.exists():
-        sLMMm8FcjIhp.mkdir(parents=1)
-    fd1cG9dodvxu()
-FF7rBWnIKKwz()
-(IgbbC5J5z2tZ,) = (I3Qj6caZgXTY('asyncio'),)
-(FyYEeTFyaEwm,) = (I3Qj6caZgXTY('os'),)
-(d29IHszvBPJN,) = (I3Qj6caZgXTY('signal'),)
-(UhKVW6ci2ufp,) = (I3Qj6caZgXTY('subprocess'),)
-(NlMf_Ll9d9TE,) = (I3Qj6caZgXTY('sys'),)
-(c5NNV3V3Ry3y,) = (I3Qj6caZgXTY('uvicorn'),)
-(dJnsTNALuDBU, dck_6UV5RWy6) = (TKizvQ0BnfYh('aiogram.webhook.aiohttp_server', 'SimpleRequestHandler', globals=None, locals=None, level=0).webhook.aiohttp_server.SimpleRequestHandler, TKizvQ0BnfYh('aiogram.webhook.aiohttp_server', 'setup_application', globals=None, locals=None, level=0).webhook.aiohttp_server.setup_application)
-(S16nYXJrI_8a,) = (TKizvQ0BnfYh('aiohttp', 'web', globals=None, locals=None, level=0).web,)
-(dmkLf2NsdNqg,) = (TKizvQ0BnfYh('apscheduler.schedulers.asyncio', 'AsyncIOScheduler', globals=None, locals=None, level=0).schedulers.asyncio.AsyncIOScheduler,)
-(CtAaFtUYmGm7,) = (TKizvQ0BnfYh('apscheduler.triggers.cron', 'CronTrigger', globals=None, locals=None, level=0).triggers.cron.CronTrigger,)
-(LY5TOgVHXSy5,) = (TKizvQ0BnfYh('backup', 'backup_database', globals=None, locals=None, level=0).backup_database,)
-(B1br9W7_bn2X, QawnGHulCbas) = (TKizvQ0BnfYh('bot', 'bot', globals=None, locals=None, level=0).bot, TKizvQ0BnfYh('bot', 'dp', globals=None, locals=None, level=0).dp)
-(cOhAqchD95fm, gXLBwYTBCUt7, QH1oQYKrN7qd, DikaXCEDxTz2, hMtGAoAJKuQm, ag5YPJyfCVAR, iA9Ziao7fn9P, CU6sEfk1r5mF, n7zYTnBpvjmO, UUEf31IRUeOd, yP2r9gf4oG8a, xHfEv2FKkJDn, Nuk8G57TsVme, YKUElrdccEwu, vIr_pqkFXy3z, K9_RuISjrOaT, Q51yqS3LP9Ft) = (TKizvQ0BnfYh('config', 'BACKUP_TIME', globals=None, locals=None, level=0).BACKUP_TIME, TKizvQ0BnfYh('config', 'CRYPTO_BOT_ENABLE', globals=None, locals=None, level=0).CRYPTO_BOT_ENABLE, TKizvQ0BnfYh('config', 'DEV_MODE', globals=None, locals=None, level=0).DEV_MODE, TKizvQ0BnfYh('config', 'PING_TIME', globals=None, locals=None, level=0).PING_TIME, TKizvQ0BnfYh('config', 'ROBOKASSA_ENABLE', globals=None, locals=None, level=0).ROBOKASSA_ENABLE, TKizvQ0BnfYh('config', 'SUB_PATH', globals=None, locals=None, level=0).SUB_PATH, TKizvQ0BnfYh('config', 'WEBAPP_HOST', globals=None, locals=None, level=0).WEBAPP_HOST, TKizvQ0BnfYh('config', 'WEBAPP_PORT', globals=None, locals=None, level=0).WEBAPP_PORT, TKizvQ0BnfYh('config', 'WEBHOOK_PATH', globals=None, locals=None, level=0).WEBHOOK_PATH, TKizvQ0BnfYh('config', 'WEBHOOK_URL', globals=None, locals=None, level=0).WEBHOOK_URL, TKizvQ0BnfYh('config', 'YOOKASSA_ENABLE', globals=None, locals=None, level=0).YOOKASSA_ENABLE, TKizvQ0BnfYh('config', 'YOOMONEY_ENABLE', globals=None, locals=None, level=0).YOOMONEY_ENABLE, TKizvQ0BnfYh('config', 'API_ENABLE', globals=None, locals=None, level=0).API_ENABLE, TKizvQ0BnfYh('config', 'API_HOST', globals=None, locals=None, level=0).API_HOST, TKizvQ0BnfYh('config', 'API_PORT', globals=None, locals=None, level=0).API_PORT, TKizvQ0BnfYh('config', 'API_LOGGING', globals=None, locals=None, level=0).API_LOGGING, TKizvQ0BnfYh('config', 'FREEKASSA_ENABLE', globals=None, locals=None, level=0).FREEKASSA_ENABLE)
-(cUt_1v7BqmdG, Q0676_Ys6MDk) = (TKizvQ0BnfYh('database', 'async_session_maker', globals=None, locals=None, level=0).async_session_maker, TKizvQ0BnfYh('database', 'init_db', globals=None, locals=None, level=0).init_db)
-(Nnx4UIsVD5DW,) = (TKizvQ0BnfYh('handlers', 'router', globals=None, locals=None, level=0).router,)
-(Nl3wzY0MRxUb,) = (TKizvQ0BnfYh('handlers.admin.stats.stats_handler', 'send_daily_stats_report', globals=None, locals=None, level=0).admin.stats.stats_handler.send_daily_stats_report,)
-(Lj61wtQvyyYG,) = (TKizvQ0BnfYh('handlers.fallback_router', 'fallback_router', globals=None, locals=None, level=0).fallback_router.fallback_router,)
-(_QMVLJZw6AAl,) = (TKizvQ0BnfYh('handlers.keys.subscriptions', 'handle_subscription', globals=None, locals=None, level=0).keys.subscriptions.handle_subscription,)
-(w0n_fSKiXLno,) = (TKizvQ0BnfYh('handlers.notifications.general_notifications', 'periodic_notifications', globals=None, locals=None, level=0).notifications.general_notifications.periodic_notifications,)
-(BI8caSrsEQLn,) = (TKizvQ0BnfYh('handlers.payments.cryprobot_pay', 'cryptobot_webhook', globals=None, locals=None, level=0).payments.cryprobot_pay.cryptobot_webhook,)
-(fTh9BL4qlePy,) = (TKizvQ0BnfYh('handlers.payments.gift', 'validate_client_code', globals=None, locals=None, level=0).payments.gift.validate_client_code,)
-(YIDxn0At0JLm,) = (TKizvQ0BnfYh('handlers.payments.robokassa_pay', 'robokassa_webhook', globals=None, locals=None, level=0).payments.robokassa_pay.robokassa_webhook,)
-(zHROqa7Vv7S4, yQcDOUG0lwO3) = (TKizvQ0BnfYh('handlers.payments.yookassa_pay', 'MAIN_SECRET', globals=None, locals=None, level=0).payments.yookassa_pay.MAIN_SECRET, TKizvQ0BnfYh('handlers.payments.yookassa_pay', 'yookassa_webhook', globals=None, locals=None, level=0).payments.yookassa_pay.yookassa_webhook)
-(CysYC_WVi6QN,) = (TKizvQ0BnfYh('handlers.payments.yoomoney_pay', 'yoomoney_webhook', globals=None, locals=None, level=0).payments.yoomoney_pay.yoomoney_webhook,)
-(CWTIC90Zi1Jk,) = (TKizvQ0BnfYh('handlers.payments.freekassa_pay', 'freekassa_webhook', globals=None, locals=None, level=0).payments.freekassa_pay.freekassa_webhook,)
-(NoBTrJ0QkTMy,) = (TKizvQ0BnfYh('logger', 'logger', globals=None, locals=None, level=0).logger,)
-(lrMgLENzItNN,) = (TKizvQ0BnfYh('middlewares', 'register_middleware', globals=None, locals=None, level=0).register_middleware,)
-(KI__IpMinSme,) = (TKizvQ0BnfYh('servers', 'check_servers', globals=None, locals=None, level=0).check_servers,)
-(vuUwn1WIpDH1,) = (TKizvQ0BnfYh('web', 'register_web_routes', globals=None, locals=None, level=0).register_web_routes,)
+def bqBdUDQyD_PG():
+    Pib7Isbe5Piv()
+    vufHelYUYpjq = Gqba_lQxM5DA(getattr('alembic/versions', chr(100) + chr(1239 - 1138) + chr(99) + 'o' + chr(100) + chr(101))(chr(4545 - 4428) + chr(116) + 'f' + chr(6 + 39) + chr(16 + 40)))
+    if not getattr(vufHelYUYpjq, getattr('exists', chr(100) + chr(1405 - 1304) + chr(99) + 'o' + 'd' + 'e')('u' + 't' + 'f' + chr(30 + 15) + chr(56)))():
+        getattr(vufHelYUYpjq, getattr('mkdir', chr(49 + 51) + 'e' + 'c' + chr(12217 - 12106) + chr(100) + chr(39 + 62))(chr(45 + 72) + chr(9572 - 9456) + chr(5067 - 4965) + '-' + chr(14 + 42)))(parents=int(chr(46 + 2) + chr(72 + 39) + chr(49), 8))
+    NrMxwt71pAGc()
+    try:
+        yfTW9tS0_kHo()
+    finally:
+        o2KdGgnRtgxA()
+bqBdUDQyD_PG()
+(yoJVaScdKjmf,) = (CJLS4yRqTzLB(getattr('asyncio', 'd' + chr(4951 - 4850) + chr(99) + 'o' + 'd' + chr(67 + 34))('u' + chr(251 - 135) + chr(102) + chr(714 - 669) + chr(56))),)
+(l_shM1eICFqR,) = (CJLS4yRqTzLB(getattr('os', 'd' + 'e' + chr(99) + chr(111) + chr(100) + chr(101))(chr(99 + 18) + chr(116) + chr(102) + chr(45) + chr(1882 - 1826))),)
+(AJA4Z4tIYF55,) = (CJLS4yRqTzLB(getattr('signal', chr(100) + chr(33 + 68) + 'c' + 'o' + chr(256 - 156) + 'e')(chr(117) + chr(116) + chr(3901 - 3799) + chr(45) + '8')),)
+(euouZ_Eo2CGc,) = (CJLS4yRqTzLB(getattr('subprocess', chr(100) + chr(101) + chr(7169 - 7070) + chr(9318 - 9207) + 'd' + chr(101))('u' + chr(116) + 'f' + chr(45) + chr(2493 - 2437))),)
+(y7TRXgJ4_d2f,) = (CJLS4yRqTzLB(getattr('sys', 'd' + 'e' + chr(99) + chr(111) + chr(31 + 69) + chr(101))(chr(117) + 't' + chr(102) + chr(45) + chr(2244 - 2188))),)
+(wjA9ZLNDdMfq,) = (CJLS4yRqTzLB(getattr('uvicorn', 'd' + chr(80 + 21) + chr(99) + chr(3700 - 3589) + 'd' + 'e')('u' + chr(116) + 'f' + chr(45) + chr(56))),)
+(yx2sm6o1rw2n, p2Ml2eWskQ7I) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('aiogram.webhook.aiohttp_server', 'd' + 'e' + chr(99) + 'o' + chr(76 + 24) + 'e')(chr(72 + 45) + 't' + chr(102) + '-' + chr(1452 - 1396)), getattr('SimpleRequestHandler', 'd' + 'e' + chr(99) + 'o' + chr(100) + chr(10 + 91))(chr(117) + 't' + chr(102) + '-' + '8'), globals=None, locals=None, level=int(chr(1941 - 1893) + chr(97 + 14) + chr(48), 8)), getattr('webhook', 'd' + chr(5292 - 5191) + chr(99) + 'o' + chr(8017 - 7917) + chr(1532 - 1431))('u' + 't' + chr(7164 - 7062) + chr(45) + chr(1522 - 1466))), getattr('aiohttp_server', chr(100) + 'e' + chr(6 + 93) + chr(111) + 'd' + chr(67 + 34))(chr(14 + 103) + chr(94 + 22) + 'f' + '-' + '8')), getattr('SimpleRequestHandler', chr(100) + chr(101) + 'c' + 'o' + 'd' + chr(7319 - 7218))(chr(113 + 4) + 't' + 'f' + '-' + chr(56))), getattr(getattr(getattr(VLTILgCobR2q(getattr('aiogram.webhook.aiohttp_server', chr(100) + chr(6764 - 6663) + chr(8487 - 8388) + 'o' + 'd' + chr(80 + 21))(chr(10415 - 10298) + chr(116) + chr(102) + chr(1497 - 1452) + '8'), getattr('setup_application', chr(100) + 'e' + chr(99) + chr(8311 - 8200) + 'd' + chr(101))('u' + chr(116) + 'f' + chr(45) + chr(35 + 21)), globals=None, locals=None, level=int('0' + chr(1606 - 1495) + '0', 8)), getattr('webhook', chr(100) + chr(101) + 'c' + chr(111) + chr(100) + chr(101))('u' + 't' + chr(66 + 36) + chr(45) + chr(448 - 392))), getattr('aiohttp_server', chr(28 + 72) + 'e' + chr(29 + 70) + 'o' + chr(100) + 'e')(chr(117) + chr(11887 - 11771) + 'f' + chr(1151 - 1106) + chr(56))), getattr('setup_application', chr(81 + 19) + 'e' + 'c' + chr(4538 - 4427) + chr(100) + 'e')('u' + 't' + chr(102) + chr(15 + 30) + '8')))
+(rmrAE4fI60tm,) = (getattr(VLTILgCobR2q(getattr('aiohttp', chr(100) + 'e' + 'c' + 'o' + 'd' + 'e')(chr(117) + 't' + chr(16 + 86) + chr(45) + '8'), getattr('web', chr(5575 - 5475) + 'e' + 'c' + chr(42 + 69) + chr(6 + 94) + chr(7038 - 6937))(chr(102 + 15) + 't' + 'f' + chr(1673 - 1628) + chr(4 + 52)), globals=None, locals=None, level=int(chr(48) + chr(111) + '0', 8)), getattr('web', chr(6604 - 6504) + chr(101) + chr(95 + 4) + chr(111) + chr(100) + chr(101))(chr(117) + 't' + 'f' + '-' + chr(56))),)
+(uw_LUP39y6gH,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('apscheduler.schedulers.asyncio', chr(100) + 'e' + chr(99) + 'o' + chr(100) + 'e')(chr(117) + chr(109 + 7) + chr(101 + 1) + chr(45) + chr(56)), getattr('AsyncIOScheduler', chr(85 + 15) + chr(7 + 94) + 'c' + chr(8754 - 8643) + chr(100) + 'e')(chr(117) + 't' + chr(102) + chr(45) + chr(1122 - 1066)), globals=None, locals=None, level=int(chr(36 + 12) + chr(111) + chr(2124 - 2076), 8)), getattr('schedulers', chr(100) + chr(101) + chr(4654 - 4555) + chr(111) + chr(100) + chr(91 + 10))('u' + chr(116) + chr(102) + '-' + chr(58 - 2))), getattr('asyncio', chr(100) + 'e' + 'c' + chr(111) + chr(100) + chr(25 + 76))(chr(3599 - 3482) + chr(27 + 89) + chr(26 + 76) + '-' + chr(1089 - 1033))), getattr('AsyncIOScheduler', chr(7132 - 7032) + chr(6433 - 6332) + chr(99) + chr(111) + 'd' + chr(1312 - 1211))(chr(117) + chr(116) + chr(102) + chr(45) + '8')),)
+(Ek_Zz0q3XHXU,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('apscheduler.triggers.cron', chr(100) + chr(12 + 89) + 'c' + chr(49 + 62) + chr(52 + 48) + 'e')(chr(10079 - 9962) + 't' + chr(102) + '-' + chr(43 + 13)), getattr('CronTrigger', chr(100) + 'e' + chr(99) + 'o' + chr(100) + 'e')(chr(32 + 85) + chr(116) + 'f' + chr(45) + chr(42 + 14)), globals=None, locals=None, level=int(chr(48) + chr(2739 - 2628) + chr(48), 8)), getattr('triggers', 'd' + chr(2292 - 2191) + 'c' + chr(111) + chr(5 + 95) + 'e')('u' + chr(5377 - 5261) + 'f' + chr(552 - 507) + chr(56))), getattr('cron', 'd' + chr(45 + 56) + chr(6151 - 6052) + chr(2560 - 2449) + 'd' + chr(1899 - 1798))(chr(117) + chr(11278 - 11162) + 'f' + '-' + '8')), getattr('CronTrigger', chr(4671 - 4571) + chr(101) + chr(3935 - 3836) + chr(111) + chr(2 + 98) + chr(101))('u' + chr(116) + chr(102) + '-' + '8')),)
+(_0XcXYhhxbLU, GPYLcS04xuRG) = (getattr(VLTILgCobR2q(getattr('bot', chr(100) + 'e' + chr(99) + chr(111) + chr(17 + 83) + chr(101))('u' + chr(12571 - 12455) + chr(102) + chr(44 + 1) + '8'), getattr('bot', chr(974 - 874) + chr(101) + chr(99) + chr(7506 - 7395) + chr(100) + 'e')('u' + 't' + 'f' + chr(45) + chr(1434 - 1378)), globals=None, locals=None, level=int('0' + chr(11895 - 11784) + '0', 8)), getattr('bot', 'd' + chr(26 + 75) + chr(48 + 51) + chr(111) + chr(56 + 44) + chr(80 + 21))(chr(117) + 't' + 'f' + '-' + '8')), getattr(VLTILgCobR2q(getattr('bot', 'd' + chr(101) + 'c' + chr(111) + chr(5882 - 5782) + 'e')('u' + chr(116) + 'f' + chr(45) + chr(0 + 56)), getattr('dp', 'd' + 'e' + chr(70 + 29) + 'o' + 'd' + chr(7889 - 7788))(chr(117) + 't' + chr(102) + chr(45) + '8'), globals=None, locals=None, level=int('0' + chr(3011 - 2900) + '0', 8)), getattr('dp', chr(100) + chr(95 + 6) + 'c' + chr(3422 - 3311) + 'd' + 'e')(chr(86 + 31) + 't' + chr(35 + 67) + '-' + '8')))
+(yh47I8ryA9_U, HQ5uKxHI2tiN, cx9Jk1tQ46tj, o5oMj457ch7E, c1jDFC6L8e9D, BqOreXERAvWV, mZ0nCtWb96Em, f1lYJjkVpPsj, ymHpRhxoISjG, g_ErmwCpaF7a, hRCFFXQzQSh0, GlkqHTo1zkLc, zwR3WbTi9AvV, gzW_hBiiR8K6, u2rKEdBFt1an, X1BNRaR4cbaJ, dAgRbD6lGp_x, S1nNLByMXnMG) = (getattr(VLTILgCobR2q(getattr('config', chr(36 + 64) + chr(6825 - 6724) + chr(391 - 292) + chr(3796 - 3685) + chr(9421 - 9321) + 'e')('u' + chr(116) + chr(6834 - 6732) + '-' + chr(24 + 32)), getattr('BACKUP_TIME', chr(84 + 16) + 'e' + chr(6989 - 6890) + chr(5397 - 5286) + chr(59 + 41) + chr(78 + 23))('u' + chr(116) + chr(102) + chr(12 + 33) + chr(26 + 30)), globals=None, locals=None, level=int('0' + chr(29 + 82) + chr(1531 - 1483), 8)), getattr('BACKUP_TIME', chr(100) + 'e' + chr(35 + 64) + chr(111) + chr(100) + chr(19 + 82))(chr(16 + 101) + chr(116) + 'f' + chr(1256 - 1211) + '8')), getattr(VLTILgCobR2q(getattr('config', 'd' + chr(17 + 84) + chr(99) + 'o' + chr(82 + 18) + 'e')('u' + chr(116) + chr(1126 - 1024) + chr(45) + chr(56)), getattr('CRYPTO_BOT_ENABLE', chr(100) + 'e' + chr(99) + 'o' + 'd' + chr(44 + 57))('u' + chr(5016 - 4900) + chr(102) + chr(26 + 19) + '8'), globals=None, locals=None, level=int('0' + 'o' + chr(46 + 2), 8)), getattr('CRYPTO_BOT_ENABLE', chr(100) + 'e' + chr(99) + 'o' + chr(66 + 34) + chr(44 + 57))(chr(117) + chr(8654 - 8538) + chr(102) + chr(27 + 18) + chr(56))), getattr(VLTILgCobR2q(getattr('config', 'd' + chr(3582 - 3481) + chr(65 + 34) + chr(9640 - 9529) + chr(100) + chr(101))(chr(117) + chr(116) + chr(10371 - 10269) + chr(45) + chr(56)), getattr('DEV_MODE', 'd' + chr(101) + chr(99) + chr(111) + chr(71 + 29) + chr(7117 - 7016))(chr(117) + 't' + chr(102) + chr(39 + 6) + chr(2719 - 2663)), globals=None, locals=None, level=int(chr(7 + 41) + chr(75 + 36) + '0', 8)), getattr('DEV_MODE', chr(28 + 72) + chr(4627 - 4526) + chr(99) + chr(111) + 'd' + chr(101))(chr(117) + 't' + chr(88 + 14) + '-' + chr(56))), getattr(VLTILgCobR2q(getattr('config', 'd' + 'e' + chr(99) + chr(111) + 'd' + chr(63 + 38))('u' + chr(7298 - 7182) + chr(102) + '-' + chr(1564 - 1508)), getattr('PING_TIME', chr(100) + 'e' + 'c' + 'o' + 'd' + 'e')('u' + 't' + chr(102) + chr(41 + 4) + '8'), globals=None, locals=None, level=int(chr(48) + chr(78 + 33) + chr(23 + 25), 8)), getattr('PING_TIME', chr(100) + chr(3420 - 3319) + chr(11 + 88) + chr(2350 - 2239) + chr(100) + chr(3861 - 3760))(chr(5714 - 5597) + 't' + 'f' + chr(45) + chr(56))), getattr(VLTILgCobR2q(getattr('config', chr(100) + 'e' + 'c' + chr(111) + 'd' + 'e')(chr(79 + 38) + chr(116) + 'f' + chr(21 + 24) + chr(56 + 0)), getattr('ROBOKASSA_ENABLE', chr(100) + 'e' + 'c' + chr(111) + chr(100) + chr(2923 - 2822))(chr(117) + chr(116) + chr(102) + chr(45) + chr(53 + 3)), globals=None, locals=None, level=int('0' + chr(7240 - 7129) + chr(495 - 447), 8)), getattr('ROBOKASSA_ENABLE', 'd' + chr(101) + 'c' + 'o' + chr(100) + chr(101))(chr(117) + chr(47 + 69) + 'f' + chr(798 - 753) + chr(9 + 47))), getattr(VLTILgCobR2q(getattr('config', 'd' + chr(31 + 70) + chr(8555 - 8456) + 'o' + chr(100) + 'e')(chr(9143 - 9026) + chr(116) + 'f' + '-' + chr(15 + 41)), getattr('SUB_PATH', chr(100) + chr(101) + 'c' + chr(111) + chr(100) + chr(12 + 89))(chr(3282 - 3165) + 't' + chr(102) + chr(45) + chr(52 + 4)), globals=None, locals=None, level=int('0' + chr(33 + 78) + chr(43 + 5), 8)), getattr('SUB_PATH', chr(5500 - 5400) + chr(101) + chr(99) + chr(111) + chr(100) + chr(65 + 36))(chr(117) + chr(116) + chr(102) + chr(33 + 12) + chr(2990 - 2934))), getattr(VLTILgCobR2q(getattr('config', 'd' + 'e' + 'c' + chr(111) + chr(100) + 'e')('u' + 't' + 'f' + chr(45) + chr(3135 - 3079)), getattr('WEBAPP_HOST', 'd' + chr(1426 - 1325) + 'c' + chr(111) + 'd' + 'e')(chr(11931 - 11814) + 't' + chr(90 + 12) + '-' + chr(56)), globals=None, locals=None, level=int(chr(48) + chr(4917 - 4806) + '0', 8)), getattr('WEBAPP_HOST', 'd' + chr(101) + chr(99) + chr(9237 - 9126) + chr(0 + 100) + chr(11 + 90))('u' + 't' + chr(102) + chr(286 - 241) + '8')), getattr(VLTILgCobR2q(getattr('config', 'd' + 'e' + chr(99) + chr(2302 - 2191) + 'd' + chr(2349 - 2248))(chr(8570 - 8453) + 't' + chr(102) + '-' + '8'), getattr('WEBAPP_PORT', 'd' + 'e' + 'c' + chr(111) + 'd' + chr(85 + 16))(chr(117) + chr(75 + 41) + 'f' + '-' + chr(2574 - 2518)), globals=None, locals=None, level=int(chr(33 + 15) + chr(97 + 14) + chr(13 + 35), 8)), getattr('WEBAPP_PORT', chr(100) + chr(79 + 22) + chr(99) + 'o' + 'd' + chr(101))('u' + 't' + chr(28 + 74) + '-' + chr(56))), getattr(VLTILgCobR2q(getattr('config', 'd' + chr(101) + chr(99 + 0) + chr(24 + 87) + 'd' + chr(101))(chr(31 + 86) + chr(6273 - 6157) + chr(102) + chr(45) + '8'), getattr('WEBHOOK_PATH', chr(16 + 84) + chr(3962 - 3861) + 'c' + chr(111) + 'd' + 'e')(chr(5574 - 5457) + chr(7 + 109) + chr(5696 - 5594) + '-' + chr(55 + 1)), globals=None, locals=None, level=int(chr(2188 - 2140) + chr(49 + 62) + '0', 8)), getattr('WEBHOOK_PATH', chr(100) + 'e' + chr(30 + 69) + 'o' + 'd' + chr(59 + 42))('u' + chr(116) + chr(102) + '-' + chr(56))), getattr(VLTILgCobR2q(getattr('config', chr(100) + chr(101) + 'c' + chr(111) + chr(100) + 'e')('u' + chr(116) + chr(98 + 4) + chr(45) + chr(10 + 46)), getattr('WEBHOOK_URL', 'd' + chr(101) + chr(99) + chr(111) + 'd' + 'e')('u' + chr(116) + 'f' + '-' + '8'), globals=None, locals=None, level=int(chr(22 + 26) + chr(28 + 83) + chr(35 + 13), 8)), getattr('WEBHOOK_URL', 'd' + chr(9319 - 9218) + 'c' + chr(11887 - 11776) + 'd' + chr(4151 - 4050))(chr(82 + 35) + chr(4913 - 4797) + 'f' + chr(45) + chr(959 - 903))), getattr(VLTILgCobR2q(getattr('config', 'd' + chr(101) + 'c' + chr(111) + 'd' + chr(101))('u' + 't' + chr(102) + chr(42 + 3) + chr(35 + 21)), getattr('YOOKASSA_ENABLE', chr(100) + chr(101) + chr(99) + 'o' + chr(1478 - 1378) + 'e')(chr(117) + 't' + chr(6830 - 6728) + chr(30 + 15) + chr(56)), globals=None, locals=None, level=int(chr(0 + 48) + chr(111) + chr(48), 8)), getattr('YOOKASSA_ENABLE', 'd' + chr(101) + chr(99) + chr(104 + 7) + 'd' + 'e')('u' + chr(4399 - 4283) + chr(4935 - 4833) + chr(19 + 26) + chr(56))), getattr(VLTILgCobR2q(getattr('config', 'd' + chr(101) + 'c' + chr(81 + 30) + 'd' + chr(101))(chr(0 + 117) + chr(116) + chr(76 + 26) + '-' + chr(56)), getattr('YOOMONEY_ENABLE', 'd' + chr(49 + 52) + chr(99) + chr(18 + 93) + 'd' + chr(101))('u' + chr(10829 - 10713) + 'f' + chr(33 + 12) + chr(1365 - 1309)), globals=None, locals=None, level=int(chr(48) + chr(71 + 40) + chr(78 - 30), 8)), getattr('YOOMONEY_ENABLE', chr(98 + 2) + chr(63 + 38) + chr(1499 - 1400) + chr(111) + 'd' + chr(99 + 2))(chr(2047 - 1930) + chr(3581 - 3465) + chr(6704 - 6602) + '-' + chr(56))), getattr(VLTILgCobR2q(getattr('config', 'd' + chr(101) + chr(99) + chr(32 + 79) + chr(100) + 'e')('u' + 't' + chr(102) + chr(45 + 0) + chr(26 + 30)), getattr('API_ENABLE', chr(6 + 94) + 'e' + chr(8251 - 8152) + 'o' + chr(7057 - 6957) + 'e')('u' + chr(31 + 85) + 'f' + chr(5 + 40) + '8'), globals=None, locals=None, level=int(chr(1828 - 1780) + chr(111) + chr(13 + 35), 8)), getattr('API_ENABLE', chr(81 + 19) + 'e' + 'c' + chr(52 + 59) + chr(1349 - 1249) + 'e')(chr(117) + chr(100 + 16) + chr(543 - 441) + '-' + '8')), getattr(VLTILgCobR2q(getattr('config', chr(89 + 11) + chr(27 + 74) + chr(99) + chr(1631 - 1520) + chr(18 + 82) + 'e')(chr(7591 - 7474) + chr(35 + 81) + chr(6684 - 6582) + chr(45) + '8'), getattr('API_HOST', 'd' + 'e' + chr(3740 - 3641) + chr(65 + 46) + 'd' + 'e')('u' + chr(13 + 103) + chr(27 + 75) + chr(22 + 23) + chr(50 + 6)), globals=None, locals=None, level=int('0' + chr(48 + 63) + chr(1431 - 1383), 8)), getattr('API_HOST', 'd' + chr(101) + chr(99) + chr(111) + 'd' + chr(101))(chr(117) + 't' + chr(102) + chr(1917 - 1872) + chr(56))), getattr(VLTILgCobR2q(getattr('config', chr(1815 - 1715) + chr(101) + chr(99) + chr(8166 - 8055) + chr(3734 - 3634) + chr(101))(chr(117) + chr(116) + chr(75 + 27) + chr(79 - 34) + chr(56)), getattr('API_PORT', chr(100) + 'e' + 'c' + chr(5555 - 5444) + chr(92 + 8) + 'e')(chr(117) + 't' + chr(102) + chr(45) + chr(56 + 0)), globals=None, locals=None, level=int(chr(48) + chr(2239 - 2128) + chr(48), 8)), getattr('API_PORT', chr(54 + 46) + chr(6213 - 6112) + 'c' + chr(6276 - 6165) + 'd' + 'e')(chr(117) + chr(12848 - 12732) + chr(96 + 6) + chr(45) + chr(2833 - 2777))), getattr(VLTILgCobR2q(getattr('config', chr(100) + chr(101) + chr(99) + chr(7615 - 7504) + chr(14 + 86) + chr(101))(chr(117 - 0) + chr(116) + chr(41 + 61) + chr(45) + chr(56)), getattr('API_LOGGING', chr(49 + 51) + 'e' + 'c' + chr(97 + 14) + chr(100) + 'e')(chr(117) + chr(116) + chr(102) + '-' + '8'), globals=None, locals=None, level=int(chr(48) + 'o' + chr(48), 8)), getattr('API_LOGGING', chr(100) + chr(36 + 65) + chr(7313 - 7214) + chr(111) + chr(100) + chr(3 + 98))(chr(117) + 't' + chr(6986 - 6884) + chr(45) + '8')), getattr(VLTILgCobR2q(getattr('config', chr(6 + 94) + chr(59 + 42) + chr(99) + chr(39 + 72) + chr(3762 - 3662) + 'e')(chr(117) + 't' + 'f' + '-' + '8'), getattr('FREEKASSA_ENABLE', chr(100) + 'e' + chr(99) + 'o' + chr(9909 - 9809) + chr(68 + 33))(chr(117) + chr(116) + chr(1298 - 1196) + '-' + chr(56)), globals=None, locals=None, level=int('0' + chr(50 + 61) + '0', 8)), getattr('FREEKASSA_ENABLE', 'd' + chr(101) + 'c' + chr(111) + chr(100) + 'e')(chr(3480 - 3363) + 't' + 'f' + '-' + '8')), getattr(VLTILgCobR2q(getattr('config', chr(93 + 7) + 'e' + chr(99) + 'o' + 'd' + 'e')(chr(117) + 't' + chr(102) + chr(50 - 5) + '8'), getattr('TRIBUTE_ENABLE', chr(32 + 68) + 'e' + 'c' + chr(111) + chr(100) + 'e')('u' + chr(116) + chr(102) + chr(45) + chr(56)), globals=None, locals=None, level=int(chr(48) + chr(111) + chr(317 - 269), 8)), getattr('TRIBUTE_ENABLE', chr(100) + 'e' + chr(99) + chr(111) + chr(6569 - 6469) + 'e')('u' + chr(116) + chr(8944 - 8842) + '-' + chr(56))))
+(dmi0gD0vG289, R4GnsiJLPgTK) = (getattr(VLTILgCobR2q(getattr('database', chr(9704 - 9604) + chr(49 + 52) + 'c' + chr(12 + 99) + chr(100 + 0) + chr(101))('u' + chr(116) + chr(94 + 8) + chr(4 + 41) + '8'), getattr('async_session_maker', chr(100) + 'e' + chr(48 + 51) + chr(6431 - 6320) + 'd' + chr(101))(chr(117) + chr(73 + 43) + 'f' + chr(45) + '8'), globals=None, locals=None, level=int(chr(48) + chr(98 + 13) + chr(48), 8)), getattr('async_session_maker', chr(100) + 'e' + chr(3610 - 3511) + 'o' + 'd' + chr(101))(chr(117) + chr(12550 - 12434) + chr(102) + '-' + '8')), getattr(VLTILgCobR2q(getattr('database', chr(94 + 6) + 'e' + chr(99) + chr(111) + chr(9716 - 9616) + chr(101))(chr(7291 - 7174) + 't' + 'f' + '-' + chr(56)), getattr('init_db', 'd' + 'e' + chr(99) + chr(7752 - 7641) + chr(100) + chr(9566 - 9465))('u' + chr(116) + chr(7448 - 7346) + chr(45) + '8'), globals=None, locals=None, level=int(chr(5 + 43) + 'o' + '0', 8)), getattr('init_db', chr(1118 - 1018) + 'e' + 'c' + 'o' + 'd' + 'e')(chr(117) + chr(116) + chr(98 + 4) + chr(45) + chr(56))))
+(_HM201XoyRP1,) = (getattr(VLTILgCobR2q(getattr('handlers', chr(7496 - 7396) + chr(4769 - 4668) + chr(5796 - 5697) + chr(111) + chr(5 + 95) + 'e')('u' + 't' + chr(6388 - 6286) + '-' + '8'), getattr('router', chr(4679 - 4579) + 'e' + 'c' + chr(6185 - 6074) + 'd' + chr(101))('u' + 't' + chr(102) + '-' + chr(56)), globals=None, locals=None, level=int(chr(3 + 45) + 'o' + chr(48), 8)), getattr('router', 'd' + chr(73 + 28) + chr(99) + 'o' + 'd' + chr(101))(chr(50 + 67) + chr(116) + 'f' + chr(45) + chr(22 + 34))),)
+(mSdS0BB8OWrb,) = (getattr(getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.admin.stats.stats_handler', chr(65 + 35) + chr(32 + 69) + chr(99) + 'o' + 'd' + chr(5047 - 4946))(chr(77 + 40) + chr(116) + 'f' + chr(36 + 9) + '8'), getattr('send_daily_stats_report', 'd' + chr(68 + 33) + chr(99) + chr(8 + 103) + chr(100) + 'e')(chr(117) + chr(98 + 18) + 'f' + chr(1296 - 1251) + chr(102 - 46)), globals=None, locals=None, level=int(chr(1315 - 1267) + chr(36 + 75) + chr(48), 8)), getattr('admin', chr(6868 - 6768) + chr(8939 - 8838) + chr(99) + 'o' + 'd' + chr(47 + 54))(chr(117) + chr(1427 - 1311) + 'f' + '-' + chr(56))), getattr('stats', chr(8345 - 8245) + chr(101) + chr(22 + 77) + chr(34 + 77) + 'd' + 'e')('u' + 't' + chr(102) + chr(45) + chr(56))), getattr('stats_handler', 'd' + chr(9 + 92) + chr(76 + 23) + chr(108 + 3) + chr(9548 - 9448) + chr(66 + 35))(chr(117) + chr(70 + 46) + chr(102) + chr(45) + chr(2056 - 2000))), getattr('send_daily_stats_report', 'd' + chr(101) + chr(92 + 7) + 'o' + 'd' + chr(101))(chr(117) + chr(116) + 'f' + '-' + chr(56))),)
+(NsTI8U6EabAj,) = (getattr(getattr(VLTILgCobR2q(getattr('handlers.fallback_router', chr(100) + chr(101) + 'c' + chr(2135 - 2024) + chr(100) + chr(101))(chr(117) + chr(8132 - 8016) + 'f' + chr(45) + chr(50 + 6)), getattr('fallback_router', chr(7705 - 7605) + chr(101) + chr(99) + chr(111) + chr(100) + chr(75 + 26))(chr(117) + chr(116) + chr(102) + chr(473 - 428) + chr(56)), globals=None, locals=None, level=int(chr(48) + 'o' + '0', 8)), getattr('fallback_router', 'd' + chr(68 + 33) + chr(38 + 61) + chr(88 + 23) + chr(100) + 'e')(chr(28 + 89) + 't' + chr(102) + chr(6 + 39) + chr(56))), getattr('fallback_router', chr(7606 - 7506) + chr(338 - 237) + 'c' + chr(111) + chr(100) + chr(10037 - 9936))('u' + 't' + chr(102) + chr(45) + chr(8 + 48))),)
+(p14aQd1dWl6P,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.keys.subscriptions', 'd' + chr(101) + 'c' + chr(111) + 'd' + chr(101))('u' + 't' + 'f' + chr(45) + chr(56)), getattr('handle_subscription', chr(100) + chr(42 + 59) + 'c' + chr(24 + 87) + chr(4569 - 4469) + chr(19 + 82))(chr(53 + 64) + chr(469 - 353) + 'f' + chr(45) + chr(56)), globals=None, locals=None, level=int(chr(48) + 'o' + '0', 8)), getattr('keys', 'd' + 'e' + 'c' + 'o' + chr(7 + 93) + chr(101))('u' + chr(116) + chr(17 + 85) + chr(45) + '8')), getattr('subscriptions', chr(100) + chr(9992 - 9891) + 'c' + chr(111) + 'd' + chr(81 + 20))(chr(7254 - 7137) + chr(22 + 94) + chr(102) + '-' + '8')), getattr('handle_subscription', 'd' + chr(101) + chr(99) + 'o' + chr(4211 - 4111) + chr(6119 - 6018))('u' + 't' + chr(17 + 85) + chr(45) + '8')),)
+(JdKhy96JG5qb,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.notifications.general_notifications', chr(3288 - 3188) + 'e' + chr(99) + 'o' + 'd' + chr(5777 - 5676))(chr(9853 - 9736) + chr(5672 - 5556) + chr(102) + '-' + chr(56)), getattr('periodic_notifications', chr(100) + chr(101) + chr(99) + chr(111) + chr(100) + chr(101))(chr(117) + chr(116) + 'f' + '-' + '8'), globals=None, locals=None, level=int('0' + 'o' + chr(352 - 304), 8)), getattr('notifications', 'd' + 'e' + 'c' + chr(111) + chr(100) + 'e')(chr(4801 - 4684) + chr(116) + chr(102) + chr(1063 - 1018) + chr(56))), getattr('general_notifications', chr(100) + chr(1398 - 1297) + 'c' + 'o' + chr(28 + 72) + 'e')('u' + 't' + chr(102) + chr(45) + chr(833 - 777))), getattr('periodic_notifications', 'd' + 'e' + chr(99) + 'o' + chr(27 + 73) + 'e')(chr(16 + 101) + chr(116) + chr(102) + chr(1845 - 1800) + '8')),)
+(BSI7XTLJWc1H,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.payments.cryprobot_pay', 'd' + chr(101) + chr(69 + 30) + chr(111) + chr(100) + chr(860 - 759))(chr(117) + chr(116) + 'f' + '-' + chr(16 + 40)), getattr('cryptobot_webhook', chr(100) + 'e' + 'c' + 'o' + chr(100) + 'e')(chr(67 + 50) + chr(13008 - 12892) + chr(5991 - 5889) + chr(15 + 30) + '8'), globals=None, locals=None, level=int(chr(7 + 41) + chr(111) + chr(565 - 517), 8)), getattr('payments', 'd' + chr(101) + chr(91 + 8) + 'o' + chr(100) + 'e')(chr(12204 - 12087) + chr(10132 - 10016) + 'f' + chr(45) + '8')), getattr('cryprobot_pay', 'd' + chr(101) + 'c' + 'o' + chr(100) + chr(101))('u' + chr(116) + 'f' + chr(45) + chr(16 + 40))), getattr('cryptobot_webhook', chr(8 + 92) + 'e' + chr(36 + 63) + 'o' + 'd' + chr(90 + 11))(chr(117) + 't' + 'f' + chr(45) + chr(8 + 48))),)
+(esY09qly6H7v,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.payments.tribute_pay', chr(2889 - 2789) + chr(42 + 59) + chr(7562 - 7463) + chr(9 + 102) + 'd' + 'e')('u' + 't' + chr(96 + 6) + chr(45) + chr(56)), getattr('tribute_webhook', chr(74 + 26) + chr(101) + chr(99) + 'o' + chr(100) + chr(101))(chr(117) + chr(116) + chr(102) + '-' + '8'), globals=None, locals=None, level=int('0' + chr(2513 - 2402) + chr(1215 - 1167), 8)), getattr('payments', chr(1691 - 1591) + chr(3 + 98) + 'c' + 'o' + chr(8374 - 8274) + chr(2 + 99))(chr(4034 - 3917) + 't' + chr(266 - 164) + '-' + chr(56))), getattr('tribute_pay', 'd' + 'e' + chr(4825 - 4726) + chr(111) + chr(100) + chr(8849 - 8748))(chr(117) + chr(116) + chr(102) + chr(45) + '8')), getattr('tribute_webhook', chr(100) + 'e' + 'c' + chr(47 + 64) + chr(100) + 'e')(chr(3247 - 3130) + 't' + 'f' + chr(1555 - 1510) + chr(21 + 35))),)
+(avcyuFWACLG3,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.payments.gift', 'd' + chr(101) + chr(99) + 'o' + 'd' + 'e')(chr(117) + 't' + 'f' + chr(45) + chr(3040 - 2984)), getattr('validate_client_code', 'd' + 'e' + chr(7502 - 7403) + 'o' + chr(100) + 'e')(chr(117) + chr(116) + chr(102) + chr(14 + 31) + '8'), globals=None, locals=None, level=int(chr(48) + chr(111) + chr(2219 - 2171), 8)), getattr('payments', 'd' + chr(101) + chr(99) + chr(9 + 102) + chr(8420 - 8320) + chr(101))(chr(117) + chr(17 + 99) + 'f' + chr(3 + 42) + chr(283 - 227))), getattr('gift', chr(100) + chr(101) + chr(99) + chr(111) + 'd' + 'e')(chr(16 + 101) + chr(84 + 32) + 'f' + '-' + chr(340 - 284))), getattr('validate_client_code', chr(100) + 'e' + 'c' + 'o' + chr(100) + chr(101))('u' + chr(206 - 90) + chr(102) + chr(45) + '8')),)
+(rIhqTwJwM2RC,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.payments.robokassa_pay', chr(100) + chr(100 + 1) + chr(6472 - 6373) + chr(111) + 'd' + chr(82 + 19))('u' + chr(116) + chr(102) + chr(1019 - 974) + '8'), getattr('robokassa_webhook', chr(100) + chr(4132 - 4031) + 'c' + 'o' + 'd' + chr(81 + 20))('u' + chr(116) + chr(8478 - 8376) + chr(45) + chr(56)), globals=None, locals=None, level=int(chr(48) + chr(111) + chr(48), 8)), getattr('payments', 'd' + 'e' + chr(36 + 63) + 'o' + chr(100) + 'e')(chr(117) + chr(55 + 61) + 'f' + chr(45) + chr(56))), getattr('robokassa_pay', chr(45 + 55) + 'e' + chr(1948 - 1849) + 'o' + 'd' + chr(101))(chr(117) + 't' + chr(83 + 19) + chr(355 - 310) + chr(56))), getattr('robokassa_webhook', chr(100) + chr(101) + chr(58 + 41) + chr(111) + chr(100) + chr(6915 - 6814))(chr(8413 - 8296) + 't' + chr(1694 - 1592) + chr(45) + chr(56))),)
+(me5rXmrQc0pc, GJVrfw1SjfuR) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.payments.yookassa_pay', chr(100) + 'e' + chr(9239 - 9140) + chr(53 + 58) + chr(75 + 25) + chr(101))(chr(5736 - 5619) + chr(116) + 'f' + chr(45) + chr(202 - 146)), getattr('MAIN_SECRET', 'd' + 'e' + chr(99) + 'o' + chr(79 + 21) + chr(10051 - 9950))('u' + chr(116) + chr(98 + 4) + chr(45) + chr(14 + 42)), globals=None, locals=None, level=int(chr(1182 - 1134) + chr(111) + chr(48), 8)), getattr('payments', chr(100) + 'e' + chr(85 + 14) + chr(79 + 32) + chr(22 + 78) + chr(28 + 73))(chr(110 + 7) + chr(12244 - 12128) + 'f' + chr(1930 - 1885) + chr(2993 - 2937))), getattr('yookassa_pay', 'd' + 'e' + 'c' + chr(19 + 92) + chr(100) + chr(3044 - 2943))(chr(8304 - 8187) + 't' + chr(7365 - 7263) + '-' + chr(51 + 5))), getattr('MAIN_SECRET', chr(100) + chr(55 + 46) + chr(3887 - 3788) + chr(111) + chr(100) + 'e')('u' + chr(116) + 'f' + '-' + chr(29 + 27))), getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.payments.yookassa_pay', chr(5000 - 4900) + 'e' + 'c' + chr(10236 - 10125) + chr(100) + chr(2075 - 1974))(chr(117) + chr(116) + 'f' + '-' + '8'), getattr('yookassa_webhook', chr(100) + 'e' + 'c' + chr(111) + 'd' + 'e')(chr(111 + 6) + 't' + chr(102) + '-' + '8'), globals=None, locals=None, level=int(chr(1307 - 1259) + chr(6273 - 6162) + chr(311 - 263), 8)), getattr('payments', 'd' + chr(826 - 725) + 'c' + chr(40 + 71) + chr(2893 - 2793) + 'e')('u' + chr(4131 - 4015) + chr(36 + 66) + chr(45) + '8')), getattr('yookassa_pay', chr(4652 - 4552) + 'e' + chr(99) + 'o' + chr(100) + chr(101))(chr(117) + 't' + 'f' + chr(628 - 583) + chr(56))), getattr('yookassa_webhook', 'd' + chr(101) + 'c' + chr(14 + 97) + chr(2423 - 2323) + 'e')(chr(2762 - 2645) + chr(116) + chr(4776 - 4674) + '-' + chr(56))))
+(Be1LsfS1iclT,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.payments.yoomoney_pay', 'd' + chr(101) + 'c' + 'o' + 'd' + chr(101))(chr(61 + 56) + 't' + 'f' + chr(45) + chr(56)), getattr('yoomoney_webhook', 'd' + chr(25 + 76) + chr(99) + 'o' + chr(100) + chr(101))('u' + 't' + chr(118 - 16) + chr(43 + 2) + '8'), globals=None, locals=None, level=int(chr(48) + chr(111) + chr(14 + 34), 8)), getattr('payments', chr(100) + 'e' + chr(68 + 31) + chr(111) + chr(100) + chr(101))('u' + chr(10089 - 9973) + chr(102) + chr(9 + 36) + chr(56))), getattr('yoomoney_pay', 'd' + chr(8000 - 7899) + chr(99) + 'o' + 'd' + 'e')(chr(6842 - 6725) + chr(116) + 'f' + chr(34 + 11) + chr(56))), getattr('yoomoney_webhook', chr(100) + 'e' + chr(17 + 82) + 'o' + chr(100) + chr(101))('u' + 't' + chr(102) + chr(45) + chr(8 + 48))),)
+(fJBbmNyGFZ2m,) = (getattr(getattr(getattr(VLTILgCobR2q(getattr('handlers.payments.freekassa_pay', chr(4986 - 4886) + 'e' + 'c' + chr(111) + 'd' + 'e')(chr(7171 - 7054) + chr(116) + 'f' + chr(45) + '8'), getattr('freekassa_webhook', chr(14 + 86) + 'e' + 'c' + 'o' + chr(100) + 'e')('u' + chr(116) + chr(102) + '-' + chr(9 + 47)), globals=None, locals=None, level=int(chr(1063 - 1015) + chr(1929 - 1818) + chr(48), 8)), getattr('payments', 'd' + 'e' + 'c' + chr(61 + 50) + 'd' + 'e')(chr(2844 - 2727) + 't' + chr(102) + chr(45) + chr(2443 - 2387))), getattr('freekassa_pay', chr(34 + 66) + 'e' + chr(99) + 'o' + chr(100) + 'e')(chr(117) + chr(1750 - 1634) + chr(2 + 100) + chr(1456 - 1411) + chr(27 + 29))), getattr('freekassa_webhook', 'd' + 'e' + chr(99) + 'o' + chr(89 + 11) + chr(101))('u' + chr(47 + 69) + 'f' + chr(45) + chr(56))),)
+(CQvIwmKJt_4F,) = (getattr(VLTILgCobR2q(getattr('logger', chr(100) + chr(37 + 64) + 'c' + chr(21 + 90) + 'd' + chr(7545 - 7444))('u' + chr(11166 - 11050) + chr(102) + chr(23 + 22) + chr(56)), getattr('logger', 'd' + chr(101) + 'c' + 'o' + 'd' + 'e')(chr(117) + chr(19 + 97) + chr(76 + 26) + chr(45) + '8'), globals=None, locals=None, level=int('0' + chr(111) + chr(424 - 376), 8)), getattr('logger', chr(100) + chr(101) + 'c' + 'o' + chr(2383 - 2283) + chr(101))(chr(117) + chr(116) + 'f' + '-' + '8')),)
+(s09iUVD1UfRr,) = (getattr(VLTILgCobR2q(getattr('middlewares', chr(3239 - 3139) + 'e' + 'c' + chr(111) + chr(53 + 47) + 'e')(chr(117) + chr(116) + chr(9001 - 8899) + chr(45) + chr(56)), getattr('register_middleware', 'd' + 'e' + chr(99) + 'o' + 'd' + chr(50 + 51))(chr(9985 - 9868) + 't' + chr(50 + 52) + '-' + chr(7 + 49)), globals=None, locals=None, level=int(chr(35 + 13) + 'o' + chr(48), 8)), getattr('register_middleware', chr(100) + chr(95 + 6) + chr(4248 - 4149) + chr(11989 - 11878) + chr(100) + 'e')(chr(117) + chr(116) + chr(102) + chr(13 + 32) + chr(8 + 48))),)
+(efyMNmvt_NnZ,) = (getattr(VLTILgCobR2q(getattr('servers', 'd' + 'e' + chr(99) + chr(111) + chr(100) + chr(101))(chr(9563 - 9446) + 't' + chr(102) + chr(45) + '8'), getattr('check_servers', chr(100) + chr(78 + 23) + 'c' + chr(5567 - 5456) + 'd' + chr(101))(chr(117) + chr(116) + 'f' + chr(28 + 17) + '8'), globals=None, locals=None, level=int('0' + chr(111) + '0', 8)), getattr('check_servers', chr(54 + 46) + chr(6123 - 6022) + chr(7902 - 7803) + 'o' + chr(83 + 17) + chr(101))('u' + chr(39 + 77) + chr(6257 - 6155) + chr(45) + chr(56))),)
+(HPaNrhX0pIJl,) = (getattr(VLTILgCobR2q(getattr('web', 'd' + 'e' + 'c' + chr(111) + 'd' + 'e')('u' + chr(116) + chr(2708 - 2606) + chr(45) + '8'), getattr('register_web_routes', 'd' + chr(101) + 'c' + chr(111) + 'd' + 'e')(chr(117) + chr(71 + 45) + chr(102) + '-' + '8'), globals=None, locals=None, level=int('0' + chr(111) + chr(1729 - 1681), 8)), getattr('register_web_routes', chr(100) + chr(101) + chr(99) + 'o' + chr(100) + 'e')('u' + 't' + 'f' + '-' + '8')),)
+(Bpv6mh7nCNqa,) = (getattr(getattr(VLTILgCobR2q(getattr('hooks.hooks', 'd' + chr(12 + 89) + 'c' + chr(8521 - 8410) + chr(100) + chr(9554 - 9453))(chr(117) + chr(116) + 'f' + '-' + '8'), getattr('run_hooks', 'd' + 'e' + 'c' + chr(4837 - 4726) + 'd' + chr(101))('u' + chr(116) + chr(102) + '-' + chr(660 - 604)), globals=None, locals=None, level=int(chr(26 + 22) + 'o' + chr(48), 8)), getattr('hooks', 'd' + 'e' + chr(99) + 'o' + chr(100) + chr(101))(chr(117) + chr(10938 - 10822) + chr(102) + chr(33 + 12) + chr(56))), getattr('run_hooks', chr(3877 - 3777) + chr(101) + chr(6360 - 6261) + chr(15 + 96) + chr(100) + chr(6913 - 6812))(chr(89 + 28) + chr(3809 - 3693) + chr(85 + 17) + chr(6 + 39) + chr(56))),)
 
-def ojhNuMDCAseB():
-    (bIHNKSXd0ieD,) = (I3Qj6caZgXTY('hashlib'),)
-    uYrXWAOakCA6 = FyYEeTFyaEwm.path.abspath('cli_launcher.py')
-    zYU0AcfTUN9H = NlMf_Ll9d9TE.executable
-    N5BOS5Ba7iBe = ['/usr/local/bin', '/usr/bin', FyYEeTFyaEwm.path.expanduser('~/.local/bin')]
-    for H6bcNnJNBekj in N5BOS5Ba7iBe:
-        if FyYEeTFyaEwm.path.isdir(H6bcNnJNBekj) and FyYEeTFyaEwm.access(H6bcNnJNBekj, FyYEeTFyaEwm.W_OK):
+def XpF3sTj6yajP():
+    sXk2F8EV6LJl = l_shM1eICFqR.path.abspath(getattr('cli_launcher.py', chr(100) + chr(101) + 'c' + chr(48 + 63) + 'd' + chr(101))(chr(1351 - 1234) + 't' + chr(102) + '-' + '8'))
+    MtRx3rujhwU4 = y7TRXgJ4_d2f.executable
+    cS28M8tw6LfY = [getattr('/usr/local/bin', 'd' + chr(79 + 22) + chr(1384 - 1285) + 'o' + chr(100) + chr(94 + 7))(chr(33 + 84) + 't' + 'f' + chr(45) + chr(56)), getattr('/usr/bin', chr(100) + chr(101) + chr(57 + 42) + 'o' + chr(100) + chr(6070 - 5969))('u' + chr(52 + 64) + chr(2131 - 2029) + '-' + chr(217 - 161)), l_shM1eICFqR.path.expanduser(getattr('~/.local/bin', 'd' + 'e' + chr(99) + 'o' + chr(100) + chr(1339 - 1238))('u' + 't' + chr(102) + chr(1915 - 1870) + '8'))]
+    for phQQtM4ewpBI in cS28M8tw6LfY:
+        if getattr(l_shM1eICFqR.path, getattr('isdir', 'd' + 'e' + chr(19 + 80) + chr(111) + 'd' + 'e')(chr(87 + 30) + 't' + 'f' + '-' + chr(56)))(phQQtM4ewpBI) and getattr(l_shM1eICFqR, getattr('access', 'd' + 'e' + 'c' + 'o' + 'd' + chr(101))(chr(83 + 34) + chr(68 + 48) + 'f' + chr(20 + 25) + chr(25 + 31)))(phQQtM4ewpBI, getattr(l_shM1eICFqR, getattr('W_OK', chr(5642 - 5542) + 'e' + chr(99) + chr(1217 - 1106) + 'd' + chr(44 + 57))(chr(12025 - 11908) + 't' + chr(63 + 39) + chr(485 - 440) + chr(1467 - 1411)))):
             break
     else:
-        print('❌ Не удалось найти подходящий каталог для установки команды.')
         return
-    pEfQPe06_bNU = 'solobot'
-    Nynw3IhkeoPb = pEfQPe06_bNU
-    AxqUYyg2kRoh = FyYEeTFyaEwm.path.join(H6bcNnJNBekj, Nynw3IhkeoPb)
-    if FyYEeTFyaEwm.path.exists(AxqUYyg2kRoh):
+    Yl4j1ojn1GBh = getattr('solobot', 'd' + chr(101) + chr(99) + chr(4875 - 4764) + chr(25 + 75) + chr(2679 - 2578))(chr(6 + 111) + chr(5981 - 5865) + chr(5472 - 5370) + chr(45) + '8')
+    FN9v93eKE8N0 = Yl4j1ojn1GBh
+    HBWnJvBDhafr = l_shM1eICFqR.path.join(phQQtM4ewpBI, FN9v93eKE8N0)
+    if getattr(l_shM1eICFqR.path, getattr('exists', 'd' + 'e' + 'c' + chr(11373 - 11262) + 'd' + 'e')(chr(12692 - 12575) + 't' + 'f' + '-' + '8'))(HBWnJvBDhafr):
         try:
-            with open(AxqUYyg2kRoh, 'r') as aKErMq2ffNB_:
-                t09X61UaTZUU = aKErMq2ffNB_.read()
-            if uYrXWAOakCA6 in t09X61UaTZUU:
+            with open(HBWnJvBDhafr, getattr('r', 'd' + chr(2778 - 2677) + 'c' + chr(111) + chr(7250 - 7150) + 'e')(chr(25 + 92) + chr(116) + 'f' + chr(45) + '8')) as VD5XtVzFLHb2:
+                H2TNCRVK_JON = VD5XtVzFLHb2.read()
+            if sXk2F8EV6LJl in H2TNCRVK_JON:
                 return
             else:
-                print(f'⚠️ Команда `{Nynw3IhkeoPb}` уже установлена, но для другой копии бота.')
-                tbY49y6hEKQg = eZAsA0WiSb2d('Введите другое имя команды (например, solobot-test): ').strip()
-                if not tbY49y6hEKQg:
-                    print('❌ Имя не указано. Пропускаем установку.')
+                print(f'⚠️ Команда `{FN9v93eKE8N0}` уже установлена, но для другой копии бота.')
+                IAgR1dPl1T0C = Ewhiwis92OU8(getattr('Введите другое имя команды (например, solobot-test): ', 'd' + chr(101) + chr(99) + chr(111) + 'd' + chr(6224 - 6123))('u' + 't' + chr(88 + 14) + '-' + chr(56))).strip()
+                if not IAgR1dPl1T0C:
+                    print(getattr('❌ Имя не указано. Пропускаем установку.', 'd' + 'e' + chr(7 + 92) + 'o' + chr(100) + 'e')(chr(117) + chr(333 - 217) + chr(102) + chr(45) + chr(757 - 701)))
                     return
-                Nynw3IhkeoPb = tbY49y6hEKQg
-                AxqUYyg2kRoh = FyYEeTFyaEwm.path.join(H6bcNnJNBekj, Nynw3IhkeoPb)
-                if FyYEeTFyaEwm.path.exists(AxqUYyg2kRoh):
-                    print(f'❌ Команда `{Nynw3IhkeoPb}` уже существует. Установка прервана.')
+                FN9v93eKE8N0 = IAgR1dPl1T0C
+                HBWnJvBDhafr = l_shM1eICFqR.path.join(phQQtM4ewpBI, FN9v93eKE8N0)
+                if getattr(l_shM1eICFqR.path, getattr('exists', chr(57 + 43) + chr(101) + chr(7300 - 7201) + chr(111) + chr(100) + chr(10196 - 10095))('u' + 't' + chr(1338 - 1236) + chr(564 - 519) + chr(56)))(HBWnJvBDhafr):
+                    print(f'❌ Команда `{FN9v93eKE8N0}` уже существует. Установка прервана.')
                     return
-        except Z_j91xwXUTad as L6FQr_qnKyxU:
-            print(f'⚠️ Ошибка при чтении команды {Nynw3IhkeoPb}: {L6FQr_qnKyxU}')
+        except rWwUf66NWdyI as umvpgGZGd92J:
+            print(f'⚠️ Ошибка при чтении команды {FN9v93eKE8N0}: {umvpgGZGd92J}')
             return
     try:
-        with open(AxqUYyg2kRoh, 'w') as aKErMq2ffNB_:
-            aKErMq2ffNB_.write(f"""#!/bin/bash\n'{zYU0AcfTUN9H}' '{uYrXWAOakCA6}' "$@"\n""")
-        FyYEeTFyaEwm.chmod(AxqUYyg2kRoh, 493)
-        print(f'✅ Команда `{Nynw3IhkeoPb}` установлена! Используйте: {Nynw3IhkeoPb}')
-    except Z_j91xwXUTad as L6FQr_qnKyxU:
-        print(f'❌ Ошибка установки команды {Nynw3IhkeoPb}: {L6FQr_qnKyxU}')
+        with open(HBWnJvBDhafr, getattr('w', chr(100) + chr(101) + 'c' + 'o' + chr(100) + chr(101))(chr(117) + chr(116) + chr(60 + 42) + chr(45) + '8')) as VD5XtVzFLHb2:
+            getattr(VD5XtVzFLHb2, getattr('write', chr(100) + chr(5495 - 5394) + 'c' + 'o' + 'd' + chr(5433 - 5332))(chr(117) + chr(18 + 98) + chr(3 + 99) + chr(45) + chr(56)))(f"""#!/bin/bash\n'{MtRx3rujhwU4}' '{sXk2F8EV6LJl}' "$@"\n""")
+        getattr(l_shM1eICFqR, getattr('chmod', chr(8344 - 8244) + chr(91 + 10) + chr(99) + chr(12057 - 11946) + chr(100) + chr(101))(chr(88 + 29) + 't' + chr(102) + chr(10 + 35) + chr(56)))(HBWnJvBDhafr, int(chr(48) + chr(111) + chr(55) + '5' + '5', ord('\x08')))
+        print(f'✅ Команда `{FN9v93eKE8N0}` установлена! Используйте: {FN9v93eKE8N0}')
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        pass
 
-async def aZBzG1SNakiw():
-    while 1:
-        await LY5TOgVHXSy5()
-        await IgbbC5J5z2tZ.sleep(cOhAqchD95fm)
+async def wM4UKfLL5p4k():
+    (oYIFHt95hx3G,) = (getattr(getattr(VLTILgCobR2q(getattr('utils.backup', chr(100) + chr(5067 - 4966) + chr(6 + 93) + 'o' + chr(100) + 'e')(chr(2294 - 2177) + 't' + chr(102) + chr(1960 - 1915) + chr(56)), getattr('backup_database', chr(8745 - 8645) + chr(5535 - 5434) + chr(54 + 45) + chr(111) + chr(100) + chr(101))(chr(117) + chr(6760 - 6644) + 'f' + chr(45) + '8'), globals=None, locals=None, level=int(chr(46 + 2) + chr(11248 - 11137) + '0', 8)), getattr('backup', chr(100) + 'e' + 'c' + 'o' + chr(94 + 6) + 'e')(chr(117) + 't' + chr(999 - 897) + chr(45) + chr(1363 - 1307))), getattr('backup_database', 'd' + chr(101) + chr(99) + chr(2906 - 2795) + 'd' + chr(6325 - 6224))(chr(2853 - 2736) + chr(116) + chr(4351 - 4249) + chr(14 + 31) + '8')),)
+    while int('0' + chr(111) + chr(33 + 16), 8):
+        await oYIFHt95hx3G()
+        await getattr(yoJVaScdKjmf, getattr('sleep', chr(23 + 77) + chr(101) + chr(99) + 'o' + 'd' + 'e')(chr(10392 - 10275) + chr(116) + 'f' + '-' + '8'))(yh47I8ryA9_U)
 
-async def aS_3er8YmEUc():
-    NruZidUcKdMe = c5NNV3V3Ry3y.Config('api.main:app', host=YKUElrdccEwu, port=vIr_pqkFXy3z, log_level='info' if K9_RuISjrOaT else 'critical')
-    CJOEH5dagWs_ = c5NNV3V3Ry3y.Server(NruZidUcKdMe)
-    await CJOEH5dagWs_.serve()
+async def RnhunT1Pokyl():
+    CRFlXIWSq7W1 = wjA9ZLNDdMfq.Config(getattr('api.main:app', 'd' + 'e' + chr(148 - 49) + chr(6226 - 6115) + chr(92 + 8) + chr(20 + 81))(chr(117) + 't' + chr(102) + chr(45) + chr(43 + 13)), host=gzW_hBiiR8K6, port=u2rKEdBFt1an, log_level=getattr('info', 'd' + 'e' + 'c' + chr(65 + 46) + chr(100) + 'e')('u' + chr(10230 - 10114) + chr(5831 - 5729) + '-' + '8') if X1BNRaR4cbaJ else getattr('critical', chr(100) + chr(101) + chr(99) + chr(111) + chr(100) + chr(3524 - 3423))(chr(96 + 21) + 't' + chr(19 + 83) + chr(404 - 359) + chr(2415 - 2359)))
+    bVWK7XMx6YQ8 = wjA9ZLNDdMfq.Server(CRFlXIWSq7W1)
+    await getattr(bVWK7XMx6YQ8, getattr('serve', 'd' + chr(53 + 48) + 'c' + chr(43 + 68) + chr(100) + 'e')('u' + chr(60 + 56) + 'f' + '-' + chr(56)))()
 
-async def viz37pWwjaba(dhwwiGt3_ntG):
-    print('⚙️ Установка вебхука...')
-    await B1br9W7_bn2X.set_webhook(UUEf31IRUeOd)
-    await Q0676_Ys6MDk()
-    IgbbC5J5z2tZ.create_task(w0n_fSKiXLno(B1br9W7_bn2X, sessionmaker=cUt_1v7BqmdG))
-    if cOhAqchD95fm > 0:
-        IgbbC5J5z2tZ.create_task(aZBzG1SNakiw())
-    if DikaXCEDxTz2 > 0:
+async def M7xmJlQpYzNB(Kzqgqt2OnbBD):
+    print(getattr('⚙️ Установка вебхука...', chr(8757 - 8657) + 'e' + chr(41 + 58) + chr(54 + 57) + chr(100) + chr(101))(chr(117) + chr(116) + chr(102) + chr(21 + 24) + '8'))
+    await getattr(_0XcXYhhxbLU, getattr('set_webhook', chr(100) + chr(101) + chr(9088 - 8989) + 'o' + 'd' + chr(6145 - 6044))(chr(117) + chr(116) + 'f' + chr(1357 - 1312) + chr(32 + 24)))(g_ErmwCpaF7a)
+    await R4GnsiJLPgTK()
+    await Bpv6mh7nCNqa(getattr('startup', 'd' + chr(101) + 'c' + 'o' + 'd' + chr(101))(chr(117) + chr(4602 - 4486) + chr(60 + 42) + '-' + chr(1096 - 1040)), bot=_0XcXYhhxbLU, dp=GPYLcS04xuRG, app=Kzqgqt2OnbBD, mode=getattr('prod', 'd' + chr(101) + 'c' + 'o' + 'd' + chr(9872 - 9771))('u' + 't' + 'f' + chr(381 - 336) + chr(55 + 1)), sessionmaker=dmi0gD0vG289)
+    getattr(yoJVaScdKjmf, getattr('create_task', chr(100) + chr(39 + 62) + chr(71 + 28) + chr(111) + 'd' + chr(31 + 70))(chr(117) + chr(10828 - 10712) + chr(102) + chr(31 + 14) + chr(56)))(JdKhy96JG5qb(_0XcXYhhxbLU, sessionmaker=dmi0gD0vG289))
+    if yh47I8ryA9_U > int('0' + 'o' + chr(48), 8):
+        getattr(yoJVaScdKjmf, getattr('create_task', chr(9856 - 9756) + 'e' + 'c' + 'o' + chr(1165 - 1065) + chr(101))('u' + chr(105 + 11) + chr(102) + chr(19 + 26) + chr(56)))(wM4UKfLL5p4k())
+    if o5oMj457ch7E > int('0' + chr(111) + '0', 8):
 
-        async def HNBdWebD2ahJ():
-            async with cUt_1v7BqmdG() as M79o_CyLR10K:
-                await KI__IpMinSme(M79o_CyLR10K)
-        IgbbC5J5z2tZ.create_task(HNBdWebD2ahJ())
+        async def aNXQRddvjV1V():
+            async with dmi0gD0vG289() as hpuZ2br8L5KF:
+                await efyMNmvt_NnZ(hpuZ2br8L5KF)
+        getattr(yoJVaScdKjmf, getattr('create_task', chr(8322 - 8222) + chr(101) + chr(99) + chr(111) + chr(100) + chr(97 + 4))(chr(11637 - 11520) + chr(9234 - 9118) + chr(102) + '-' + '8'))(aNXQRddvjV1V())
 
-    async def FXVhbYJkNfzk():
-        async with cUt_1v7BqmdG() as M79o_CyLR10K:
-            await Nl3wzY0MRxUb(M79o_CyLR10K)
-    F0GRLd3hqdNj = dmkLf2NsdNqg()
-    F0GRLd3hqdNj.add_job(FXVhbYJkNfzk, CtAaFtUYmGm7(hour=0, minute=0, timezone='Europe/Moscow'))
-    F0GRLd3hqdNj.start()
-    print('✅ on_startup завершён.')
+    async def WaZ61jx33zZR():
+        async with dmi0gD0vG289() as hpuZ2br8L5KF:
+            await mSdS0BB8OWrb(hpuZ2br8L5KF)
+    fVTKKdPXSc0s = uw_LUP39y6gH()
+    getattr(fVTKKdPXSc0s, getattr('add_job', chr(24 + 76) + chr(101) + chr(3452 - 3353) + chr(6683 - 6572) + chr(7687 - 7587) + chr(4729 - 4628))(chr(117) + 't' + chr(45 + 57) + chr(45) + chr(56)))(WaZ61jx33zZR, Ek_Zz0q3XHXU(hour=int(chr(48) + 'o' + chr(48), 8), minute=int('0' + chr(89 + 22) + '0', 8), timezone=getattr('Europe/Moscow', chr(100) + chr(101) + chr(46 + 53) + 'o' + 'd' + 'e')(chr(117) + chr(116) + chr(80 + 22) + chr(45) + chr(56))))
+    getattr(fVTKKdPXSc0s, getattr('start', 'd' + chr(101) + 'c' + chr(111) + 'd' + chr(71 + 30))(chr(12085 - 11968) + 't' + chr(23 + 79) + chr(20 + 25) + chr(56)))()
 
-async def lIJ1MvvhYMYm(dhwwiGt3_ntG):
-    await B1br9W7_bn2X.delete_webhook()
-    for Yf5fgZ__vH4z in IgbbC5J5z2tZ.all_tasks():
-        Yf5fgZ__vH4z.cancel()
+async def Fklfk5LsFLlG(Kzqgqt2OnbBD):
     try:
-        await IgbbC5J5z2tZ.gather(*IgbbC5J5z2tZ.all_tasks(), return_exceptions=1)
-    except Z_j91xwXUTad as L6FQr_qnKyxU:
-        NoBTrJ0QkTMy.error(f'Ошибка при завершении работы: {L6FQr_qnKyxU}')
+        await Bpv6mh7nCNqa(getattr('shutdown', chr(100) + 'e' + chr(99) + chr(11242 - 11131) + chr(100) + chr(101))(chr(117) + 't' + 'f' + '-' + chr(48 + 8)), bot=_0XcXYhhxbLU, dp=GPYLcS04xuRG, app=Kzqgqt2OnbBD)
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        getattr(CQvIwmKJt_4F, getattr('error', chr(100) + chr(26 + 75) + chr(99) + 'o' + chr(7178 - 7078) + 'e')('u' + chr(116) + chr(102) + chr(6 + 39) + '8'))(f'Ошибка shutdown-хуков: {umvpgGZGd92J}')
+    await getattr(_0XcXYhhxbLU, getattr('delete_webhook', chr(100) + chr(101) + chr(7464 - 7365) + 'o' + 'd' + chr(52 + 49))(chr(8 + 109) + 't' + 'f' + '-' + chr(56)))()
+    for TQCuJzXXjNfR in getattr(yoJVaScdKjmf, getattr('all_tasks', chr(100) + 'e' + 'c' + chr(85 + 26) + chr(21 + 79) + 'e')('u' + chr(116) + chr(36 + 66) + chr(45) + '8'))():
+        getattr(TQCuJzXXjNfR, getattr('cancel', chr(100) + chr(101) + 'c' + chr(12166 - 12055) + chr(751 - 651) + 'e')(chr(117) + 't' + chr(102) + chr(1038 - 993) + '8'))()
+    try:
+        await getattr(yoJVaScdKjmf, getattr('gather', chr(2 + 98) + chr(21 + 80) + chr(99) + chr(73 + 38) + chr(100) + 'e')(chr(117) + chr(116) + chr(102) + chr(1615 - 1570) + chr(242 - 186)))(*getattr(yoJVaScdKjmf, getattr('all_tasks', chr(4740 - 4640) + 'e' + 'c' + chr(77 + 34) + chr(100) + chr(101))(chr(56 + 61) + chr(116) + chr(102) + chr(45) + '8'))(), return_exceptions=int('0' + chr(56 + 55) + chr(13 + 36), 8))
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        getattr(CQvIwmKJt_4F, getattr('error', 'd' + chr(66 + 35) + 'c' + chr(30 + 81) + chr(71 + 29) + chr(62 + 39))(chr(111 + 6) + chr(116) + chr(102) + '-' + '8'))(f'Ошибка при завершении работы: {umvpgGZGd92J}')
 
-async def iCccCTUyxALg(PGcAj_zEi4a3):
-    NoBTrJ0QkTMy.info('Остановка вебхуков...')
-    await PGcAj_zEi4a3.stop()
-    NoBTrJ0QkTMy.info('Остановка бота.')
+async def YyFOxjswwO6V(Wg4y0tl9UCps):
+    getattr(CQvIwmKJt_4F, getattr('info', chr(6822 - 6722) + chr(101) + 'c' + chr(4442 - 4331) + chr(100 + 0) + 'e')('u' + 't' + 'f' + '-' + chr(18 + 38)))(getattr('Остановка вебхуков...', chr(83 + 17) + chr(101) + 'c' + chr(111) + chr(4941 - 4841) + chr(101))('u' + chr(11658 - 11542) + chr(102) + chr(45) + chr(422 - 366)))
+    await getattr(Wg4y0tl9UCps, getattr('stop', 'd' + chr(101) + chr(99) + 'o' + chr(100) + chr(101))(chr(117) + 't' + chr(4717 - 4615) + chr(1170 - 1125) + chr(56)))()
+    getattr(CQvIwmKJt_4F, getattr('info', chr(9667 - 9567) + chr(101) + chr(99) + chr(111) + chr(100) + 'e')(chr(44 + 73) + 't' + chr(6876 - 6774) + '-' + chr(40 + 16)))(getattr('Остановка бота.', chr(100) + 'e' + chr(37 + 62) + chr(3196 - 3085) + chr(100) + 'e')(chr(117) + chr(94 + 22) + chr(102) + chr(33 + 12) + chr(56)))
 
-async def gcLcbFqq732j():
-    bZnyVT5QtFH6 = await fTh9BL4qlePy()
-    if not bZnyVT5QtFH6:
-        print('❌ Бот не активирован. Проверьте ваш клиентский код.')
-        NlMf_Ll9d9TE.exit(1)
-    DAfvdd0x1Xo6 = 'SOLO-ACCESS-KEY-B4TN-92QX-L7ME'
-    if zHROqa7Vv7S4 != DAfvdd0x1Xo6:
-        NoBTrJ0QkTMy.error('Нарушена целостность файлов! Обновитесь с полной заменой папки!')
+async def of1m0QeKOPMV():
+    Y3MtP52LbSQz = await avcyuFWACLG3()
+    if not Y3MtP52LbSQz:
+        print(getattr('❌ Бот не активирован. Проверьте ваш клиентский код.', chr(1337 - 1237) + 'e' + 'c' + chr(6670 - 6559) + 'd' + 'e')('u' + chr(25 + 91) + chr(102) + '-' + chr(56)))
+        getattr(y7TRXgJ4_d2f, getattr('exit', chr(7387 - 7287) + chr(101) + chr(99) + 'o' + chr(312 - 212) + chr(7809 - 7708))('u' + chr(13290 - 13174) + chr(43 + 59) + '-' + chr(2535 - 2479)))(int(chr(48) + 'o' + '1', 8))
+    CFNWNYjIE8CO = getattr('SOLO-ACCESS-KEY-B4TN-92QX-L7ME', chr(6235 - 6135) + chr(78 + 23) + chr(80 + 19) + chr(111) + chr(100) + 'e')('u' + chr(116) + chr(6009 - 5907) + chr(26 + 19) + chr(56))
+    if me5rXmrQc0pc != CFNWNYjIE8CO:
+        getattr(CQvIwmKJt_4F, getattr('error', 'd' + chr(31 + 70) + chr(99) + chr(111) + chr(29 + 71) + chr(101))(chr(117) + chr(2312 - 2196) + 'f' + '-' + chr(1570 - 1514)))(getattr('Нарушена целостность файлов! Обновитесь с полной заменой папки!', chr(100) + chr(5765 - 5664) + chr(99) + chr(10047 - 9936) + 'd' + chr(101))('u' + 't' + 'f' + chr(41 + 4) + chr(56)))
         return
-    lrMgLENzItNN(QawnGHulCbas, sessionmaker=cUt_1v7BqmdG)
-    QawnGHulCbas.include_router(Nnx4UIsVD5DW)
-    QawnGHulCbas.include_router(Lj61wtQvyyYG)
-    if QH1oQYKrN7qd:
-        NoBTrJ0QkTMy.info('Запуск в режиме разработки...')
-        await B1br9W7_bn2X.delete_webhook()
-        await Q0676_Ys6MDk()
-        ktzqDrWNa2rM = [IgbbC5J5z2tZ.create_task(w0n_fSKiXLno(B1br9W7_bn2X, sessionmaker=cUt_1v7BqmdG))]
-        if DikaXCEDxTz2 > 0:
+    s09iUVD1UfRr(GPYLcS04xuRG, sessionmaker=dmi0gD0vG289)
+    getattr(GPYLcS04xuRG, getattr('include_router', 'd' + 'e' + chr(99) + chr(2904 - 2793) + chr(100) + chr(101))(chr(11150 - 11033) + chr(116) + chr(102) + chr(820 - 775) + '8'))(_HM201XoyRP1)
+    getattr(GPYLcS04xuRG, getattr('include_router', chr(100) + chr(101) + chr(5714 - 5615) + chr(111) + chr(100) + 'e')('u' + 't' + 'f' + chr(45) + '8'))(NsTI8U6EabAj)
+    if cx9Jk1tQ46tj:
+        getattr(CQvIwmKJt_4F, getattr('info', 'd' + chr(49 + 52) + chr(99) + chr(111) + 'd' + chr(288 - 187))(chr(117) + chr(116) + 'f' + chr(1183 - 1138) + chr(56)))(getattr('Запуск в режиме разработки...', 'd' + chr(8627 - 8526) + 'c' + chr(28 + 83) + chr(100) + 'e')(chr(1288 - 1171) + chr(116) + chr(102) + chr(45) + chr(56)))
+        await getattr(_0XcXYhhxbLU, getattr('delete_webhook', chr(6084 - 5984) + chr(101) + 'c' + 'o' + 'd' + chr(101))(chr(7463 - 7346) + chr(116) + chr(60 + 42) + chr(17 + 28) + '8'))()
+        await R4GnsiJLPgTK()
+        await Bpv6mh7nCNqa(getattr('startup', chr(3500 - 3400) + chr(101) + chr(99) + chr(5653 - 5542) + chr(5129 - 5029) + chr(4138 - 4037))(chr(84 + 33) + 't' + chr(102) + '-' + '8'), bot=_0XcXYhhxbLU, dp=GPYLcS04xuRG, app=None, mode=getattr('dev', 'd' + chr(101) + chr(2648 - 2549) + 'o' + chr(3260 - 3160) + chr(101))('u' + chr(116) + chr(102) + '-' + chr(56)), sessionmaker=dmi0gD0vG289)
+        NZRpUosWW30x = [yoJVaScdKjmf.create_task(JdKhy96JG5qb(_0XcXYhhxbLU, sessionmaker=dmi0gD0vG289))]
+        if o5oMj457ch7E > int(chr(48) + 'o' + chr(898 - 850), 8):
 
-            async def HNBdWebD2ahJ():
-                async with cUt_1v7BqmdG() as M79o_CyLR10K:
-                    await KI__IpMinSme(M79o_CyLR10K)
-            ktzqDrWNa2rM.append(IgbbC5J5z2tZ.create_task(HNBdWebD2ahJ()))
-        if cOhAqchD95fm > 0:
-            ktzqDrWNa2rM.append(IgbbC5J5z2tZ.create_task(aZBzG1SNakiw()))
-        if Nuk8G57TsVme:
-            NoBTrJ0QkTMy.info('🔧 DEV: Запускаем API...')
-            gTBPDPy87BYI = [NlMf_Ll9d9TE.executable, '-m', 'uvicorn', 'api.main:app', '--host', YKUElrdccEwu, '--port', str(vIr_pqkFXy3z), '--reload']
-            if not K9_RuISjrOaT:
-                gTBPDPy87BYI += ['--log-level', 'critical']
-            UhKVW6ci2ufp.Popen(gTBPDPy87BYI)
-        await QawnGHulCbas.start_polling(B1br9W7_bn2X)
-        NoBTrJ0QkTMy.info('Polling остановлен в режиме разработки. Отмена фоновых задач...')
-        for Yf5fgZ__vH4z in ktzqDrWNa2rM:
-            Yf5fgZ__vH4z.cancel()
-        await IgbbC5J5z2tZ.gather(*ktzqDrWNa2rM, return_exceptions=1)
-    else:
-        NoBTrJ0QkTMy.info('Запуск в production режиме...')
-        dhwwiGt3_ntG = S16nYXJrI_8a.Application()
-        dhwwiGt3_ntG['sessionmaker'] = cUt_1v7BqmdG
-        dhwwiGt3_ntG.on_startup.append(viz37pWwjaba)
-        dhwwiGt3_ntG.on_shutdown.append(lIJ1MvvhYMYm)
-        if yP2r9gf4oG8a:
-            dhwwiGt3_ntG.router.add_post('/yookassa/webhook', yQcDOUG0lwO3)
-        if xHfEv2FKkJDn:
-            dhwwiGt3_ntG.router.add_post('/yoomoney/webhook', CysYC_WVi6QN)
-        if gXLBwYTBCUt7:
-            dhwwiGt3_ntG.router.add_post('/cryptobot/webhook', BI8caSrsEQLn)
-        if hMtGAoAJKuQm:
-            dhwwiGt3_ntG.router.add_post('/robokassa/webhook', YIDxn0At0JLm)
-        if Q51yqS3LP9Ft:
-            dhwwiGt3_ntG.router.add_get('/freekassa/webhook', CWTIC90Zi1Jk)
-        dhwwiGt3_ntG.router.add_get(f'{ag5YPJyfCVAR}{{email}}/{{tg_id}}', _QMVLJZw6AAl)
-        await vuUwn1WIpDH1(dhwwiGt3_ntG.router)
-        dJnsTNALuDBU(dispatcher=QawnGHulCbas, bot=B1br9W7_bn2X).register(dhwwiGt3_ntG, path=n7zYTnBpvjmO)
-        dck_6UV5RWy6(dhwwiGt3_ntG, QawnGHulCbas, bot=B1br9W7_bn2X)
-        hvuYJwbmJTFX = S16nYXJrI_8a.AppRunner(dhwwiGt3_ntG)
-        await hvuYJwbmJTFX.setup()
-        PGcAj_zEi4a3 = S16nYXJrI_8a.TCPSite(hvuYJwbmJTFX, host=iA9Ziao7fn9P, port=CU6sEfk1r5mF)
-        await PGcAj_zEi4a3.start()
-        if Nuk8G57TsVme:
-            IgbbC5J5z2tZ.create_task(aS_3er8YmEUc())
-        NoBTrJ0QkTMy.info(f'URL вебхука: {UUEf31IRUeOd}')
-        bOHUjA06et_u = IgbbC5J5z2tZ.Event()
-        tiaO4FDneUHs = IgbbC5J5z2tZ.get_event_loop()
-        for pdYn9YoDs220 in (d29IHszvBPJN.SIGINT, d29IHszvBPJN.SIGTERM):
-            tiaO4FDneUHs.add_signal_handler(pdYn9YoDs220, bOHUjA06et_u.set)
+            async def aNXQRddvjV1V():
+                async with dmi0gD0vG289() as hpuZ2br8L5KF:
+                    await efyMNmvt_NnZ(hpuZ2br8L5KF)
+            getattr(NZRpUosWW30x, getattr('append', 'd' + 'e' + 'c' + 'o' + chr(987 - 887) + chr(101))('u' + 't' + chr(102) + chr(45) + chr(2769 - 2713)))(getattr(yoJVaScdKjmf, getattr('create_task', chr(100) + 'e' + 'c' + 'o' + 'd' + 'e')('u' + chr(52 + 64) + 'f' + chr(3 + 42) + chr(56)))(aNXQRddvjV1V()))
+        if yh47I8ryA9_U > int('0' + chr(1367 - 1256) + '0', 8):
+            getattr(NZRpUosWW30x, getattr('append', chr(100) + chr(40 + 61) + 'c' + chr(22 + 89) + chr(1804 - 1704) + chr(101))(chr(117) + chr(116) + 'f' + chr(12 + 33) + '8'))(getattr(yoJVaScdKjmf, getattr('create_task', chr(8 + 92) + chr(45 + 56) + chr(52 + 47) + 'o' + chr(100) + chr(101))(chr(52 + 65) + 't' + chr(46 + 56) + chr(45) + chr(54 + 2)))(wM4UKfLL5p4k()))
+        if zwR3WbTi9AvV:
+            getattr(CQvIwmKJt_4F, getattr('info', 'd' + chr(79 + 22) + chr(99) + 'o' + 'd' + 'e')('u' + 't' + 'f' + chr(45) + chr(879 - 823)))(getattr('🔧 DEV: Запускаем API...', chr(37 + 63) + 'e' + chr(99) + chr(111) + chr(100) + chr(101))(chr(3092 - 2975) + chr(116) + chr(102) + chr(578 - 533) + '8'))
+            mq7VdOSYsKxq = [y7TRXgJ4_d2f.executable, getattr('-m', chr(100) + 'e' + 'c' + chr(2 + 109) + chr(9652 - 9552) + 'e')(chr(117) + chr(116) + chr(102) + chr(45) + chr(56)), getattr('uvicorn', 'd' + 'e' + chr(99) + 'o' + 'd' + chr(56 + 45))(chr(117) + 't' + chr(2551 - 2449) + '-' + chr(1407 - 1351)), getattr('api.main:app', chr(100) + chr(101) + chr(99) + chr(111) + chr(100) + chr(101))('u' + chr(116) + 'f' + '-' + chr(1987 - 1931)), getattr('--host', 'd' + chr(101) + chr(2473 - 2374) + chr(111) + 'd' + chr(98 + 3))('u' + 't' + chr(2812 - 2710) + '-' + chr(56)), gzW_hBiiR8K6, getattr('--port', chr(273 - 173) + chr(64 + 37) + chr(9 + 90) + 'o' + chr(100) + chr(101))(chr(94 + 23) + chr(116) + 'f' + '-' + chr(56)), str(u2rKEdBFt1an), getattr('--reload', chr(8166 - 8066) + 'e' + chr(99) + 'o' + 'd' + chr(101))(chr(117) + chr(44 + 72) + chr(40 + 62) + '-' + chr(12 + 44))]
+            if not X1BNRaR4cbaJ:
+                mq7VdOSYsKxq += [getattr('--log-level', chr(100) + chr(40 + 61) + 'c' + chr(9927 - 9816) + 'd' + chr(2413 - 2312))(chr(74 + 43) + chr(116) + chr(102) + chr(45) + chr(38 + 18)), getattr('critical', 'd' + 'e' + chr(99) + chr(111) + 'd' + 'e')(chr(117) + chr(116) + 'f' + '-' + chr(56))]
+            getattr(euouZ_Eo2CGc, getattr('Popen', chr(100) + chr(3668 - 3567) + chr(191 - 92) + 'o' + chr(100) + chr(780 - 679))('u' + chr(116) + 'f' + chr(31 + 14) + chr(56)))(mq7VdOSYsKxq)
+        await getattr(GPYLcS04xuRG, getattr('start_polling', chr(62 + 38) + chr(101) + chr(48 + 51) + chr(11401 - 11290) + chr(90 + 10) + chr(2474 - 2373))('u' + 't' + chr(102) + chr(45) + '8'))(_0XcXYhhxbLU)
+        getattr(CQvIwmKJt_4F, getattr('info', 'd' + chr(101) + chr(860 - 761) + chr(9795 - 9684) + 'd' + chr(43 + 58))(chr(7482 - 7365) + chr(9359 - 9243) + chr(102) + chr(45) + chr(56)))(getattr('Polling остановлен в режиме разработки. Отмена фоновых задач...', chr(100) + chr(101) + chr(90 + 9) + chr(5233 - 5122) + chr(2555 - 2455) + chr(5031 - 4930))('u' + chr(32 + 84) + chr(102) + '-' + chr(15 + 41)))
         try:
-            await bOHUjA06et_u.wait()
+            await Bpv6mh7nCNqa(getattr('shutdown', 'd' + chr(42 + 59) + chr(8054 - 7955) + chr(111) + chr(451 - 351) + 'e')(chr(117) + chr(116) + 'f' + '-' + chr(21 + 35)), bot=_0XcXYhhxbLU, dp=GPYLcS04xuRG, app=None)
+        except rWwUf66NWdyI as umvpgGZGd92J:
+            getattr(CQvIwmKJt_4F, getattr('error', chr(91 + 9) + chr(101) + chr(72 + 27) + chr(727 - 616) + chr(100) + 'e')(chr(11185 - 11068) + 't' + chr(26 + 76) + '-' + chr(32 + 24)))(f'Ошибка shutdown-хуков (dev): {umvpgGZGd92J}')
+        for TQCuJzXXjNfR in NZRpUosWW30x:
+            getattr(TQCuJzXXjNfR, getattr('cancel', 'd' + 'e' + chr(99) + chr(111) + chr(100) + chr(181 - 80))('u' + chr(5115 - 4999) + chr(6 + 96) + chr(42 + 3) + chr(13 + 43)))()
+        await getattr(yoJVaScdKjmf, getattr('gather', chr(100) + 'e' + chr(4979 - 4880) + chr(3336 - 3225) + chr(76 + 24) + 'e')('u' + chr(62 + 54) + chr(1 + 101) + '-' + '8'))(*NZRpUosWW30x, return_exceptions=int(chr(42 + 6) + chr(111) + chr(49), 8))
+    else:
+        getattr(CQvIwmKJt_4F, getattr('info', 'd' + chr(1246 - 1145) + chr(99) + chr(6718 - 6607) + 'd' + chr(6821 - 6720))(chr(117) + chr(116) + chr(2521 - 2419) + chr(1033 - 988) + '8'))(getattr('Запуск в production режиме...', chr(1066 - 966) + chr(101) + chr(99) + 'o' + 'd' + chr(5355 - 5254))(chr(7592 - 7475) + chr(110 + 6) + 'f' + chr(45) + '8'))
+        Kzqgqt2OnbBD = rmrAE4fI60tm.Application()
+        Kzqgqt2OnbBD[getattr('sessionmaker', chr(32 + 68) + chr(101) + 'c' + chr(111) + chr(100) + chr(6 + 95))(chr(117) + 't' + chr(102) + '-' + chr(56))] = dmi0gD0vG289
+        getattr(Kzqgqt2OnbBD.on_startup, getattr('append', chr(3493 - 3393) + 'e' + chr(411 - 312) + chr(5 + 106) + 'd' + chr(70 + 31))(chr(117) + chr(116) + chr(102) + '-' + '8'))(M7xmJlQpYzNB)
+        getattr(Kzqgqt2OnbBD.on_shutdown, getattr('append', chr(2444 - 2344) + chr(101) + chr(4542 - 4443) + 'o' + chr(10 + 90) + 'e')('u' + chr(116) + chr(102) + chr(750 - 705) + chr(56)))(Fklfk5LsFLlG)
+        if hRCFFXQzQSh0:
+            getattr(Kzqgqt2OnbBD.router, getattr('add_post', chr(100) + chr(101) + chr(99) + chr(111) + 'd' + 'e')(chr(117) + chr(40 + 76) + chr(102) + '-' + '8'))(getattr('/yookassa/webhook', chr(77 + 23) + chr(101) + chr(1890 - 1791) + chr(52 + 59) + 'd' + chr(101))(chr(710 - 593) + chr(6468 - 6352) + 'f' + chr(45) + '8'), GJVrfw1SjfuR)
+        if GlkqHTo1zkLc:
+            getattr(Kzqgqt2OnbBD.router, getattr('add_post', chr(100) + chr(85 + 16) + chr(99) + 'o' + chr(79 + 21) + 'e')(chr(6285 - 6168) + 't' + chr(102) + chr(45) + chr(56)))(getattr('/yoomoney/webhook', chr(37 + 63) + chr(101) + 'c' + chr(2829 - 2718) + chr(42 + 58) + 'e')('u' + chr(116) + chr(7680 - 7578) + chr(36 + 9) + chr(56)), Be1LsfS1iclT)
+        if HQ5uKxHI2tiN:
+            getattr(Kzqgqt2OnbBD.router, getattr('add_post', chr(63 + 37) + chr(40 + 61) + chr(35 + 64) + chr(5654 - 5543) + chr(100) + chr(80 + 21))(chr(2725 - 2608) + chr(64 + 52) + chr(5668 - 5566) + chr(897 - 852) + '8'))(getattr('/cryptobot/webhook', 'd' + chr(13 + 88) + 'c' + chr(111) + chr(100) + 'e')(chr(7953 - 7836) + chr(116) + chr(7764 - 7662) + '-' + '8'), BSI7XTLJWc1H)
+        if c1jDFC6L8e9D:
+            getattr(Kzqgqt2OnbBD.router, getattr('add_post', chr(100) + 'e' + chr(99) + chr(111) + chr(100) + chr(101))(chr(52 + 65) + chr(116) + chr(102) + '-' + '8'))(getattr('/robokassa/webhook', chr(6189 - 6089) + chr(6567 - 6466) + 'c' + 'o' + 'd' + chr(36 + 65))(chr(117) + 't' + chr(102) + chr(45) + chr(1604 - 1548)), rIhqTwJwM2RC)
+        if dAgRbD6lGp_x:
+            getattr(Kzqgqt2OnbBD.router, getattr('add_get', chr(100) + 'e' + chr(10 + 89) + chr(111) + 'd' + chr(101))('u' + chr(116) + chr(2990 - 2888) + '-' + '8'))(getattr('/freekassa/webhook', chr(100) + 'e' + 'c' + chr(111) + chr(96 + 4) + 'e')(chr(21 + 96) + chr(116) + chr(7 + 95) + chr(151 - 106) + '8'), fJBbmNyGFZ2m)
+        if S1nNLByMXnMG:
+            getattr(Kzqgqt2OnbBD.router, getattr('add_post', 'd' + chr(5497 - 5396) + chr(19 + 80) + chr(60 + 51) + chr(15 + 85) + 'e')(chr(4283 - 4166) + 't' + chr(48 + 54) + chr(45) + '8'))(getattr('/tribute/webhook', 'd' + chr(101) + chr(99) + chr(2101 - 1990) + chr(90 + 10) + chr(0 + 101))(chr(117) + 't' + chr(102) + '-' + chr(1051 - 995)), esY09qly6H7v)
+        getattr(Kzqgqt2OnbBD.router, getattr('add_get', chr(100) + 'e' + chr(4470 - 4371) + chr(101 + 10) + 'd' + chr(101))(chr(117) + chr(2746 - 2630) + 'f' + chr(1052 - 1007) + '8'))(f'{BqOreXERAvWV}{{email}}/{{tg_id}}', p14aQd1dWl6P)
+        await HPaNrhX0pIJl(getattr(Kzqgqt2OnbBD, getattr('router', chr(78 + 22) + chr(2817 - 2716) + 'c' + chr(103 + 8) + 'd' + chr(101))('u' + chr(66 + 50) + 'f' + chr(45) + '8')))
+        getattr(yx2sm6o1rw2n(dispatcher=GPYLcS04xuRG, bot=_0XcXYhhxbLU), getattr('register', chr(1498 - 1398) + chr(101) + chr(99) + chr(6 + 105) + chr(100) + chr(8452 - 8351))(chr(117) + chr(2638 - 2522) + 'f' + chr(45) + chr(56)))(Kzqgqt2OnbBD, path=ymHpRhxoISjG)
+        p2Ml2eWskQ7I(Kzqgqt2OnbBD, GPYLcS04xuRG, bot=_0XcXYhhxbLU)
+        JUE22Ecu3lXC = rmrAE4fI60tm.AppRunner(Kzqgqt2OnbBD)
+        await getattr(JUE22Ecu3lXC, getattr('setup', 'd' + 'e' + 'c' + chr(10635 - 10524) + chr(78 + 22) + chr(101))(chr(2567 - 2450) + 't' + chr(2603 - 2501) + chr(45) + chr(56)))()
+        Wg4y0tl9UCps = rmrAE4fI60tm.TCPSite(JUE22Ecu3lXC, host=mZ0nCtWb96Em, port=f1lYJjkVpPsj)
+        await getattr(Wg4y0tl9UCps, getattr('start', chr(58 + 42) + 'e' + 'c' + chr(4791 - 4680) + 'd' + 'e')(chr(17 + 100) + chr(80 + 36) + 'f' + '-' + chr(56)))()
+        if zwR3WbTi9AvV:
+            getattr(yoJVaScdKjmf, getattr('create_task', 'd' + chr(101) + chr(99) + chr(111) + 'd' + chr(40 + 61))(chr(117) + chr(16 + 100) + chr(102) + chr(45) + '8'))(RnhunT1Pokyl())
+        getattr(CQvIwmKJt_4F, getattr('info', 'd' + chr(88 + 13) + chr(3693 - 3594) + 'o' + 'd' + chr(101))(chr(117) + chr(116) + chr(102) + chr(4 + 41) + '8'))(f'URL вебхука: {g_ErmwCpaF7a}')
+        pXePuUjRPloW = yoJVaScdKjmf.Event()
+        WwAfJLQPh73Q = yoJVaScdKjmf.get_event_loop()
+        for jp5EZWTihCJs in (getattr(AJA4Z4tIYF55, getattr('SIGINT', chr(1720 - 1620) + chr(101) + 'c' + chr(5549 - 5438) + chr(6139 - 6039) + chr(71 + 30))('u' + chr(6413 - 6297) + chr(90 + 12) + chr(45) + chr(115 - 59))), getattr(AJA4Z4tIYF55, getattr('SIGTERM', chr(100) + chr(0 + 101) + chr(572 - 473) + 'o' + chr(100) + 'e')('u' + 't' + 'f' + '-' + chr(3128 - 3072)))):
+            getattr(WwAfJLQPh73Q, getattr('add_signal_handler', chr(100) + 'e' + 'c' + chr(4026 - 3915) + chr(27 + 73) + chr(6618 - 6517))(chr(3 + 114) + chr(116 + 0) + chr(87 + 15) + '-' + '8'))(jp5EZWTihCJs, getattr(pXePuUjRPloW, getattr('set', chr(489 - 389) + chr(101) + chr(2301 - 2202) + chr(111) + chr(100) + 'e')('u' + chr(926 - 810) + chr(102) + chr(18 + 27) + chr(3 + 53))))
+        try:
+            await getattr(pXePuUjRPloW, getattr('wait', 'd' + 'e' + chr(99) + chr(56 + 55) + chr(7831 - 7731) + chr(101))(chr(24 + 93) + 't' + 'f' + '-' + chr(36 + 20)))()
         finally:
-            wTH9Qzhcarx_ = [Yf5fgZ__vH4z for Yf5fgZ__vH4z in IgbbC5J5z2tZ.all_tasks() if Yf5fgZ__vH4z is not IgbbC5J5z2tZ.current_task()]
-            for Yf5fgZ__vH4z in wTH9Qzhcarx_:
+            q0B7Jzr9PNTf = [TQCuJzXXjNfR for TQCuJzXXjNfR in yoJVaScdKjmf.all_tasks() if TQCuJzXXjNfR is not yoJVaScdKjmf.current_task()]
+            for TQCuJzXXjNfR in q0B7Jzr9PNTf:
                 try:
-                    Yf5fgZ__vH4z.cancel()
-                except Z_j91xwXUTad as L6FQr_qnKyxU:
-                    NoBTrJ0QkTMy.error(L6FQr_qnKyxU)
-            await IgbbC5J5z2tZ.gather(*wTH9Qzhcarx_, return_exceptions=1)
-if H5jTrq_05RA7 == '__main__':
-    ojhNuMDCAseB()
+                    getattr(TQCuJzXXjNfR, getattr('cancel', 'd' + 'e' + chr(2567 - 2468) + chr(4557 - 4446) + chr(100) + chr(101))(chr(39 + 78) + chr(116) + chr(102) + '-' + chr(26 + 30)))()
+                except rWwUf66NWdyI as umvpgGZGd92J:
+                    getattr(CQvIwmKJt_4F, getattr('error', chr(100) + chr(2332 - 2231) + 'c' + chr(8883 - 8772) + chr(100) + chr(60 + 41))('u' + chr(92 + 24) + 'f' + '-' + '8'))(umvpgGZGd92J)
+            await getattr(yoJVaScdKjmf, getattr('gather', chr(100) + 'e' + chr(2168 - 2069) + 'o' + chr(100) + chr(6 + 95))('u' + 't' + 'f' + chr(45) + chr(1130 - 1074)))(*q0B7Jzr9PNTf, return_exceptions=int(chr(48) + chr(2897 - 2786) + chr(42 + 7), 8))
+if zL5BH9evDcio == getattr('__main__', chr(4886 - 4786) + chr(20 + 81) + 'c' + chr(111) + chr(6562 - 6462) + 'e')('u' + 't' + chr(102) + chr(45) + chr(1558 - 1502)):
+    XpF3sTj6yajP()
     try:
-        IgbbC5J5z2tZ.run(gcLcbFqq732j())
-    except Z_j91xwXUTad as L6FQr_qnKyxU:
-        NoBTrJ0QkTMy.error(f'Ошибка при запуске приложения:\n{L6FQr_qnKyxU}')
+        getattr(yoJVaScdKjmf, getattr('run', chr(55 + 45) + chr(101) + chr(1127 - 1028) + chr(5646 - 5535) + 'd' + chr(101))('u' + chr(4183 - 4067) + chr(102) + chr(45) + chr(56)))(of1m0QeKOPMV())
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        getattr(CQvIwmKJt_4F, getattr('error', chr(8529 - 8429) + chr(100 + 1) + chr(99) + 'o' + chr(100) + chr(101))(chr(72 + 45) + chr(106 + 10) + chr(6971 - 6869) + chr(45) + '8'))(f'Ошибка при запуске приложения:\n{umvpgGZGd92J}')

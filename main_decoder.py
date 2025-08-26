@@ -643,6 +643,20 @@ class _ConstAndGetattrFolder(ast.NodeTransformer):
 
     def visit_Call(self, node: ast.Call):
         self.generic_visit(node)
+        # Убираем ложные вызовы на результате importlib.import_module('pkg')(...)
+        def _is_import_module_call(c: ast.AST) -> bool:
+            return (
+                isinstance(c, ast.Call)
+                and isinstance(c.func, ast.Attribute)
+                and isinstance(c.func.value, ast.Name)
+                and c.func.value.id == "importlib"
+                and c.func.attr == "import_module"
+                and c.args
+                and isinstance(c.args[0], ast.Constant)
+                and isinstance(c.args[0].value, str)
+            )
+        if _is_import_module_call(node.func):
+            return node.func
         if (
             isinstance(node.func, ast.Attribute)
             and node.func.attr == "decode"
@@ -799,7 +813,8 @@ def _importlib_from_attr(node: ast.AST) -> tuple[str, str] | None:
                 # Ближайший к import_module атрибут — фактический экспорт: pkg.attr1.attr2 → import pkg: attr1
                 return pkg, attrs[0]
             return pkg, pkg
-        if isinstance(cur.func, ast.Name) and cur.func.id in {"__import__", "I3Qj6caZgXTY", "TKizvQ0BnfYh"}:
+        # Любая функция вида F('pkg', ...) считаем импорт-обёрткой (эвристика)
+        if isinstance(cur.func, ast.Name):
             pkg = cur.args[0].value
             if attrs:
                 return pkg, attrs[0]
@@ -1065,6 +1080,7 @@ def step14_text_normalize_import_wrappers(src: str) -> str:
     out = re.sub(r"\bI3Qj6caZgXTY\s*\(", "importlib.import_module(", out)
     # TKizvQ0BnfYh('pkg','Name',...) → importlib.import_module('pkg')
     out = re.sub(r"\bTKizvQ0BnfYh\s*\(\s*(['\"])\\?([^'\"]+)\1\s*,", r"importlib.import_module(\1\2\1),", out)
+    # Не делаем агрессивных замен по всем длинным именам — это приводит к ложным срабатываниям
     if "importlib.import_module(" in out and not re.search(r"^\s*import\s+importlib\b", out, re.M):
         out = "import importlib\n" + out
     return out
@@ -1094,6 +1110,372 @@ def step15_drop_known_wrapper_defs(src: str) -> str:
     ast.fix_missing_locations(tree)
     return unparse(tree)
 
+
+def step16_auto_rename_dynamic(src: str) -> str:
+    """
+    Динамическое переименование подозрительных имён на человекочитаемые по эвристикам.
+    Никакой код не удаляем.
+    """
+    try:
+        tree = ast.parse(src)
+    except SyntaxError:
+        return src
+
+    def is_suspect(name: str) -> bool:
+        return len(name) >= 10 and bool(re.search(r"[0-9]", name))
+
+    # Соберём существующие имена для предотвращения коллизий
+    existing: set[str] = set()
+
+    class Collect(ast.NodeVisitor):
+        def visit_Name(self, n: ast.Name):
+            existing.add(n.id)
+        def visit_FunctionDef(self, n: ast.FunctionDef):
+            existing.add(n.name)
+            self.generic_visit(n)
+        def visit_AsyncFunctionDef(self, n: ast.AsyncFunctionDef):
+            existing.add(n.name)
+            self.generic_visit(n)
+        def visit_ExceptHandler(self, n: ast.ExceptHandler):
+            if isinstance(n.name, str):
+                existing.add(n.name)
+
+    Collect().visit(tree)
+
+    rename: dict[str, str] = {}
+
+    def unique(name: str) -> str:
+        base = name
+        i = 2
+        while name in existing or name in rename.values():
+            name = f"{base}_{i}"
+            i += 1
+        existing.add(name)
+        return name
+
+    def attr_chain(n: ast.AST) -> list[str]:
+        chain: list[str] = []
+        cur = n
+        while isinstance(cur, ast.Attribute):
+            chain.append(cur.attr)
+            cur = cur.value
+        if isinstance(cur, ast.Name):
+            chain.append(cur.id)
+        chain.reverse()
+        return chain
+
+    def suggest_from_call(call: ast.Call) -> str | None:
+        f = call.func
+        name = None
+        # Path(...) → path
+        if (isinstance(f, ast.Name) and f.id == "Path") or (
+            isinstance(f, ast.Attribute) and f.attr == "Path"
+        ):
+            # уточнение по аргументу
+            if call.args and isinstance(call.args[0], ast.Constant) and isinstance(call.args[0].value, str):
+                s = call.args[0].value
+                if "alembic/versions" in s:
+                    return "versions_dir"
+                if "alembic/env.py" in s:
+                    return "alembic_env_path"
+            return "path"
+        # create_engine(...) → engine
+        if (isinstance(f, ast.Name) and f.id == "create_engine") or (
+            isinstance(f, ast.Attribute) and f.attr == "create_engine"
+        ):
+            return "engine"
+        # uvicorn.Config → uvicorn_config / config
+        if (isinstance(f, ast.Attribute) and f.attr == "Config") or (
+            isinstance(f, ast.Name) and f.id == "Config"
+        ):
+            return "config"
+        # uvicorn.Server → server
+        if (isinstance(f, ast.Attribute) and f.attr == "Server") or (
+            isinstance(f, ast.Name) and f.id == "Server"
+        ):
+            return "server"
+        # ScriptDirectory.from_config → script_dir
+        if isinstance(f, ast.Attribute) and f.attr == "from_config":
+            ch = attr_chain(f.value)
+            if ch and ch[-1] == "ScriptDirectory":
+                return "script_dir"
+        # asyncio.Event → stop_event (часто в коде)
+        if isinstance(f, ast.Attribute) and f.attr == "Event":
+            ch = attr_chain(f.value)
+            if ch and ch[-1] == "asyncio":
+                return "stop_event"
+        # asyncio.get_event_loop → loop
+        if isinstance(f, ast.Attribute) and f.attr == "get_event_loop":
+            return "loop"
+        # web.AppRunner → runner
+        if isinstance(f, ast.Attribute) and f.attr == "AppRunner":
+            return "runner"
+        # web.TCPSite → site
+        if isinstance(f, ast.Attribute) and f.attr == "TCPSite":
+            return "site"
+        # importlib.import_module('hashlib') → hashlib_module
+        if (
+            isinstance(f, ast.Attribute)
+            and isinstance(f.value, ast.Name)
+            and f.value.id == "importlib"
+            and f.attr == "import_module"
+            and call.args
+            and isinstance(call.args[0], ast.Constant)
+            and isinstance(call.args[0].value, str)
+            and call.args[0].value == "hashlib"
+        ):
+            return "hashlib_module"
+        # subprocess.run([... 'alembic', 'upgrade']) → upgrade_result
+        if isinstance(f, ast.Attribute) and f.attr == "run":
+            if call.args and isinstance(call.args[0], (ast.List, ast.Tuple)):
+                items = call.args[0].elts
+                vals: list[str] = []
+                for it in items:
+                    if isinstance(it, ast.Constant) and isinstance(it.value, str):
+                        vals.append(it.value)
+                if any("alembic" in v for v in vals) and any("upgrade" in v for v in vals):
+                    return "upgrade_result"
+                if any("alembic" in v for v in vals) and any("revision" in v for v in vals):
+                    return "result"
+        # asyncio.create_task(...) → task
+        if isinstance(f, ast.Attribute) and f.attr == "create_task":
+            return "task"
+        # os.path.abspath('venv/bin/python') → venv_python
+        if isinstance(f, ast.Attribute) and f.attr == "abspath":
+            if call.args and isinstance(call.args[0], ast.Constant) and isinstance(call.args[0].value, str):
+                s = call.args[0].value
+                if "venv/bin/python" in s:
+                    return "venv_python"
+        # os.path.join('venv', '.installed') → venv_marker
+        if isinstance(f, ast.Attribute) and f.attr == "join":
+            if (
+                len(call.args) >= 2
+                and all(isinstance(a, ast.Constant) and isinstance(a.value, str) for a in call.args[:2])
+                and call.args[0].value == "venv"
+                and call.args[1].value in {".installed", ".ok", ".ready"}
+            ):
+                return "venv_marker"
+        return name
+
+    # Первая проходка: собрать предложения
+    class Propose(ast.NodeVisitor):
+        def visit_Assign(self, n: ast.Assign):
+            # одиночное имя
+            if len(n.targets) == 1:
+                tgt = n.targets[0]
+                if isinstance(tgt, ast.Name):
+                    name = tgt.id
+                    if is_suspect(name):
+                        new: str | None = None
+                        if isinstance(n.value, ast.Call):
+                            new = suggest_from_call(n.value)
+                        if new is None and isinstance(n.value, ast.Constant) and isinstance(n.value.value, str):
+                            if "/" in n.value.value or n.value.value.endswith(".py"):
+                                new = "path"
+                        if new:
+                            rename.setdefault(name, unique(new))
+                # кортеж с одним элементом (X,) = (call,)
+                if isinstance(tgt, ast.Tuple) and len(tgt.elts) == 1 and isinstance(tgt.elts[0], ast.Name):
+                    name = tgt.elts[0].id
+                    if is_suspect(name):
+                        if isinstance(n.value, ast.Tuple) and len(n.value.elts) == 1:
+                            val = n.value.elts[0]
+                        else:
+                            val = n.value
+                        new = None
+                        if isinstance(val, ast.Call):
+                            new = suggest_from_call(val)
+                        if new:
+                            rename.setdefault(name, unique(new))
+            self.generic_visit(n)
+
+        def visit_With(self, n: ast.With):
+            for item in n.items:
+                if isinstance(item.optional_vars, ast.Name) and is_suspect(item.optional_vars.id):
+                    as_name = item.optional_vars.id
+                    base = None
+                    if isinstance(item.context_expr, ast.Call):
+                        f = item.context_expr.func
+                        if (isinstance(f, ast.Attribute) and f.attr == "connect") or (
+                            isinstance(f, ast.Name) and f.id == "connect"
+                        ):
+                            base = "conn"
+                    if base:
+                        rename.setdefault(as_name, unique(base))
+            self.generic_visit(n)
+
+        def visit_ExceptHandler(self, n: ast.ExceptHandler):
+            if isinstance(n.name, str) and is_suspect(n.name):
+                rename.setdefault(n.name, unique("exc"))
+            self.generic_visit(n)
+
+        def visit_For(self, n: ast.For):
+            if isinstance(n.target, ast.Name) and is_suspect(n.target.id):
+                # for <suspect> in (signal.SIGINT, signal.SIGTERM)
+                if isinstance(n.iter, (ast.Tuple, ast.List)):
+                    elts = n.iter.elts
+                    if any(isinstance(e, ast.Attribute) and isinstance(e.value, ast.Name) and e.value.id == "signal" for e in elts):
+                        rename.setdefault(n.target.id, unique("sig"))
+            self.generic_visit(n)
+
+    Propose().visit(tree)
+
+    if not rename:
+        return src
+
+    class Apply(ast.NodeTransformer):
+        def visit_Name(self, n: ast.Name):
+            if n.id in rename:
+                n.id = rename[n.id]
+            return n
+        def visit_FunctionDef(self, n: ast.FunctionDef):
+            if n.name in rename:
+                n.name = rename[n.name]
+            self.generic_visit(n)
+            return n
+        def visit_AsyncFunctionDef(self, n: ast.AsyncFunctionDef):
+            if n.name in rename:
+                n.name = rename[n.name]
+            self.generic_visit(n)
+            return n
+        def visit_ExceptHandler(self, n: ast.ExceptHandler):
+            if isinstance(n.name, str) and n.name in rename:
+                n.name = rename[n.name]
+            self.generic_visit(n)
+            return n
+
+    new_tree = Apply().visit(tree)
+    ast.fix_missing_locations(new_tree)
+    return unparse(new_tree)
+
+
+def step6h_rewrite_generic_import_calls(src: str) -> str:
+    """
+    Находит функции-обёртки импортов по паттерну X('pkg') и частоcти вызовов,
+    переписывает X('pkg') → importlib.import_module('pkg').
+    """
+    try:
+        tree = ast.parse(src)
+    except SyntaxError:
+        return src
+
+    counts: dict[str, int] = {}
+
+    class Counter(ast.NodeVisitor):
+        def visit_Call(self, n: ast.Call):
+            if (
+                isinstance(n.func, ast.Name)
+                and len(n.args) >= 1
+                and isinstance(n.args[0], ast.Constant)
+                and isinstance(n.args[0].value, str)
+                and all(isinstance(kw.value, (ast.Constant, ast.Name, ast.Attribute)) for kw in n.keywords)
+            ):
+                counts[n.func.id] = counts.get(n.func.id, 0) + 1
+            self.generic_visit(n)
+
+    Counter().visit(tree)
+    candidates = {name for name, c in counts.items() if c >= 3 and name not in {"print", "str", "bytes"}}
+    if not candidates:
+        return src
+
+    class Rewriter(ast.NodeTransformer):
+        def visit_Call(self, n: ast.Call):
+            self.generic_visit(n)
+            if (
+                isinstance(n.func, ast.Name)
+                and n.func.id in candidates
+                and len(n.args) >= 1
+                and isinstance(n.args[0], ast.Constant)
+                and isinstance(n.args[0].value, str)
+            ):
+                return ast.copy_location(
+                    ast.Call(
+                        func=ast.Attribute(
+                            value=ast.Name(id="importlib", ctx=ast.Load()),
+                            attr="import_module",
+                            ctx=ast.Load(),
+                        ),
+                        args=[ast.Constant(n.args[0].value)],
+                        keywords=[],
+                    ),
+                    n,
+                )
+            return n
+
+    new = Rewriter().visit(tree)
+    ast.fix_missing_locations(new)
+    code = unparse(new)
+    if "importlib.import_module(" in code and not re.search(r"^\s*import\s+importlib\b", code, re.M):
+        code = "import importlib\n" + code
+    return code
+
+
+def step6i_rewrite_generic_twoarg_wrappers(src: str) -> str:
+    """
+    Переписывает вызовы вида F('pkg','Attr', ...) → importlib.import_module('pkg')
+    (оставляя последующий .Attr снаружи), по общему паттерну без знания имени F.
+    """
+    try:
+        tree = ast.parse(src)
+    except SyntaxError:
+        return src
+
+    class Rewriter(ast.NodeTransformer):
+        def visit_Call(self, n: ast.Call):
+            self.generic_visit(n)
+            if (
+                isinstance(n.func, ast.Name)
+                and len(n.args) >= 2
+                and all(isinstance(a, ast.Constant) and isinstance(a.value, str) for a in n.args[:2])
+            ):
+                # Эвристика: F('pkg','Attr', ...) → importlib.import_module('pkg').Attr
+                pkg = n.args[0].value
+                attr = n.args[1].value
+                return ast.copy_location(
+                    ast.Attribute(
+                        value=ast.Call(
+                            func=ast.Attribute(
+                                value=ast.Name(id="importlib", ctx=ast.Load()),
+                                attr="import_module",
+                                ctx=ast.Load(),
+                            ),
+                            args=[ast.Constant(pkg)],
+                            keywords=[],
+                        ),
+                        attr=attr,
+                        ctx=ast.Load(),
+                    ),
+                    n,
+                )
+            return n
+
+    new = Rewriter().visit(tree)
+    ast.fix_missing_locations(new)
+    code = unparse(new)
+    if "importlib.import_module(" in code and not re.search(r"^\s*import\s+importlib\b", code, re.M):
+        code = "import importlib\n" + code
+    return code
+
+
+def step6j_normalize_exception_types(src: str) -> str:
+    """Заменяет подозрительные имена классов исключений в except на Exception."""
+    try:
+        tree = ast.parse(src)
+    except SyntaxError:
+        return src
+
+    def is_suspect(name: str) -> bool:
+        return len(name) >= 10 and bool(re.search(r"[0-9]", name))
+
+    class Fixer(ast.NodeTransformer):
+        def visit_ExceptHandler(self, n: ast.ExceptHandler):
+            if isinstance(n.type, ast.Name) and is_suspect(n.type.id):
+                n.type = ast.copy_location(ast.Name(id="Exception", ctx=ast.Load()), n.type)
+            return self.generic_visit(n) or n
+
+    new = Fixer().visit(tree)
+    ast.fix_missing_locations(new)
+    return unparse(new)
 
 def step13_drop_unused_funcs(src: str) -> str:
     tree = ast.parse(src)
@@ -1164,6 +1546,8 @@ def build_pipeline() -> list[Step]:
         Step("decode simple lambda", step6e_decode_simple_lambda),
         Step("rewrite TKizvQ0BnfYh wrapper", step6f_rewrite_TKizvQ0BnfYh),
         Step("rewrite I3Qj6caZgXTY to importlib", step6g_rewrite_obf_import_call),
+        # Step("rewrite generic import calls", step6h_rewrite_generic_import_calls),  # disabled: overly aggressive
+        Step("rewrite generic two-arg wrappers", step6i_rewrite_generic_twoarg_wrappers),
         Step("fold consts & getattr (pass1)", step7_fold_consts_and_getattr),
         Step("cleanup str decode", step6a_cleanup_str_decode),
         Step("fold consts & getattr (pre-import-fixes)", step7_fold_consts_and_getattr),
@@ -1171,6 +1555,7 @@ def build_pipeline() -> list[Step]:
         Step("rewrite import wrapper JXzJajrdQAWB", step6c_rewrite_import_wrapper),
         Step("ensure 'import importlib' header", step6d_ensure_importlib_import),
         Step("fold consts & getattr (post-import-fixes)", step7_fold_consts_and_getattr),
+        Step("normalize obfuscated exception types", step6j_normalize_exception_types),
         Step("rename from tuple assigns", step8_rename_from_tuple_assignments),
         Step("flatten import assigns", step9_flatten_import_assigns),
         Step("global rename", step10_global_rename),
@@ -1178,6 +1563,7 @@ def build_pipeline() -> list[Step]:
         Step("locals & constants", step12_locals_and_constants),
         Step("text normalize import wrappers", step14_text_normalize_import_wrappers),
         Step("drop known wrapper defs", step15_drop_known_wrapper_defs),
+        Step("auto rename dynamic", step16_auto_rename_dynamic),
         # Step("drop unused functions", step13_drop_unused_funcs),  # disabled to avoid accidental code removal
         Step("fold consts & getattr (final)", step7_fold_consts_and_getattr),
     ]

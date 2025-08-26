@@ -1,303 +1,354 @@
-def TKizvQ0BnfYh(lVOb8D0b52U0, oMPpIA2LbQGW, *geHx8gqQ3phJ, **BZ4z6kfVKSgE):
-    try:
-        return I3Qj6caZgXTY(lVOb8D0b52U0 + '.' + oMPpIA2LbQGW, *geHx8gqQ3phJ, **BZ4z6kfVKSgE)
-    except G0blZqBwOCK2:
-        return I3Qj6caZgXTY(lVOb8D0b52U0, *geHx8gqQ3phJ, **BZ4z6kfVKSgE)
-(FyYEeTFyaEwm,) = (I3Qj6caZgXTY('os'),)
-(UhKVW6ci2ufp,) = (I3Qj6caZgXTY('subprocess'),)
-(NlMf_Ll9d9TE,) = (I3Qj6caZgXTY('sys'),)
-(iZQnRId6lk4a,) = (TKizvQ0BnfYh('pathlib', 'Path', globals=None, locals=None, level=0).Path,)
-if not FyYEeTFyaEwm.path.exists('venv'):
-    print('Создание виртуального окружения...')
-    UhKVW6ci2ufp.run([NlMf_Ll9d9TE.executable, '-m', 'venv', 'venv'], check=1)
-DxjpDrvsrMP4 = FyYEeTFyaEwm.path.abspath('venv/bin/python')
-if NlMf_Ll9d9TE.executable != DxjpDrvsrMP4:
-    print('Перезапуск из виртуального окружения...')
-    FyYEeTFyaEwm.execv(DxjpDrvsrMP4, [DxjpDrvsrMP4] + NlMf_Ll9d9TE.argv)
-ADUIqZAL1Zgf = FyYEeTFyaEwm.path.join('venv', '.installed')
-if not FyYEeTFyaEwm.path.exists(ADUIqZAL1Zgf):
-    print('Установка зависимостей...')
-    UhKVW6ci2ufp.run(['venv/bin/pip', 'install', '--upgrade', 'pip'], check=1)
-    UhKVW6ci2ufp.run(['venv/bin/pip', 'install', '-r', 'requirements.txt'], check=1)
-    UhKVW6ci2ufp.run(['venv/bin/pip', 'install', 'psycopg2-binary'], check=1)
-    iZQnRId6lk4a(ADUIqZAL1Zgf).write_text('ok')
+import importlib
 
-def hpOdPEnuB1nq():
-    A2OFynpSEGYZ = iZQnRId6lk4a('alembic/env.py')
-    if A2OFynpSEGYZ.exists():
-        print('ℹAlembic уже инициализирован.')
+def VLTILgCobR2q(HLMISGOoxhtq, SPVM1H7XGjFs, *KJ0QLfmMqReF, **CmmAAXmXOEFy):
+    try:
+        return CJLS4yRqTzLB(HLMISGOoxhtq + '.' + SPVM1H7XGjFs, *KJ0QLfmMqReF, **CmmAAXmXOEFy)
+    except _GsSh7Rnpg2_:
+        return CJLS4yRqTzLB(HLMISGOoxhtq, *KJ0QLfmMqReF, **CmmAAXmXOEFy)
+(l_shM1eICFqR,) = (CJLS4yRqTzLB('os'),)
+(y7TRXgJ4_d2f,) = (CJLS4yRqTzLB('sys'),)
+(euouZ_Eo2CGc,) = (CJLS4yRqTzLB('subprocess'),)
+(Gqba_lQxM5DA,) = (VLTILgCobR2q('pathlib', 'Path', globals=None, locals=None, level=0).Path,)
+(wf3b04nBTB0M,) = (CJLS4yRqTzLB('urllib.request'),)
+KOMvfYWvxpvB = Gqba_lQxM5DA('venv')
+qSlLeyQ7VdNv = str(KOMvfYWvxpvB / 'bin' / 'python')
+GEubzOScffp0 = str(KOMvfYWvxpvB / 'bin' / 'pip')
+HizWI004zW0H = KOMvfYWvxpvB / '.installed'
+
+def z8cSqgZUDjUT(TqUMzaW5W9NS, **afoXljZGRjuW):
+    return euouZ_Eo2CGc.run(TqUMzaW5W9NS, check=1, **afoXljZGRjuW)
+if not KOMvfYWvxpvB.exists():
+    print('Создание виртуального окружения...')
+    z8cSqgZUDjUT([y7TRXgJ4_d2f.executable, '-m', 'venv', str(KOMvfYWvxpvB)])
+try:
+    z8cSqgZUDjUT([qSlLeyQ7VdNv, '-m', 'ensurepip', '--upgrade'])
+except rWwUf66NWdyI:
+    print('ensurepip недоступен, качаю get-pip.py…')
+    ADrQh6Q0Xq4n = KOMvfYWvxpvB / 'get-pip.py'
+    with wf3b04nBTB0M.request.urlopen('https://bootstrap.pypa.io/get-pip.py', timeout=30) as wI5a6NtuIHOG, open(ADrQh6Q0Xq4n, 'wb') as VD5XtVzFLHb2:
+        VD5XtVzFLHb2.write(wI5a6NtuIHOG.read())
+    z8cSqgZUDjUT([qSlLeyQ7VdNv, str(ADrQh6Q0Xq4n)])
+    try:
+        ADrQh6Q0Xq4n.unlink()
+    except kkr6asGQBbL4:
+        pass
+if not HizWI004zW0H.exists():
+    print('Установка зависимостей из requirements.txt…')
+    z8cSqgZUDjUT([qSlLeyQ7VdNv, '-m', 'pip', 'install', '--upgrade', 'pip', 'setuptools', 'wheel'])
+    if Gqba_lQxM5DA('requirements.txt').exists():
+        z8cSqgZUDjUT([GEubzOScffp0, 'install', '-r', 'requirements.txt'])
+    z8cSqgZUDjUT([GEubzOScffp0, 'install', 'psycopg2-binary'])
+    HizWI004zW0H.write_text('ok')
+if l_shM1eICFqR.path.abspath(y7TRXgJ4_d2f.executable) != l_shM1eICFqR.path.abspath(qSlLeyQ7VdNv):
+    print('Перезапуск из виртуального окружения…')
+    l_shM1eICFqR.execv(qSlLeyQ7VdNv, [qSlLeyQ7VdNv] + y7TRXgJ4_d2f.argv)
+(v_GzpfvOq3ot,) = (VLTILgCobR2q('rich.console', 'Console', globals=None, locals=None, level=0).console.Console,)
+gRRvVbYhM0LB = v_GzpfvOq3ot()
+(SbdfOQizxBEk, sf3zE9WSixjx) = (VLTILgCobR2q('sqlalchemy', 'create_engine', globals=None, locals=None, level=0).create_engine, VLTILgCobR2q('sqlalchemy', 'text', globals=None, locals=None, level=0).text)
+(Jm5ddbQe0kk1,) = (VLTILgCobR2q('alembic.config', 'Config', globals=None, locals=None, level=0).config.Config,)
+(ZTmeOe8SPdri,) = (VLTILgCobR2q('alembic.script', 'ScriptDirectory', globals=None, locals=None, level=0).script.ScriptDirectory,)
+(IcE3668z6sqB,) = (VLTILgCobR2q('config', 'DATABASE_URL', globals=None, locals=None, level=0).DATABASE_URL,)
+
+def Pib7Isbe5Piv():
+    i_5gN_6A5Aqj = Gqba_lQxM5DA('alembic/env.py')
+    if i_5gN_6A5Aqj.exists():
+        print('ℹAlembic инициализирован.')
         return
     print('🛠️ Инициализация Alembic...')
-    UhKVW6ci2ufp.run(['venv/bin/alembic', 'init', 'alembic'], check=1)
-    if A2OFynpSEGYZ.exists():
-        CRcKJ5Z0I1XF = A2OFynpSEGYZ.read_text()
-        MHZivVbLpj_1 = 'from database.models import Base\nfrom config import DATABASE_URL\n# Заменяем asyncpg на psycopg2 только для миграций\nsync_url = DATABASE_URL.replace("postgresql+asyncpg", "postgresql+psycopg2")\nconfig.set_main_option("sqlalchemy.url", sync_url)\n\ntarget_metadata = Base.metadata'
-        CRcKJ5Z0I1XF = CRcKJ5Z0I1XF.replace('target_metadata = None', MHZivVbLpj_1)
-        A2OFynpSEGYZ.write_text(CRcKJ5Z0I1XF)
+    euouZ_Eo2CGc.run(['venv/bin/alembic', 'init', 'alembic'], check=1)
+    if i_5gN_6A5Aqj.exists():
+        fvX0NPd8gKqD = i_5gN_6A5Aqj.read_text()
+        dvrwJuLJSlIR = 'from database.models import Base\nfrom config import DATABASE_URL\n# Заменяем asyncpg на psycopg2 только для миграций\nsync_url = DATABASE_URL.replace("postgresql+asyncpg", "postgresql+psycopg2")\nconfig.set_main_option("sqlalchemy.url", sync_url)\n\ntarget_metadata = Base.metadata'
+        i_5gN_6A5Aqj.write_text(fvX0NPd8gKqD.replace('target_metadata = None', dvrwJuLJSlIR))
     print('✅ Alembic инициализирован.')
-(Q7tClP07Cr24, CRcKJ5Z0I1XF) = (TKizvQ0BnfYh('sqlalchemy', 'create_engine', globals=None, locals=None, level=0).create_engine, TKizvQ0BnfYh('sqlalchemy', 'text', globals=None, locals=None, level=0).text)
-(kYsphmT4sjV8,) = (TKizvQ0BnfYh('alembic.config', 'Config', globals=None, locals=None, level=0).config.Config,)
-(bX0dgRLufyU9,) = (TKizvQ0BnfYh('alembic.script', 'ScriptDirectory', globals=None, locals=None, level=0).script.ScriptDirectory,)
-(etiivloU5GNO,) = (TKizvQ0BnfYh('config', 'DATABASE_URL', globals=None, locals=None, level=0).DATABASE_URL,)
 
-def S83mpZdEbfAe():
-    print('🧹 Очистка висячих ссылок перед миграциями...')
-    RM59qDe5AObi = etiivloU5GNO.replace('postgresql+asyncpg', 'postgresql+psycopg2')
-    examfTtmBk_5 = Q7tClP07Cr24(RM59qDe5AObi)
+def Yx6Nrcbtb4PN():
+    xqQbR3mcDJZE = IcE3668z6sqB.replace('postgresql+asyncpg', 'postgresql+psycopg2')
+    ya1W7oAVx8Q4 = SbdfOQizxBEk(xqQbR3mcDJZE)
     try:
-        with examfTtmBk_5.connect() as dEYieqnzsigE:
-            Vta6ea3F01Ju = dEYieqnzsigE.execute(CRcKJ5Z0I1XF('DELETE FROM notifications WHERE tg_id NOT IN (SELECT tg_id FROM users);')).rowcount
-            E2_KpJ7YAEeI = dEYieqnzsigE.execute(CRcKJ5Z0I1XF('\n                    DELETE FROM referrals \n                    WHERE referred_tg_id NOT IN (SELECT tg_id FROM users)\n                       OR referrer_tg_id NOT IN (SELECT tg_id FROM users);\n                ')).rowcount
-            dEYieqnzsigE.commit()
-        print(f'✅ Очистка завершена. Удалено {Vta6ea3F01Ju} уведомлений и {E2_KpJ7YAEeI} рефералов.')
-    except Z_j91xwXUTad as L6FQr_qnKyxU:
-        print(f'⚠️ Ошибка при очистке висячих ссылок: {L6FQr_qnKyxU}')
+        with ya1W7oAVx8Q4.connect() as y3mYlbnvULnu:
+            Erx7KqRlGK6W = y3mYlbnvULnu.execute(sf3zE9WSixjx('DELETE FROM notifications WHERE tg_id NOT IN (SELECT tg_id FROM users);')).rowcount
+            dWyzIwk5ehXI = y3mYlbnvULnu.execute(sf3zE9WSixjx('\n                    DELETE FROM referrals \n                    WHERE referred_tg_id NOT IN (SELECT tg_id FROM users)\n                       OR referrer_tg_id NOT IN (SELECT tg_id FROM users);\n                ')).rowcount
+            y3mYlbnvULnu.commit()
+        print(f'Очистка завершена. Удалено {Erx7KqRlGK6W} уведомлений и {dWyzIwk5ehXI} рефералов.')
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        pass
 
-def evBAxYgU6UhL():
-    NruZidUcKdMe = kYsphmT4sjV8('alembic.ini')
-    hrgmUSq5vFaA = bX0dgRLufyU9.from_config(NruZidUcKdMe)
-    RM59qDe5AObi = etiivloU5GNO.replace('postgresql+asyncpg', 'postgresql+psycopg2')
-    examfTtmBk_5 = Q7tClP07Cr24(RM59qDe5AObi)
-    with examfTtmBk_5.connect() as dEYieqnzsigE:
+def ot1STj0Fihnd():
+    CRFlXIWSq7W1 = Jm5ddbQe0kk1('alembic.ini')
+    fkMzg2r6XODx = ZTmeOe8SPdri.from_config(CRFlXIWSq7W1)
+    xqQbR3mcDJZE = IcE3668z6sqB.replace('postgresql+asyncpg', 'postgresql+psycopg2')
+    ya1W7oAVx8Q4 = SbdfOQizxBEk(xqQbR3mcDJZE)
+    with ya1W7oAVx8Q4.connect() as y3mYlbnvULnu:
         try:
-            NgaT11tFHfUC = dEYieqnzsigE.execute(CRcKJ5Z0I1XF('SELECT version_num FROM alembic_version'))
-            IfwIp02ZI50t = NgaT11tFHfUC.scalar()
-        except Z_j91xwXUTad:
+            FCcaVPw_BfBa = y3mYlbnvULnu.execute(sf3zE9WSixjx('SELECT version_num FROM alembic_version'))
+            v8h0Nrd1Zgij = FCcaVPw_BfBa.scalar()
+        except rWwUf66NWdyI:
             print('ℹТаблица alembic_version не найдена — пропускаем проверку.')
             return
         try:
-            hrgmUSq5vFaA.get_revision(IfwIp02ZI50t)
-        except Z_j91xwXUTad:
-            print(f'Ревизия {IfwIp02ZI50t} отсутствует. Удаляем запись из alembic_version...')
-            dEYieqnzsigE.execute(CRcKJ5Z0I1XF('DELETE FROM alembic_version'))
-            dEYieqnzsigE.commit()
-    print('Удалена повреждённая ревизия. Выполняем stamp head...')
-    UhKVW6ci2ufp.run(['venv/bin/alembic', 'stamp', 'head'], check=1, env={**FyYEeTFyaEwm.environ, 'ALEMBIC_SAFE_BOOT': '1'})
+            fkMzg2r6XODx.get_revision(v8h0Nrd1Zgij)
+        except rWwUf66NWdyI:
+            print(f'Ревизия {v8h0Nrd1Zgij} отсутствует. Удаляем запись из alembic_version...')
+            y3mYlbnvULnu.execute(sf3zE9WSixjx('DELETE FROM alembic_version'))
+            y3mYlbnvULnu.commit()
+            print('Запись alembic_version удалена. Миграции будут пересозданы.')
+    euouZ_Eo2CGc.run(['venv/bin/alembic', 'stamp', 'head'], check=1, env={**l_shM1eICFqR.environ, 'ALEMBIC_SAFE_BOOT': '1'})
+(TAq23VlWMJNj,) = (CJLS4yRqTzLB('shutil'),)
 
-def fd1cG9dodvxu():
+def NrMxwt71pAGc():
+    i_5gN_6A5Aqj = Gqba_lQxM5DA('alembic/env.py')
+    P2gKpi9RnARy = Gqba_lQxM5DA('alembic/env_backup.py')
+    if not i_5gN_6A5Aqj.exists():
+        raise kkr6asGQBbL4('env.py не найден')
+    TAq23VlWMJNj.copy(i_5gN_6A5Aqj, P2gKpi9RnARy)
+    GAGG3SzhZoAk = i_5gN_6A5Aqj.read_text()
+    guKuVpoPOUK0 = '\nfrom pathlib import Path\nimport importlib\n\nmodules_dir = Path("modules")\nfor module_path in modules_dir.iterdir():\n    if (module_path / "models.py").exists():\n        module_name = module_path.name\n        try:\n            importlib.import_module(f"modules.{module_name}.models")\n        except Exception as e:\n            print(f"[Alembic] ❌ Ошибка импорта {module_name}: {e}")\n'
+    i_5gN_6A5Aqj.write_text(guKuVpoPOUK0 + '\n\n' + GAGG3SzhZoAk)
+
+def o2KdGgnRtgxA():
+    i_5gN_6A5Aqj = Gqba_lQxM5DA('alembic/env.py')
+    P2gKpi9RnARy = Gqba_lQxM5DA('alembic/env_backup.py')
+    if P2gKpi9RnARy.exists():
+        TAq23VlWMJNj.move(P2gKpi9RnARy, i_5gN_6A5Aqj)
+
+def yfTW9tS0_kHo():
     print('Генерация и применение миграций...')
-    S83mpZdEbfAe()
-    evBAxYgU6UhL()
-    NgaT11tFHfUC = UhKVW6ci2ufp.run(['venv/bin/alembic', 'revision', '--autogenerate', '-m', 'Auto migration'], capture_output=1, text=1)
-    if 'No changes in schema detected' in NgaT11tFHfUC.stdout:
+    Yx6Nrcbtb4PN()
+    ot1STj0Fihnd()
+    FCcaVPw_BfBa = euouZ_Eo2CGc.run(['venv/bin/alembic', 'revision', '--autogenerate', '-m', 'Auto migration'], capture_output=1, text=1)
+    if 'No changes in schema detected' in FCcaVPw_BfBa.stdout:
         print('ℹИзменений в моделях нет — миграция не требуется.')
     else:
         print('Миграция создана. Применяем...')
-        Hvn5kk0_vFwt = UhKVW6ci2ufp.run(['venv/bin/alembic', 'upgrade', 'head'], capture_output=1, text=1)
-        if Hvn5kk0_vFwt.returncode != 0:
+        LVPFufwjktJF = euouZ_Eo2CGc.run(['venv/bin/alembic', 'upgrade', 'head'], capture_output=1, text=1)
+        if LVPFufwjktJF.returncode != 0:
             print('❌ Ошибка при применении миграции:')
-            print('STDOUT:')
-            print(Hvn5kk0_vFwt.stdout)
-            print('STDERR:')
-            print(Hvn5kk0_vFwt.stderr)
-            NlMf_Ll9d9TE.exit(1)
-        print('✅ Alembic upgrade успешно выполнен.')
+            print('STDOUT:', LVPFufwjktJF.stdout)
+            print('STDERR:', LVPFufwjktJF.stderr)
+            y7TRXgJ4_d2f.exit(1)
+    gRRvVbYhM0LB.print('[green] Alembic upgrade успешно выполнен.[/green]')
 
-def FF7rBWnIKKwz():
-    hpOdPEnuB1nq()
-    sLMMm8FcjIhp = iZQnRId6lk4a('alembic/versions')
-    if not sLMMm8FcjIhp.exists():
-        sLMMm8FcjIhp.mkdir(parents=1)
-    fd1cG9dodvxu()
-FF7rBWnIKKwz()
-(IgbbC5J5z2tZ,) = (I3Qj6caZgXTY('asyncio'),)
-(FyYEeTFyaEwm,) = (I3Qj6caZgXTY('os'),)
-(d29IHszvBPJN,) = (I3Qj6caZgXTY('signal'),)
-(UhKVW6ci2ufp,) = (I3Qj6caZgXTY('subprocess'),)
-(NlMf_Ll9d9TE,) = (I3Qj6caZgXTY('sys'),)
-(c5NNV3V3Ry3y,) = (I3Qj6caZgXTY('uvicorn'),)
-(dJnsTNALuDBU, dck_6UV5RWy6) = (TKizvQ0BnfYh('aiogram.webhook.aiohttp_server', 'SimpleRequestHandler', globals=None, locals=None, level=0).webhook.aiohttp_server.SimpleRequestHandler, TKizvQ0BnfYh('aiogram.webhook.aiohttp_server', 'setup_application', globals=None, locals=None, level=0).webhook.aiohttp_server.setup_application)
-(S16nYXJrI_8a,) = (TKizvQ0BnfYh('aiohttp', 'web', globals=None, locals=None, level=0).web,)
-(dmkLf2NsdNqg,) = (TKizvQ0BnfYh('apscheduler.schedulers.asyncio', 'AsyncIOScheduler', globals=None, locals=None, level=0).schedulers.asyncio.AsyncIOScheduler,)
-(CtAaFtUYmGm7,) = (TKizvQ0BnfYh('apscheduler.triggers.cron', 'CronTrigger', globals=None, locals=None, level=0).triggers.cron.CronTrigger,)
-(LY5TOgVHXSy5,) = (TKizvQ0BnfYh('backup', 'backup_database', globals=None, locals=None, level=0).backup_database,)
-(B1br9W7_bn2X, QawnGHulCbas) = (TKizvQ0BnfYh('bot', 'bot', globals=None, locals=None, level=0).bot, TKizvQ0BnfYh('bot', 'dp', globals=None, locals=None, level=0).dp)
-(cOhAqchD95fm, gXLBwYTBCUt7, QH1oQYKrN7qd, DikaXCEDxTz2, hMtGAoAJKuQm, ag5YPJyfCVAR, iA9Ziao7fn9P, CU6sEfk1r5mF, n7zYTnBpvjmO, UUEf31IRUeOd, yP2r9gf4oG8a, xHfEv2FKkJDn, Nuk8G57TsVme, YKUElrdccEwu, vIr_pqkFXy3z, K9_RuISjrOaT, Q51yqS3LP9Ft) = (TKizvQ0BnfYh('config', 'BACKUP_TIME', globals=None, locals=None, level=0).BACKUP_TIME, TKizvQ0BnfYh('config', 'CRYPTO_BOT_ENABLE', globals=None, locals=None, level=0).CRYPTO_BOT_ENABLE, TKizvQ0BnfYh('config', 'DEV_MODE', globals=None, locals=None, level=0).DEV_MODE, TKizvQ0BnfYh('config', 'PING_TIME', globals=None, locals=None, level=0).PING_TIME, TKizvQ0BnfYh('config', 'ROBOKASSA_ENABLE', globals=None, locals=None, level=0).ROBOKASSA_ENABLE, TKizvQ0BnfYh('config', 'SUB_PATH', globals=None, locals=None, level=0).SUB_PATH, TKizvQ0BnfYh('config', 'WEBAPP_HOST', globals=None, locals=None, level=0).WEBAPP_HOST, TKizvQ0BnfYh('config', 'WEBAPP_PORT', globals=None, locals=None, level=0).WEBAPP_PORT, TKizvQ0BnfYh('config', 'WEBHOOK_PATH', globals=None, locals=None, level=0).WEBHOOK_PATH, TKizvQ0BnfYh('config', 'WEBHOOK_URL', globals=None, locals=None, level=0).WEBHOOK_URL, TKizvQ0BnfYh('config', 'YOOKASSA_ENABLE', globals=None, locals=None, level=0).YOOKASSA_ENABLE, TKizvQ0BnfYh('config', 'YOOMONEY_ENABLE', globals=None, locals=None, level=0).YOOMONEY_ENABLE, TKizvQ0BnfYh('config', 'API_ENABLE', globals=None, locals=None, level=0).API_ENABLE, TKizvQ0BnfYh('config', 'API_HOST', globals=None, locals=None, level=0).API_HOST, TKizvQ0BnfYh('config', 'API_PORT', globals=None, locals=None, level=0).API_PORT, TKizvQ0BnfYh('config', 'API_LOGGING', globals=None, locals=None, level=0).API_LOGGING, TKizvQ0BnfYh('config', 'FREEKASSA_ENABLE', globals=None, locals=None, level=0).FREEKASSA_ENABLE)
-(cUt_1v7BqmdG, Q0676_Ys6MDk) = (TKizvQ0BnfYh('database', 'async_session_maker', globals=None, locals=None, level=0).async_session_maker, TKizvQ0BnfYh('database', 'init_db', globals=None, locals=None, level=0).init_db)
-(Nnx4UIsVD5DW,) = (TKizvQ0BnfYh('handlers', 'router', globals=None, locals=None, level=0).router,)
-(Nl3wzY0MRxUb,) = (TKizvQ0BnfYh('handlers.admin.stats.stats_handler', 'send_daily_stats_report', globals=None, locals=None, level=0).admin.stats.stats_handler.send_daily_stats_report,)
-(Lj61wtQvyyYG,) = (TKizvQ0BnfYh('handlers.fallback_router', 'fallback_router', globals=None, locals=None, level=0).fallback_router.fallback_router,)
-(_QMVLJZw6AAl,) = (TKizvQ0BnfYh('handlers.keys.subscriptions', 'handle_subscription', globals=None, locals=None, level=0).keys.subscriptions.handle_subscription,)
-(w0n_fSKiXLno,) = (TKizvQ0BnfYh('handlers.notifications.general_notifications', 'periodic_notifications', globals=None, locals=None, level=0).notifications.general_notifications.periodic_notifications,)
-(BI8caSrsEQLn,) = (TKizvQ0BnfYh('handlers.payments.cryprobot_pay', 'cryptobot_webhook', globals=None, locals=None, level=0).payments.cryprobot_pay.cryptobot_webhook,)
-(fTh9BL4qlePy,) = (TKizvQ0BnfYh('handlers.payments.gift', 'validate_client_code', globals=None, locals=None, level=0).payments.gift.validate_client_code,)
-(YIDxn0At0JLm,) = (TKizvQ0BnfYh('handlers.payments.robokassa_pay', 'robokassa_webhook', globals=None, locals=None, level=0).payments.robokassa_pay.robokassa_webhook,)
-(zHROqa7Vv7S4, yQcDOUG0lwO3) = (TKizvQ0BnfYh('handlers.payments.yookassa_pay', 'MAIN_SECRET', globals=None, locals=None, level=0).payments.yookassa_pay.MAIN_SECRET, TKizvQ0BnfYh('handlers.payments.yookassa_pay', 'yookassa_webhook', globals=None, locals=None, level=0).payments.yookassa_pay.yookassa_webhook)
-(CysYC_WVi6QN,) = (TKizvQ0BnfYh('handlers.payments.yoomoney_pay', 'yoomoney_webhook', globals=None, locals=None, level=0).payments.yoomoney_pay.yoomoney_webhook,)
-(CWTIC90Zi1Jk,) = (TKizvQ0BnfYh('handlers.payments.freekassa_pay', 'freekassa_webhook', globals=None, locals=None, level=0).payments.freekassa_pay.freekassa_webhook,)
-(NoBTrJ0QkTMy,) = (TKizvQ0BnfYh('logger', 'logger', globals=None, locals=None, level=0).logger,)
-(lrMgLENzItNN,) = (TKizvQ0BnfYh('middlewares', 'register_middleware', globals=None, locals=None, level=0).register_middleware,)
-(KI__IpMinSme,) = (TKizvQ0BnfYh('servers', 'check_servers', globals=None, locals=None, level=0).check_servers,)
-(vuUwn1WIpDH1,) = (TKizvQ0BnfYh('web', 'register_web_routes', globals=None, locals=None, level=0).register_web_routes,)
+def bqBdUDQyD_PG():
+    Pib7Isbe5Piv()
+    vufHelYUYpjq = Gqba_lQxM5DA('alembic/versions')
+    if not vufHelYUYpjq.exists():
+        vufHelYUYpjq.mkdir(parents=1)
+    NrMxwt71pAGc()
+    try:
+        yfTW9tS0_kHo()
+    finally:
+        o2KdGgnRtgxA()
+bqBdUDQyD_PG()
+(yoJVaScdKjmf,) = (CJLS4yRqTzLB('asyncio'),)
+(l_shM1eICFqR,) = (CJLS4yRqTzLB('os'),)
+(AJA4Z4tIYF55,) = (CJLS4yRqTzLB('signal'),)
+(euouZ_Eo2CGc,) = (CJLS4yRqTzLB('subprocess'),)
+(y7TRXgJ4_d2f,) = (CJLS4yRqTzLB('sys'),)
+(wjA9ZLNDdMfq,) = (CJLS4yRqTzLB('uvicorn'),)
+(yx2sm6o1rw2n, p2Ml2eWskQ7I) = (VLTILgCobR2q('aiogram.webhook.aiohttp_server', 'SimpleRequestHandler', globals=None, locals=None, level=0).webhook.aiohttp_server.SimpleRequestHandler, VLTILgCobR2q('aiogram.webhook.aiohttp_server', 'setup_application', globals=None, locals=None, level=0).webhook.aiohttp_server.setup_application)
+(rmrAE4fI60tm,) = (VLTILgCobR2q('aiohttp', 'web', globals=None, locals=None, level=0).web,)
+(uw_LUP39y6gH,) = (VLTILgCobR2q('apscheduler.schedulers.asyncio', 'AsyncIOScheduler', globals=None, locals=None, level=0).schedulers.asyncio.AsyncIOScheduler,)
+(Ek_Zz0q3XHXU,) = (VLTILgCobR2q('apscheduler.triggers.cron', 'CronTrigger', globals=None, locals=None, level=0).triggers.cron.CronTrigger,)
+(_0XcXYhhxbLU, GPYLcS04xuRG) = (VLTILgCobR2q('bot', 'bot', globals=None, locals=None, level=0).bot, VLTILgCobR2q('bot', 'dp', globals=None, locals=None, level=0).dp)
+(yh47I8ryA9_U, HQ5uKxHI2tiN, cx9Jk1tQ46tj, o5oMj457ch7E, c1jDFC6L8e9D, BqOreXERAvWV, mZ0nCtWb96Em, f1lYJjkVpPsj, ymHpRhxoISjG, g_ErmwCpaF7a, hRCFFXQzQSh0, GlkqHTo1zkLc, zwR3WbTi9AvV, gzW_hBiiR8K6, u2rKEdBFt1an, X1BNRaR4cbaJ, dAgRbD6lGp_x, S1nNLByMXnMG) = (VLTILgCobR2q('config', 'BACKUP_TIME', globals=None, locals=None, level=0).BACKUP_TIME, VLTILgCobR2q('config', 'CRYPTO_BOT_ENABLE', globals=None, locals=None, level=0).CRYPTO_BOT_ENABLE, VLTILgCobR2q('config', 'DEV_MODE', globals=None, locals=None, level=0).DEV_MODE, VLTILgCobR2q('config', 'PING_TIME', globals=None, locals=None, level=0).PING_TIME, VLTILgCobR2q('config', 'ROBOKASSA_ENABLE', globals=None, locals=None, level=0).ROBOKASSA_ENABLE, VLTILgCobR2q('config', 'SUB_PATH', globals=None, locals=None, level=0).SUB_PATH, VLTILgCobR2q('config', 'WEBAPP_HOST', globals=None, locals=None, level=0).WEBAPP_HOST, VLTILgCobR2q('config', 'WEBAPP_PORT', globals=None, locals=None, level=0).WEBAPP_PORT, VLTILgCobR2q('config', 'WEBHOOK_PATH', globals=None, locals=None, level=0).WEBHOOK_PATH, VLTILgCobR2q('config', 'WEBHOOK_URL', globals=None, locals=None, level=0).WEBHOOK_URL, VLTILgCobR2q('config', 'YOOKASSA_ENABLE', globals=None, locals=None, level=0).YOOKASSA_ENABLE, VLTILgCobR2q('config', 'YOOMONEY_ENABLE', globals=None, locals=None, level=0).YOOMONEY_ENABLE, VLTILgCobR2q('config', 'API_ENABLE', globals=None, locals=None, level=0).API_ENABLE, VLTILgCobR2q('config', 'API_HOST', globals=None, locals=None, level=0).API_HOST, VLTILgCobR2q('config', 'API_PORT', globals=None, locals=None, level=0).API_PORT, VLTILgCobR2q('config', 'API_LOGGING', globals=None, locals=None, level=0).API_LOGGING, VLTILgCobR2q('config', 'FREEKASSA_ENABLE', globals=None, locals=None, level=0).FREEKASSA_ENABLE, VLTILgCobR2q('config', 'TRIBUTE_ENABLE', globals=None, locals=None, level=0).TRIBUTE_ENABLE)
+(dmi0gD0vG289, R4GnsiJLPgTK) = (VLTILgCobR2q('database', 'async_session_maker', globals=None, locals=None, level=0).async_session_maker, VLTILgCobR2q('database', 'init_db', globals=None, locals=None, level=0).init_db)
+(_HM201XoyRP1,) = (VLTILgCobR2q('handlers', 'router', globals=None, locals=None, level=0).router,)
+(mSdS0BB8OWrb,) = (VLTILgCobR2q('handlers.admin.stats.stats_handler', 'send_daily_stats_report', globals=None, locals=None, level=0).admin.stats.stats_handler.send_daily_stats_report,)
+(NsTI8U6EabAj,) = (VLTILgCobR2q('handlers.fallback_router', 'fallback_router', globals=None, locals=None, level=0).fallback_router.fallback_router,)
+(p14aQd1dWl6P,) = (VLTILgCobR2q('handlers.keys.subscriptions', 'handle_subscription', globals=None, locals=None, level=0).keys.subscriptions.handle_subscription,)
+(JdKhy96JG5qb,) = (VLTILgCobR2q('handlers.notifications.general_notifications', 'periodic_notifications', globals=None, locals=None, level=0).notifications.general_notifications.periodic_notifications,)
+(BSI7XTLJWc1H,) = (VLTILgCobR2q('handlers.payments.cryprobot_pay', 'cryptobot_webhook', globals=None, locals=None, level=0).payments.cryprobot_pay.cryptobot_webhook,)
+(esY09qly6H7v,) = (VLTILgCobR2q('handlers.payments.tribute_pay', 'tribute_webhook', globals=None, locals=None, level=0).payments.tribute_pay.tribute_webhook,)
+(avcyuFWACLG3,) = (VLTILgCobR2q('handlers.payments.gift', 'validate_client_code', globals=None, locals=None, level=0).payments.gift.validate_client_code,)
+(rIhqTwJwM2RC,) = (VLTILgCobR2q('handlers.payments.robokassa_pay', 'robokassa_webhook', globals=None, locals=None, level=0).payments.robokassa_pay.robokassa_webhook,)
+(me5rXmrQc0pc, GJVrfw1SjfuR) = (VLTILgCobR2q('handlers.payments.yookassa_pay', 'MAIN_SECRET', globals=None, locals=None, level=0).payments.yookassa_pay.MAIN_SECRET, VLTILgCobR2q('handlers.payments.yookassa_pay', 'yookassa_webhook', globals=None, locals=None, level=0).payments.yookassa_pay.yookassa_webhook)
+(Be1LsfS1iclT,) = (VLTILgCobR2q('handlers.payments.yoomoney_pay', 'yoomoney_webhook', globals=None, locals=None, level=0).payments.yoomoney_pay.yoomoney_webhook,)
+(fJBbmNyGFZ2m,) = (VLTILgCobR2q('handlers.payments.freekassa_pay', 'freekassa_webhook', globals=None, locals=None, level=0).payments.freekassa_pay.freekassa_webhook,)
+(CQvIwmKJt_4F,) = (VLTILgCobR2q('logger', 'logger', globals=None, locals=None, level=0).logger,)
+(s09iUVD1UfRr,) = (VLTILgCobR2q('middlewares', 'register_middleware', globals=None, locals=None, level=0).register_middleware,)
+(efyMNmvt_NnZ,) = (VLTILgCobR2q('servers', 'check_servers', globals=None, locals=None, level=0).check_servers,)
+(HPaNrhX0pIJl,) = (VLTILgCobR2q('web', 'register_web_routes', globals=None, locals=None, level=0).register_web_routes,)
+(Bpv6mh7nCNqa,) = (VLTILgCobR2q('hooks.hooks', 'run_hooks', globals=None, locals=None, level=0).hooks.run_hooks,)
 
-def ojhNuMDCAseB():
-    (bIHNKSXd0ieD,) = (I3Qj6caZgXTY('hashlib'),)
-    uYrXWAOakCA6 = FyYEeTFyaEwm.path.abspath('cli_launcher.py')
-    zYU0AcfTUN9H = NlMf_Ll9d9TE.executable
-    N5BOS5Ba7iBe = ['/usr/local/bin', '/usr/bin', FyYEeTFyaEwm.path.expanduser('~/.local/bin')]
-    for H6bcNnJNBekj in N5BOS5Ba7iBe:
-        if FyYEeTFyaEwm.path.isdir(H6bcNnJNBekj) and FyYEeTFyaEwm.access(H6bcNnJNBekj, FyYEeTFyaEwm.W_OK):
+def XpF3sTj6yajP():
+    sXk2F8EV6LJl = l_shM1eICFqR.path.abspath('cli_launcher.py')
+    MtRx3rujhwU4 = y7TRXgJ4_d2f.executable
+    cS28M8tw6LfY = ['/usr/local/bin', '/usr/bin', l_shM1eICFqR.path.expanduser('~/.local/bin')]
+    for phQQtM4ewpBI in cS28M8tw6LfY:
+        if l_shM1eICFqR.path.isdir(phQQtM4ewpBI) and l_shM1eICFqR.access(phQQtM4ewpBI, l_shM1eICFqR.W_OK):
             break
     else:
-        print('❌ Не удалось найти подходящий каталог для установки команды.')
         return
-    pEfQPe06_bNU = 'solobot'
-    Nynw3IhkeoPb = pEfQPe06_bNU
-    AxqUYyg2kRoh = FyYEeTFyaEwm.path.join(H6bcNnJNBekj, Nynw3IhkeoPb)
-    if FyYEeTFyaEwm.path.exists(AxqUYyg2kRoh):
+    Yl4j1ojn1GBh = 'solobot'
+    FN9v93eKE8N0 = Yl4j1ojn1GBh
+    HBWnJvBDhafr = l_shM1eICFqR.path.join(phQQtM4ewpBI, FN9v93eKE8N0)
+    if l_shM1eICFqR.path.exists(HBWnJvBDhafr):
         try:
-            with open(AxqUYyg2kRoh, 'r') as aKErMq2ffNB_:
-                t09X61UaTZUU = aKErMq2ffNB_.read()
-            if uYrXWAOakCA6 in t09X61UaTZUU:
+            with open(HBWnJvBDhafr, 'r') as VD5XtVzFLHb2:
+                H2TNCRVK_JON = VD5XtVzFLHb2.read()
+            if sXk2F8EV6LJl in H2TNCRVK_JON:
                 return
             else:
-                print(f'⚠️ Команда `{Nynw3IhkeoPb}` уже установлена, но для другой копии бота.')
-                tbY49y6hEKQg = eZAsA0WiSb2d('Введите другое имя команды (например, solobot-test): ').strip()
-                if not tbY49y6hEKQg:
+                print(f'⚠️ Команда `{FN9v93eKE8N0}` уже установлена, но для другой копии бота.')
+                IAgR1dPl1T0C = Ewhiwis92OU8('Введите другое имя команды (например, solobot-test): ').strip()
+                if not IAgR1dPl1T0C:
                     print('❌ Имя не указано. Пропускаем установку.')
                     return
-                Nynw3IhkeoPb = tbY49y6hEKQg
-                AxqUYyg2kRoh = FyYEeTFyaEwm.path.join(H6bcNnJNBekj, Nynw3IhkeoPb)
-                if FyYEeTFyaEwm.path.exists(AxqUYyg2kRoh):
-                    print(f'❌ Команда `{Nynw3IhkeoPb}` уже существует. Установка прервана.')
+                FN9v93eKE8N0 = IAgR1dPl1T0C
+                HBWnJvBDhafr = l_shM1eICFqR.path.join(phQQtM4ewpBI, FN9v93eKE8N0)
+                if l_shM1eICFqR.path.exists(HBWnJvBDhafr):
+                    print(f'❌ Команда `{FN9v93eKE8N0}` уже существует. Установка прервана.')
                     return
-        except Z_j91xwXUTad as L6FQr_qnKyxU:
-            print(f'⚠️ Ошибка при чтении команды {Nynw3IhkeoPb}: {L6FQr_qnKyxU}')
+        except rWwUf66NWdyI as umvpgGZGd92J:
+            print(f'⚠️ Ошибка при чтении команды {FN9v93eKE8N0}: {umvpgGZGd92J}')
             return
     try:
-        with open(AxqUYyg2kRoh, 'w') as aKErMq2ffNB_:
-            aKErMq2ffNB_.write(f"""#!/bin/bash\n'{zYU0AcfTUN9H}' '{uYrXWAOakCA6}' "$@"\n""")
-        FyYEeTFyaEwm.chmod(AxqUYyg2kRoh, 493)
-        print(f'✅ Команда `{Nynw3IhkeoPb}` установлена! Используйте: {Nynw3IhkeoPb}')
-    except Z_j91xwXUTad as L6FQr_qnKyxU:
-        print(f'❌ Ошибка установки команды {Nynw3IhkeoPb}: {L6FQr_qnKyxU}')
+        with open(HBWnJvBDhafr, 'w') as VD5XtVzFLHb2:
+            VD5XtVzFLHb2.write(f"""#!/bin/bash\n'{MtRx3rujhwU4}' '{sXk2F8EV6LJl}' "$@"\n""")
+        l_shM1eICFqR.chmod(HBWnJvBDhafr, 493)
+        print(f'✅ Команда `{FN9v93eKE8N0}` установлена! Используйте: {FN9v93eKE8N0}')
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        pass
 
-async def aZBzG1SNakiw():
+async def wM4UKfLL5p4k():
+    (oYIFHt95hx3G,) = (VLTILgCobR2q('utils.backup', 'backup_database', globals=None, locals=None, level=0).backup.backup_database,)
     while 1:
-        await LY5TOgVHXSy5()
-        await IgbbC5J5z2tZ.sleep(cOhAqchD95fm)
+        await oYIFHt95hx3G()
+        await yoJVaScdKjmf.sleep(yh47I8ryA9_U)
 
-async def aS_3er8YmEUc():
-    NruZidUcKdMe = c5NNV3V3Ry3y.Config('api.main:app', host=YKUElrdccEwu, port=vIr_pqkFXy3z, log_level='info' if K9_RuISjrOaT else 'critical')
-    CJOEH5dagWs_ = c5NNV3V3Ry3y.Server(NruZidUcKdMe)
-    await CJOEH5dagWs_.serve()
+async def RnhunT1Pokyl():
+    CRFlXIWSq7W1 = wjA9ZLNDdMfq.Config('api.main:app', host=gzW_hBiiR8K6, port=u2rKEdBFt1an, log_level='info' if X1BNRaR4cbaJ else 'critical')
+    bVWK7XMx6YQ8 = wjA9ZLNDdMfq.Server(CRFlXIWSq7W1)
+    await bVWK7XMx6YQ8.serve()
 
-async def viz37pWwjaba(dhwwiGt3_ntG):
+async def M7xmJlQpYzNB(Kzqgqt2OnbBD):
     print('⚙️ Установка вебхука...')
-    await B1br9W7_bn2X.set_webhook(UUEf31IRUeOd)
-    await Q0676_Ys6MDk()
-    IgbbC5J5z2tZ.create_task(w0n_fSKiXLno(B1br9W7_bn2X, sessionmaker=cUt_1v7BqmdG))
-    if cOhAqchD95fm > 0:
-        IgbbC5J5z2tZ.create_task(aZBzG1SNakiw())
-    if DikaXCEDxTz2 > 0:
+    await _0XcXYhhxbLU.set_webhook(g_ErmwCpaF7a)
+    await R4GnsiJLPgTK()
+    await Bpv6mh7nCNqa('startup', bot=_0XcXYhhxbLU, dp=GPYLcS04xuRG, app=Kzqgqt2OnbBD, mode='prod', sessionmaker=dmi0gD0vG289)
+    yoJVaScdKjmf.create_task(JdKhy96JG5qb(_0XcXYhhxbLU, sessionmaker=dmi0gD0vG289))
+    if yh47I8ryA9_U > 0:
+        yoJVaScdKjmf.create_task(wM4UKfLL5p4k())
+    if o5oMj457ch7E > 0:
 
-        async def HNBdWebD2ahJ():
-            async with cUt_1v7BqmdG() as M79o_CyLR10K:
-                await KI__IpMinSme(M79o_CyLR10K)
-        IgbbC5J5z2tZ.create_task(HNBdWebD2ahJ())
+        async def aNXQRddvjV1V():
+            async with dmi0gD0vG289() as hpuZ2br8L5KF:
+                await efyMNmvt_NnZ(hpuZ2br8L5KF)
+        yoJVaScdKjmf.create_task(aNXQRddvjV1V())
 
-    async def FXVhbYJkNfzk():
-        async with cUt_1v7BqmdG() as M79o_CyLR10K:
-            await Nl3wzY0MRxUb(M79o_CyLR10K)
-    F0GRLd3hqdNj = dmkLf2NsdNqg()
-    F0GRLd3hqdNj.add_job(FXVhbYJkNfzk, CtAaFtUYmGm7(hour=0, minute=0, timezone='Europe/Moscow'))
-    F0GRLd3hqdNj.start()
-    print('✅ on_startup завершён.')
+    async def WaZ61jx33zZR():
+        async with dmi0gD0vG289() as hpuZ2br8L5KF:
+            await mSdS0BB8OWrb(hpuZ2br8L5KF)
+    fVTKKdPXSc0s = uw_LUP39y6gH()
+    fVTKKdPXSc0s.add_job(WaZ61jx33zZR, Ek_Zz0q3XHXU(hour=0, minute=0, timezone='Europe/Moscow'))
+    fVTKKdPXSc0s.start()
 
-async def lIJ1MvvhYMYm(dhwwiGt3_ntG):
-    await B1br9W7_bn2X.delete_webhook()
-    for Yf5fgZ__vH4z in IgbbC5J5z2tZ.all_tasks():
-        Yf5fgZ__vH4z.cancel()
+async def Fklfk5LsFLlG(Kzqgqt2OnbBD):
     try:
-        await IgbbC5J5z2tZ.gather(*IgbbC5J5z2tZ.all_tasks(), return_exceptions=1)
-    except Z_j91xwXUTad as L6FQr_qnKyxU:
-        NoBTrJ0QkTMy.error(f'Ошибка при завершении работы: {L6FQr_qnKyxU}')
+        await Bpv6mh7nCNqa('shutdown', bot=_0XcXYhhxbLU, dp=GPYLcS04xuRG, app=Kzqgqt2OnbBD)
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        CQvIwmKJt_4F.error(f'Ошибка shutdown-хуков: {umvpgGZGd92J}')
+    await _0XcXYhhxbLU.delete_webhook()
+    for TQCuJzXXjNfR in yoJVaScdKjmf.all_tasks():
+        TQCuJzXXjNfR.cancel()
+    try:
+        await yoJVaScdKjmf.gather(*yoJVaScdKjmf.all_tasks(), return_exceptions=1)
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        CQvIwmKJt_4F.error(f'Ошибка при завершении работы: {umvpgGZGd92J}')
 
-async def iCccCTUyxALg(PGcAj_zEi4a3):
-    NoBTrJ0QkTMy.info('Остановка вебхуков...')
-    await PGcAj_zEi4a3.stop()
-    NoBTrJ0QkTMy.info('Остановка бота.')
+async def YyFOxjswwO6V(Wg4y0tl9UCps):
+    CQvIwmKJt_4F.info('Остановка вебхуков...')
+    await Wg4y0tl9UCps.stop()
+    CQvIwmKJt_4F.info('Остановка бота.')
 
-async def gcLcbFqq732j():
-    bZnyVT5QtFH6 = await fTh9BL4qlePy()
-    if not bZnyVT5QtFH6:
+async def of1m0QeKOPMV():
+    Y3MtP52LbSQz = await avcyuFWACLG3()
+    if not Y3MtP52LbSQz:
         print('❌ Бот не активирован. Проверьте ваш клиентский код.')
-        NlMf_Ll9d9TE.exit(1)
-    DAfvdd0x1Xo6 = 'SOLO-ACCESS-KEY-B4TN-92QX-L7ME'
-    if zHROqa7Vv7S4 != DAfvdd0x1Xo6:
-        NoBTrJ0QkTMy.error('Нарушена целостность файлов! Обновитесь с полной заменой папки!')
+        y7TRXgJ4_d2f.exit(1)
+    CFNWNYjIE8CO = 'SOLO-ACCESS-KEY-B4TN-92QX-L7ME'
+    if me5rXmrQc0pc != CFNWNYjIE8CO:
+        CQvIwmKJt_4F.error('Нарушена целостность файлов! Обновитесь с полной заменой папки!')
         return
-    lrMgLENzItNN(QawnGHulCbas, sessionmaker=cUt_1v7BqmdG)
-    QawnGHulCbas.include_router(Nnx4UIsVD5DW)
-    QawnGHulCbas.include_router(Lj61wtQvyyYG)
-    if QH1oQYKrN7qd:
-        NoBTrJ0QkTMy.info('Запуск в режиме разработки...')
-        await B1br9W7_bn2X.delete_webhook()
-        await Q0676_Ys6MDk()
-        ktzqDrWNa2rM = [IgbbC5J5z2tZ.create_task(w0n_fSKiXLno(B1br9W7_bn2X, sessionmaker=cUt_1v7BqmdG))]
-        if DikaXCEDxTz2 > 0:
+    s09iUVD1UfRr(GPYLcS04xuRG, sessionmaker=dmi0gD0vG289)
+    GPYLcS04xuRG.include_router(_HM201XoyRP1)
+    GPYLcS04xuRG.include_router(NsTI8U6EabAj)
+    if cx9Jk1tQ46tj:
+        CQvIwmKJt_4F.info('Запуск в режиме разработки...')
+        await _0XcXYhhxbLU.delete_webhook()
+        await R4GnsiJLPgTK()
+        await Bpv6mh7nCNqa('startup', bot=_0XcXYhhxbLU, dp=GPYLcS04xuRG, app=None, mode='dev', sessionmaker=dmi0gD0vG289)
+        NZRpUosWW30x = [yoJVaScdKjmf.create_task(JdKhy96JG5qb(_0XcXYhhxbLU, sessionmaker=dmi0gD0vG289))]
+        if o5oMj457ch7E > 0:
 
-            async def HNBdWebD2ahJ():
-                async with cUt_1v7BqmdG() as M79o_CyLR10K:
-                    await KI__IpMinSme(M79o_CyLR10K)
-            ktzqDrWNa2rM.append(IgbbC5J5z2tZ.create_task(HNBdWebD2ahJ()))
-        if cOhAqchD95fm > 0:
-            ktzqDrWNa2rM.append(IgbbC5J5z2tZ.create_task(aZBzG1SNakiw()))
-        if Nuk8G57TsVme:
-            NoBTrJ0QkTMy.info('🔧 DEV: Запускаем API...')
-            gTBPDPy87BYI = [NlMf_Ll9d9TE.executable, '-m', 'uvicorn', 'api.main:app', '--host', YKUElrdccEwu, '--port', str(vIr_pqkFXy3z), '--reload']
-            if not K9_RuISjrOaT:
-                gTBPDPy87BYI += ['--log-level', 'critical']
-            UhKVW6ci2ufp.Popen(gTBPDPy87BYI)
-        await QawnGHulCbas.start_polling(B1br9W7_bn2X)
-        NoBTrJ0QkTMy.info('Polling остановлен в режиме разработки. Отмена фоновых задач...')
-        for Yf5fgZ__vH4z in ktzqDrWNa2rM:
-            Yf5fgZ__vH4z.cancel()
-        await IgbbC5J5z2tZ.gather(*ktzqDrWNa2rM, return_exceptions=1)
-    else:
-        NoBTrJ0QkTMy.info('Запуск в production режиме...')
-        dhwwiGt3_ntG = S16nYXJrI_8a.Application()
-        dhwwiGt3_ntG['sessionmaker'] = cUt_1v7BqmdG
-        dhwwiGt3_ntG.on_startup.append(viz37pWwjaba)
-        dhwwiGt3_ntG.on_shutdown.append(lIJ1MvvhYMYm)
-        if yP2r9gf4oG8a:
-            dhwwiGt3_ntG.router.add_post('/yookassa/webhook', yQcDOUG0lwO3)
-        if xHfEv2FKkJDn:
-            dhwwiGt3_ntG.router.add_post('/yoomoney/webhook', CysYC_WVi6QN)
-        if gXLBwYTBCUt7:
-            dhwwiGt3_ntG.router.add_post('/cryptobot/webhook', BI8caSrsEQLn)
-        if hMtGAoAJKuQm:
-            dhwwiGt3_ntG.router.add_post('/robokassa/webhook', YIDxn0At0JLm)
-        if Q51yqS3LP9Ft:
-            dhwwiGt3_ntG.router.add_get('/freekassa/webhook', CWTIC90Zi1Jk)
-        dhwwiGt3_ntG.router.add_get(f'{ag5YPJyfCVAR}{{email}}/{{tg_id}}', _QMVLJZw6AAl)
-        await vuUwn1WIpDH1(dhwwiGt3_ntG.router)
-        dJnsTNALuDBU(dispatcher=QawnGHulCbas, bot=B1br9W7_bn2X).register(dhwwiGt3_ntG, path=n7zYTnBpvjmO)
-        dck_6UV5RWy6(dhwwiGt3_ntG, QawnGHulCbas, bot=B1br9W7_bn2X)
-        hvuYJwbmJTFX = S16nYXJrI_8a.AppRunner(dhwwiGt3_ntG)
-        await hvuYJwbmJTFX.setup()
-        PGcAj_zEi4a3 = S16nYXJrI_8a.TCPSite(hvuYJwbmJTFX, host=iA9Ziao7fn9P, port=CU6sEfk1r5mF)
-        await PGcAj_zEi4a3.start()
-        if Nuk8G57TsVme:
-            IgbbC5J5z2tZ.create_task(aS_3er8YmEUc())
-        NoBTrJ0QkTMy.info(f'URL вебхука: {UUEf31IRUeOd}')
-        bOHUjA06et_u = IgbbC5J5z2tZ.Event()
-        tiaO4FDneUHs = IgbbC5J5z2tZ.get_event_loop()
-        for pdYn9YoDs220 in (d29IHszvBPJN.SIGINT, d29IHszvBPJN.SIGTERM):
-            tiaO4FDneUHs.add_signal_handler(pdYn9YoDs220, bOHUjA06et_u.set)
+            async def aNXQRddvjV1V():
+                async with dmi0gD0vG289() as hpuZ2br8L5KF:
+                    await efyMNmvt_NnZ(hpuZ2br8L5KF)
+            NZRpUosWW30x.append(yoJVaScdKjmf.create_task(aNXQRddvjV1V()))
+        if yh47I8ryA9_U > 0:
+            NZRpUosWW30x.append(yoJVaScdKjmf.create_task(wM4UKfLL5p4k()))
+        if zwR3WbTi9AvV:
+            CQvIwmKJt_4F.info('🔧 DEV: Запускаем API...')
+            mq7VdOSYsKxq = [y7TRXgJ4_d2f.executable, '-m', 'uvicorn', 'api.main:app', '--host', gzW_hBiiR8K6, '--port', str(u2rKEdBFt1an), '--reload']
+            if not X1BNRaR4cbaJ:
+                mq7VdOSYsKxq += ['--log-level', 'critical']
+            euouZ_Eo2CGc.Popen(mq7VdOSYsKxq)
+        await GPYLcS04xuRG.start_polling(_0XcXYhhxbLU)
+        CQvIwmKJt_4F.info('Polling остановлен в режиме разработки. Отмена фоновых задач...')
         try:
-            await bOHUjA06et_u.wait()
+            await Bpv6mh7nCNqa('shutdown', bot=_0XcXYhhxbLU, dp=GPYLcS04xuRG, app=None)
+        except rWwUf66NWdyI as umvpgGZGd92J:
+            CQvIwmKJt_4F.error(f'Ошибка shutdown-хуков (dev): {umvpgGZGd92J}')
+        for TQCuJzXXjNfR in NZRpUosWW30x:
+            TQCuJzXXjNfR.cancel()
+        await yoJVaScdKjmf.gather(*NZRpUosWW30x, return_exceptions=1)
+    else:
+        CQvIwmKJt_4F.info('Запуск в production режиме...')
+        Kzqgqt2OnbBD = rmrAE4fI60tm.Application()
+        Kzqgqt2OnbBD['sessionmaker'] = dmi0gD0vG289
+        Kzqgqt2OnbBD.on_startup.append(M7xmJlQpYzNB)
+        Kzqgqt2OnbBD.on_shutdown.append(Fklfk5LsFLlG)
+        if hRCFFXQzQSh0:
+            Kzqgqt2OnbBD.router.add_post('/yookassa/webhook', GJVrfw1SjfuR)
+        if GlkqHTo1zkLc:
+            Kzqgqt2OnbBD.router.add_post('/yoomoney/webhook', Be1LsfS1iclT)
+        if HQ5uKxHI2tiN:
+            Kzqgqt2OnbBD.router.add_post('/cryptobot/webhook', BSI7XTLJWc1H)
+        if c1jDFC6L8e9D:
+            Kzqgqt2OnbBD.router.add_post('/robokassa/webhook', rIhqTwJwM2RC)
+        if dAgRbD6lGp_x:
+            Kzqgqt2OnbBD.router.add_get('/freekassa/webhook', fJBbmNyGFZ2m)
+        if S1nNLByMXnMG:
+            Kzqgqt2OnbBD.router.add_post('/tribute/webhook', esY09qly6H7v)
+        Kzqgqt2OnbBD.router.add_get(f'{BqOreXERAvWV}{{email}}/{{tg_id}}', p14aQd1dWl6P)
+        await HPaNrhX0pIJl(Kzqgqt2OnbBD.router)
+        yx2sm6o1rw2n(dispatcher=GPYLcS04xuRG, bot=_0XcXYhhxbLU).register(Kzqgqt2OnbBD, path=ymHpRhxoISjG)
+        p2Ml2eWskQ7I(Kzqgqt2OnbBD, GPYLcS04xuRG, bot=_0XcXYhhxbLU)
+        JUE22Ecu3lXC = rmrAE4fI60tm.AppRunner(Kzqgqt2OnbBD)
+        await JUE22Ecu3lXC.setup()
+        Wg4y0tl9UCps = rmrAE4fI60tm.TCPSite(JUE22Ecu3lXC, host=mZ0nCtWb96Em, port=f1lYJjkVpPsj)
+        await Wg4y0tl9UCps.start()
+        if zwR3WbTi9AvV:
+            yoJVaScdKjmf.create_task(RnhunT1Pokyl())
+        CQvIwmKJt_4F.info(f'URL вебхука: {g_ErmwCpaF7a}')
+        pXePuUjRPloW = yoJVaScdKjmf.Event()
+        WwAfJLQPh73Q = yoJVaScdKjmf.get_event_loop()
+        for jp5EZWTihCJs in (AJA4Z4tIYF55.SIGINT, AJA4Z4tIYF55.SIGTERM):
+            WwAfJLQPh73Q.add_signal_handler(jp5EZWTihCJs, pXePuUjRPloW.set)
+        try:
+            await pXePuUjRPloW.wait()
         finally:
-            wTH9Qzhcarx_ = [Yf5fgZ__vH4z for Yf5fgZ__vH4z in IgbbC5J5z2tZ.all_tasks() if Yf5fgZ__vH4z is not IgbbC5J5z2tZ.current_task()]
-            for Yf5fgZ__vH4z in wTH9Qzhcarx_:
+            q0B7Jzr9PNTf = [TQCuJzXXjNfR for TQCuJzXXjNfR in yoJVaScdKjmf.all_tasks() if TQCuJzXXjNfR is not yoJVaScdKjmf.current_task()]
+            for TQCuJzXXjNfR in q0B7Jzr9PNTf:
                 try:
-                    Yf5fgZ__vH4z.cancel()
-                except Z_j91xwXUTad as L6FQr_qnKyxU:
-                    NoBTrJ0QkTMy.error(L6FQr_qnKyxU)
-            await IgbbC5J5z2tZ.gather(*wTH9Qzhcarx_, return_exceptions=1)
-if H5jTrq_05RA7 == '__main__':
-    ojhNuMDCAseB()
+                    TQCuJzXXjNfR.cancel()
+                except rWwUf66NWdyI as umvpgGZGd92J:
+                    CQvIwmKJt_4F.error(umvpgGZGd92J)
+            await yoJVaScdKjmf.gather(*q0B7Jzr9PNTf, return_exceptions=1)
+if zL5BH9evDcio == '__main__':
+    XpF3sTj6yajP()
     try:
-        IgbbC5J5z2tZ.run(gcLcbFqq732j())
-    except Z_j91xwXUTad as L6FQr_qnKyxU:
-        NoBTrJ0QkTMy.error(f'Ошибка при запуске приложения:\n{L6FQr_qnKyxU}')
+        yoJVaScdKjmf.run(of1m0QeKOPMV())
+    except rWwUf66NWdyI as umvpgGZGd92J:
+        CQvIwmKJt_4F.error(f'Ошибка при запуске приложения:\n{umvpgGZGd92J}')
