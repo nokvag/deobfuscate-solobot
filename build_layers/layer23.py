@@ -33,6 +33,12 @@ import signal
 import subprocess
 import sys
 import uvicorn
+
+def TKizvQ0BnfYh(lVOb8D0b52U0, oMPpIA2LbQGW, *geHx8gqQ3phJ, **BZ4z6kfVKSgE):
+    try:
+        return importlib.import_module(lVOb8D0b52U0 + '.' + oMPpIA2LbQGW, *geHx8gqQ3phJ, **BZ4z6kfVKSgE)
+    except G0blZqBwOCK2:
+        return importlib.import_module(lVOb8D0b52U0, *geHx8gqQ3phJ, **BZ4z6kfVKSgE)
 if not os.path.exists('venv'):
     print('Создание виртуального окружения...')
     subprocess.run([sys.executable, '-m', 'venv', 'venv'], check=1)

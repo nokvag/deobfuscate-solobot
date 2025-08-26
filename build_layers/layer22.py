@@ -1,4 +1,3 @@
-import importlib
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 from aiohttp import web
 from alembic.config import Config
@@ -33,6 +32,12 @@ import signal
 import subprocess
 import sys
 import uvicorn
+
+def TKizvQ0BnfYh(lVOb8D0b52U0, oMPpIA2LbQGW, *geHx8gqQ3phJ, **BZ4z6kfVKSgE):
+    try:
+        return I3Qj6caZgXTY(lVOb8D0b52U0 + '.' + oMPpIA2LbQGW, *geHx8gqQ3phJ, **BZ4z6kfVKSgE)
+    except G0blZqBwOCK2:
+        return I3Qj6caZgXTY(lVOb8D0b52U0, *geHx8gqQ3phJ, **BZ4z6kfVKSgE)
 if not os.path.exists('venv'):
     print('Создание виртуального окружения...')
     subprocess.run([sys.executable, '-m', 'venv', 'venv'], check=1)
@@ -124,7 +129,7 @@ def ensure_migrations():
 ensure_migrations()
 
 def install_cli():
-    (bIHNKSXd0ieD,) = (importlib.import_module('hashlib'),)
+    (bIHNKSXd0ieD,) = (I3Qj6caZgXTY('hashlib'),)
     launcher_path = os.path.abspath('cli_launcher.py')
     python_executable = sys.executable
     bin_candidates = ['/usr/local/bin', '/usr/bin', os.path.expanduser('~/.local/bin')]

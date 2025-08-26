@@ -412,6 +412,213 @@ def step6d_ensure_importlib_import(code: str) -> str:
     return code
 
 
+def step6e_decode_simple_lambda(code: str) -> str:
+    """
+    Находит простые лямбды-декодеры вида NAME = lambda arg: <expr>,
+    безопасно вычисляет их на константных bytes/bytearray аргументах и
+    подменяет вызовы NAME(b"...") на строковые литералы.
+
+    Также удаляет определение такой лямбды, если после переписывания она не используется.
+    """
+    try:
+        module = ast.parse(code)
+    except SyntaxError:
+        return code
+
+    # Собираем кандидатов: NAME = <lambda single-arg>
+    candidates: dict[str, str] = {}
+    for stmt in module.body:
+        if isinstance(stmt, ast.Assign) and len(stmt.targets) == 1 and isinstance(stmt.targets[0], ast.Name):
+            target = stmt.targets[0].id
+            if isinstance(stmt.value, ast.Lambda) and len(stmt.value.args.args) == 1:
+                try:
+                    lambda_src = unparse(stmt.value)
+                except Exception:
+                    continue
+                if lambda_src.strip().startswith("lambda"):
+                    # Полная строка присваивания, как в исходнике
+                    candidates[target] = f"{target} = {lambda_src}"
+
+    if not candidates:
+        return code
+
+    # Разрешённые builtins для безопасного исполнения
+    safe_builtins: dict[str, object] = {
+        "bytes": bytes,
+        "bytearray": bytearray,
+        "str": str,
+        "int": int,
+        "chr": chr,
+        "ord": ord,
+        "len": len,
+        "range": range,
+        "enumerate": enumerate,
+        "list": list,
+        "tuple": tuple,
+        "zip": zip,
+        "sum": sum,
+        "pow": pow,
+    }
+
+    # Готовим песочницу и материализуем лямбды
+    decoders: dict[str, object] = {}
+    sandbox: dict[str, object] = dict(safe_builtins)
+    for name, line in candidates.items():
+        try:
+            exec(line, sandbox, sandbox)
+            fn = sandbox.get(name)
+            if callable(fn):
+                decoders[name] = fn
+        except Exception:
+            # Пропускаем лямбды, которые не получилось загрузить
+            pass
+
+    if not decoders:
+        return code
+
+    tree = ast.parse(code)
+
+    class Rewriter(ast.NodeTransformer):
+        def visit_Call(self, node: ast.Call):
+            self.generic_visit(node)
+            if (
+                isinstance(node.func, ast.Name)
+                and node.func.id in decoders
+                and len(node.args) == 1
+                and isinstance(node.args[0], ast.Constant)
+                and isinstance(node.args[0].value, (bytes, bytearray))
+            ):
+                fn = decoders[node.func.id]
+                try:
+                    res = fn(node.args[0].value)  # type: ignore[misc]
+                    if isinstance(res, (bytes, bytearray)):
+                        try:
+                            s = bytes(res).decode("utf-8", "replace")
+                            return ast.copy_location(ast.Constant(s), node)
+                        except Exception:
+                            return node
+                    if isinstance(res, str):
+                        return ast.copy_location(ast.Constant(res), node)
+                except Exception:
+                    return node
+            return node
+
+    new_tree = Rewriter().visit(tree)
+    ast.fix_missing_locations(new_tree)
+
+    # Удаляем определения лямбд, если не используются
+    used_names: set[str] = set()
+
+    class Usage(ast.NodeVisitor):
+        def visit_Name(self, n: ast.Name):
+            if isinstance(n.ctx, ast.Load):
+                used_names.add(n.id)
+
+    Usage().visit(new_tree)
+
+    if any(name in used_names for name in decoders):
+        # Если хоть одна ещё используется — просто возвращаем переписанный код
+        return unparse(new_tree)
+
+    # Физически выкидываем присваивания NAME = lambda ...
+    new_body: list[ast.stmt] = []
+    for stmt in new_tree.body:
+        if (
+            isinstance(stmt, ast.Assign)
+            and len(stmt.targets) == 1
+            and isinstance(stmt.targets[0], ast.Name)
+            and stmt.targets[0].id in decoders
+            and isinstance(stmt.value, ast.Lambda)
+        ):
+            continue
+        new_body.append(stmt)
+    new_tree.body = new_body
+    return unparse(new_tree)
+
+
+def step6f_rewrite_TKizvQ0BnfYh(code: str) -> str:
+    """
+    TKizvQ0BnfYh('pkg','attr', ...) → importlib.import_module('pkg').attr
+    Удаляет определение TKizvQ0BnfYh, если не используется.
+    """
+    FN = "TKizvQ0BnfYh"
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return code
+
+    class Rewriter(ast.NodeTransformer):
+        def visit_Call(self, node: ast.Call):
+            self.generic_visit(node)
+            if (
+                isinstance(node.func, ast.Name)
+                and node.func.id == FN
+                and len(node.args) >= 2
+                and all(isinstance(a, ast.Constant) and isinstance(a.value, str) for a in node.args[:2])
+            ):
+                pkg = node.args[0].value
+                return ast.copy_location(
+                    ast.Call(
+                        func=ast.Attribute(value=ast.Name(id="importlib", ctx=ast.Load()), attr="import_module", ctx=ast.Load()),
+                        args=[ast.Constant(pkg)],
+                        keywords=[],
+                    ),
+                    node,
+                )
+            return node
+
+    new = Rewriter().visit(tree)
+    ast.fix_missing_locations(new)
+
+    used = False
+    class Finder(ast.NodeVisitor):
+        def visit_Name(self, n: ast.Name):
+            nonlocal used
+            if n.id == FN:
+                used = True
+    Finder().visit(new)
+    if not used:
+        new.body = [n for n in new.body if not (isinstance(n, ast.FunctionDef) and n.name == FN)]
+    return unparse(new)
+
+
+def step6g_rewrite_obf_import_call(code: str) -> str:
+    """
+    I3Qj6caZgXTY('pkg') → importlib.import_module('pkg')
+    (обфусцированный __import__).
+    """
+    FN = "I3Qj6caZgXTY"
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return code
+
+    class Rewriter(ast.NodeTransformer):
+        def visit_Call(self, node: ast.Call):
+            self.generic_visit(node)
+            if (
+                isinstance(node.func, ast.Name)
+                and node.func.id == FN
+                and len(node.args) >= 1
+                and isinstance(node.args[0], ast.Constant)
+                and isinstance(node.args[0].value, str)
+            ):
+                pkg = node.args[0].value
+                return ast.copy_location(
+                    ast.Call(
+                        func=ast.Attribute(value=ast.Name(id="importlib", ctx=ast.Load()), attr="import_module", ctx=ast.Load()),
+                        args=[ast.Constant(pkg)],
+                        keywords=[],
+                    ),
+                    node,
+                )
+            return node
+
+    new = Rewriter().visit(tree)
+    ast.fix_missing_locations(new)
+    return unparse(new)
+
+
 _SAFE_FUNCS = {"chr": chr, "ord": ord, "len": len, "int": int, "str": str, "bytes": bytes}
 
 
@@ -525,7 +732,7 @@ def _resolve_name_from_expr(node: ast.AST) -> str | None:
     if (
         isinstance(node, ast.Call)
         and isinstance(node.func, ast.Name)
-        and node.func.id == "__import__"
+        and node.func.id in {"__import__", "I3Qj6caZgXTY"}
         and node.args
         and isinstance(node.args[0], ast.Constant)
         and isinstance(node.args[0].value, str)
@@ -589,12 +796,13 @@ def _importlib_from_attr(node: ast.AST) -> tuple[str, str] | None:
         ):
             pkg = cur.args[0].value
             if attrs:
-                return pkg, attrs[0] if len(attrs) == 1 else attrs[-1]
+                # Ближайший к import_module атрибут — фактический экспорт: pkg.attr1.attr2 → import pkg: attr1
+                return pkg, attrs[0]
             return pkg, pkg
-        if isinstance(cur.func, ast.Name) and cur.func.id == "__import__":
+        if isinstance(cur.func, ast.Name) and cur.func.id in {"__import__", "I3Qj6caZgXTY", "TKizvQ0BnfYh"}:
             pkg = cur.args[0].value
             if attrs:
-                return pkg, attrs[-1]
+                return pkg, attrs[0]
             return pkg, pkg.split(".")[-1]
     return None
 
@@ -670,6 +878,11 @@ RENAME_GLOBAL = {
     "_SvfhKl8rD1_": "is_valid_code",
     "OJeYPsgEnfYk": "Exception",
     "Re5W1iJwYiL7": "__name__",
+    "H5jTrq_05RA7": "__name__",
+    "Z_j91xwXUTad": "Exception",
+    "eZAsA0WiSb2d": "input",
+    "ag5YPJyfCVAR": "SUB_PATH",
+    "UUEf31IRUeOd": "WEBHOOK_URL",
 }
 
 
@@ -719,6 +932,7 @@ def step11_global_text_cleanup(src: str) -> str:
         r"Di3ZYNq4y1Jk": "WEBHOOK_URL",
         r"\blqCBDe1lOEOd\b": "app",
         r"\berr\b": "exc",
+        r"\buvicorn\.config\b": "uvicorn.Config",
     }
     out = src
     for patt, val in repl.items():
@@ -736,6 +950,57 @@ LOCAL_RENAME = {
     "DK9LsyO02L_J": "script_file",
     "HohFPgdHHRgg": "fh",
     "fchr": "chr",
+    # Часто встречающиеся временные имена
+    "hpOdPEnuB1nq": "init_alembic",
+    "S83mpZdEbfAe": "cleanup_orphans",
+    "evBAxYgU6UhL": "fix_broken_revision",
+    "fd1cG9dodvxu": "generate_and_apply_migrations",
+    "FF7rBWnIKKwz": "ensure_migrations",
+    "ojhNuMDCAseB": "install_cli",
+    "aZBzG1SNakiw": "backup_loop",
+    "aS_3er8YmEUc": "serve_api",
+    "viz37pWwjaba": "on_startup",
+    "lIJ1MvvhYMYm": "on_shutdown",
+    "gcLcbFqq732j": "main",
+    "HNBdWebD2ahJ": "ping_servers",
+    "FXVhbYJkNfzk": "send_stats_job",
+    "F0GRLd3hqdNj": "scheduler",
+    "bOHUjA06et_u": "stop_event",
+    "tiaO4FDneUHs": "loop",
+    "Yf5fgZ__vH4z": "task",
+    "wTH9Qzhcarx_": "pending",
+    # Переименования локальных переменных для читаемости
+    "A2OFynpSEGYZ": "alembic_env_path",
+    "MHZivVbLpj_1": "alembic_env_patch",
+    "RM59qDe5AObi": "sync_db_url",
+    "examfTtmBk_5": "engine",
+    "dEYieqnzsigE": "conn",
+    "Vta6ea3F01Ju": "deleted_notifications",
+    "E2_KpJ7YAEeI": "deleted_referrals",
+    "NgaT11tFHfUC": "result",
+    "IfwIp02ZI50t": "revision_id",
+    "hrgmUSq5vFaA": "script_dir",
+    "DxjpDrvsrMP4": "venv_python",
+    "ADUIqZAL1Zgf": "venv_marker",
+    "N5BOS5Ba7iBe": "bin_candidates",
+    "H6bcNnJNBekj": "bin_dir",
+    "pEfQPe06_bNU": "default_cmd",
+    "Nynw3IhkeoPb": "cmd_name",
+    "AxqUYyg2kRoh": "cmd_path",
+    "aKErMq2ffNB_": "fh",
+    "t09X61UaTZUU": "existing_cmd",
+    "tbY49y6hEKQg": "new_cmd_name",
+    "uYrXWAOakCA6": "launcher_path",
+    "zYU0AcfTUN9H": "python_executable",
+    "CJOEH5dagWs_": "server",
+    "M79o_CyLR10K": "session",
+    "dhwwiGt3_ntG": "app",
+    "hvuYJwbmJTFX": "runner",
+    "PGcAj_zEi4a3": "site",
+    "pdYn9YoDs220": "sig",
+    "gTBPDPy87BYI": "cmd",
+    # Вложенная задача проверки серверов
+    "HNBdWebD2ahJ": "run_check_servers",
 }
 
 
@@ -743,6 +1008,18 @@ def step12_locals_and_constants(src: str) -> str:
     tree = ast.parse(src)
 
     class _Cleanup(ast.NodeTransformer):
+        def visit_FunctionDef(self, n: ast.FunctionDef):
+            if n.name in LOCAL_RENAME:
+                n.name = LOCAL_RENAME[n.name]
+            self.generic_visit(n)
+            return n
+
+        def visit_AsyncFunctionDef(self, n: ast.AsyncFunctionDef):
+            if n.name in LOCAL_RENAME:
+                n.name = LOCAL_RENAME[n.name]
+            self.generic_visit(n)
+            return n
+
         def visit_Name(self, n: ast.Name):
             if n.id in LOCAL_RENAME:
                 n.id = LOCAL_RENAME[n.id]
@@ -777,6 +1054,45 @@ def step12_locals_and_constants(src: str) -> str:
     new = _Cleanup().visit(tree)
     ast.fix_missing_locations(new)
     return unparse(new)
+
+
+def step14_text_normalize_import_wrappers(src: str) -> str:
+    """Финальный текстовый фоллбек для импорт-обёрток внутри функций.
+    Не удаляет код, только делает подстановки и добавляет импорт.
+    """
+    out = src
+    # I3Qj6caZgXTY('pkg') → importlib.import_module('pkg')
+    out = re.sub(r"\bI3Qj6caZgXTY\s*\(", "importlib.import_module(", out)
+    # TKizvQ0BnfYh('pkg','Name',...) → importlib.import_module('pkg')
+    out = re.sub(r"\bTKizvQ0BnfYh\s*\(\s*(['\"])\\?([^'\"]+)\1\s*,", r"importlib.import_module(\1\2\1),", out)
+    if "importlib.import_module(" in out and not re.search(r"^\s*import\s+importlib\b", out, re.M):
+        out = "import importlib\n" + out
+    return out
+
+
+def step15_drop_known_wrapper_defs(src: str) -> str:
+    """Удаляет определения известных обёрток, если они не используются."""
+    WRAPPERS = {"TKizvQ0BnfYh", "I3Qj6caZgXTY"}
+    try:
+        tree = ast.parse(src)
+    except SyntaxError:
+        return src
+    used: set[str] = set()
+    class U(ast.NodeVisitor):
+        def visit_Name(self, n: ast.Name):
+            if isinstance(n.ctx, ast.Load) and n.id in WRAPPERS:
+                used.add(n.id)
+    U().visit(tree)
+    if not WRAPPERS - used:
+        return src
+    new_body: list[ast.stmt] = []
+    for n in tree.body:
+        if isinstance(n, ast.FunctionDef) and n.name in (WRAPPERS - used):
+            continue
+        new_body.append(n)
+    tree.body = new_body
+    ast.fix_missing_locations(tree)
+    return unparse(tree)
 
 
 def step13_drop_unused_funcs(src: str) -> str:
@@ -845,6 +1161,9 @@ def build_pipeline() -> list[Step]:
         ),
         Step("drop builtin self-assigns", step5a_drop_builtin_assignments),
         Step("decode u1KQ2EguJKQ7 calls", step6_decode_u1_calls),
+        Step("decode simple lambda", step6e_decode_simple_lambda),
+        Step("rewrite TKizvQ0BnfYh wrapper", step6f_rewrite_TKizvQ0BnfYh),
+        Step("rewrite I3Qj6caZgXTY to importlib", step6g_rewrite_obf_import_call),
         Step("fold consts & getattr (pass1)", step7_fold_consts_and_getattr),
         Step("cleanup str decode", step6a_cleanup_str_decode),
         Step("fold consts & getattr (pre-import-fixes)", step7_fold_consts_and_getattr),
@@ -857,7 +1176,9 @@ def build_pipeline() -> list[Step]:
         Step("global rename", step10_global_rename),
         Step("global text cleanup", step11_global_text_cleanup),
         Step("locals & constants", step12_locals_and_constants),
-        Step("drop unused functions", step13_drop_unused_funcs),
+        Step("text normalize import wrappers", step14_text_normalize_import_wrappers),
+        Step("drop known wrapper defs", step15_drop_known_wrapper_defs),
+        # Step("drop unused functions", step13_drop_unused_funcs),  # disabled to avoid accidental code removal
         Step("fold consts & getattr (final)", step7_fold_consts_and_getattr),
     ]
 
