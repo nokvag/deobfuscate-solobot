@@ -175,7 +175,7 @@ def ojhNuMDCAseB():
         print(f'❌ Ошибка установки команды {Nynw3IhkeoPb}: {L6FQr_qnKyxU}')
 
 async def aZBzG1SNakiw():
-    while 1:
+    while True:
         await LY5TOgVHXSy5()
         await getattr(IgbbC5J5z2tZ, Nvm8L6FkudRf(b'\x11\xf2[\xeev').decode('utf-8'))(cOhAqchD95fm)
 

@@ -175,7 +175,7 @@ def ojhNuMDCAseB():
         print(f'❌ Ошибка установки команды {Nynw3IhkeoPb}: {L6FQr_qnKyxU}')
 
 async def aZBzG1SNakiw():
-    while 1:
+    while True:
         await LY5TOgVHXSy5()
         await getattr(IgbbC5J5z2tZ, Nvm8L6FkudRf(b'\x11\xf2[\xeev').decode('utf-8'))(cOhAqchD95fm)
 
@@ -214,11 +214,6 @@ async def lIJ1MvvhYMYm(dhwwiGt3_ntG):
         await getattr(IgbbC5J5z2tZ, Nvm8L6FkudRf(b'\x05\xffJ\xe3c\x90').decode('utf-8'))(*getattr(IgbbC5J5z2tZ, Nvm8L6FkudRf(b'\x03\xf2R\xd4r\x83ur{').decode('utf-8'))(), return_exceptions=1)
     except Z_j91xwXUTad as L6FQr_qnKyxU:
         getattr(NoBTrJ0QkTMy, Nvm8L6FkudRf(b'\x07\xecL\xe4t').decode('utf-8'))(f'Ошибка при завершении работы: {L6FQr_qnKyxU}')
-
-async def iCccCTUyxALg(PGcAj_zEi4a3):
-    getattr(NoBTrJ0QkTMy, Nvm8L6FkudRf(b'\x0b\xf0X\xe4').decode('utf-8'))(Nvm8L6FkudRf(b'\xb2\x00\xef\n\xd7`\xd6\xa9\xd82\xeb|=\xf3\xa1\x8f\xf7\n\x8c \x1f\xaa\xa3\xc56\xaf;2\xbbk\xde0\\\x9396\xd0I').decode('utf-8'))
-    await getattr(PGcAj_zEi4a3, Nvm8L6FkudRf(b'\x11\xeaQ\xfb').decode('utf-8'))()
-    getattr(NoBTrJ0QkTMy, Nvm8L6FkudRf(b'\x0b\xf0X\xe4').decode('utf-8'))(Nvm8L6FkudRf(b'\xb2\x00\xef\n\xd7`\xd6\xa9\xd82\xeb|=\xf3\xa1\x8f\xf7\n\x8c \x1c\xaa\xa8\xc4\x05\xae\x0e\xcd').decode('utf-8'))
 
 async def gcLcbFqq732j():
     bZnyVT5QtFH6 = await fTh9BL4qlePy()
