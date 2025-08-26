@@ -48,50 +48,50 @@ if not os.path.exists(installed_marker):
     Path(installed_marker).write_text('ok')
 
 def init_alembic_env():
-    A2OFynpSEGYZ = Path('alembic/env.py')
-    if A2OFynpSEGYZ.exists():
+    env_path = Path('alembic/env.py')
+    if env_path.exists():
         print('ℹAlembic уже инициализирован.')
         return
     print('🛠️ Инициализация Alembic...')
     subprocess.run(['venv/bin/alembic', 'init', 'alembic'], check=1)
-    if A2OFynpSEGYZ.exists():
-        text = A2OFynpSEGYZ.read_text()
-        MHZivVbLpj_1 = 'from database.models import Base\nfrom config import DATABASE_URL\n# Заменяем asyncpg на psycopg2 только для миграций\nsync_url = DATABASE_URL.replace("postgresql+asyncpg", "postgresql+psycopg2")\nconfig.set_main_option("sqlalchemy.url", sync_url)\n\ntarget_metadata = Base.metadata'
-        text = text.replace('target_metadata = None', MHZivVbLpj_1)
-        A2OFynpSEGYZ.write_text(text)
+    if env_path.exists():
+        text = env_path.read_text()
+        config_patch = 'from database.models import Base\nfrom config import DATABASE_URL\n# Заменяем asyncpg на psycopg2 только для миграций\nsync_url = DATABASE_URL.replace("postgresql+asyncpg", "postgresql+psycopg2")\nconfig.set_main_option("sqlalchemy.url", sync_url)\n\ntarget_metadata = Base.metadata'
+        text = text.replace('target_metadata = None', config_patch)
+        env_path.write_text(text)
     print('✅ Alembic инициализирован.')
 
 def cleanup_orphans():
     print('🧹 Очистка висячих ссылок перед миграциями...')
-    RM59qDe5AObi = DATABASE_URL.replace('postgresql+asyncpg', 'postgresql+psycopg2')
-    examfTtmBk_5 = create_engine(RM59qDe5AObi)
+    sync_url = DATABASE_URL.replace('postgresql+asyncpg', 'postgresql+psycopg2')
+    engine = create_engine(sync_url)
     try:
-        with examfTtmBk_5.connect() as dEYieqnzsigE:
-            Vta6ea3F01Ju = dEYieqnzsigE.execute(text('DELETE FROM notifications WHERE tg_id NOT IN (SELECT tg_id FROM users);')).rowcount
-            E2_KpJ7YAEeI = dEYieqnzsigE.execute(text('\n                    DELETE FROM referrals \n                    WHERE referred_tg_id NOT IN (SELECT tg_id FROM users)\n                       OR referrer_tg_id NOT IN (SELECT tg_id FROM users);\n                ')).rowcount
-            dEYieqnzsigE.commit()
-        print(f'✅ Очистка завершена. Удалено {Vta6ea3F01Ju} уведомлений и {E2_KpJ7YAEeI} рефералов.')
-    except Exception as err:
-        print(f'⚠️ Ошибка при очистке висячих ссылок: {err}')
+        with engine.connect() as conn:
+            deleted_notifications = conn.execute(text('DELETE FROM notifications WHERE tg_id NOT IN (SELECT tg_id FROM users);')).rowcount
+            deleted_referrals = conn.execute(text('\n                    DELETE FROM referrals \n                    WHERE referred_tg_id NOT IN (SELECT tg_id FROM users)\n                       OR referrer_tg_id NOT IN (SELECT tg_id FROM users);\n                ')).rowcount
+            conn.commit()
+        print(f'✅ Очистка завершена. Удалено {deleted_notifications} уведомлений и {deleted_referrals} рефералов.')
+    except Exception as exc:
+        print(f'⚠️ Ошибка при очистке висячих ссылок: {exc}')
 
 def repair_alembic_version():
-    NruZidUcKdMe = Config('alembic.ini')
-    hrgmUSq5vFaA = ScriptDirectory.from_config(NruZidUcKdMe)
-    RM59qDe5AObi = DATABASE_URL.replace('postgresql+asyncpg', 'postgresql+psycopg2')
-    examfTtmBk_5 = create_engine(RM59qDe5AObi)
-    with examfTtmBk_5.connect() as dEYieqnzsigE:
+    cfg = Config('alembic.ini')
+    script_dir = ScriptDirectory.from_config(cfg)
+    sync_url = DATABASE_URL.replace('postgresql+asyncpg', 'postgresql+psycopg2')
+    engine = create_engine(sync_url)
+    with engine.connect() as conn:
         try:
-            NgaT11tFHfUC = dEYieqnzsigE.execute(text('SELECT version_num FROM alembic_version'))
-            IfwIp02ZI50t = NgaT11tFHfUC.scalar()
+            result = conn.execute(text('SELECT version_num FROM alembic_version'))
+            version = result.scalar()
         except Exception:
             print('ℹТаблица alembic_version не найдена — пропускаем проверку.')
             return
         try:
-            hrgmUSq5vFaA.get_revision(IfwIp02ZI50t)
+            script_dir.get_revision(version)
         except Exception:
-            print(f'Ревизия {IfwIp02ZI50t} отсутствует. Удаляем запись из alembic_version...')
-            dEYieqnzsigE.execute(text('DELETE FROM alembic_version'))
-            dEYieqnzsigE.commit()
+            print(f'Ревизия {version} отсутствует. Удаляем запись из alembic_version...')
+            conn.execute(text('DELETE FROM alembic_version'))
+            conn.commit()
     print('Удалена повреждённая ревизия. Выполняем stamp head...')
     subprocess.run(['venv/bin/alembic', 'stamp', 'head'], check=1, env={**os.environ, 'ALEMBIC_SAFE_BOOT': '1'})
 
@@ -99,79 +99,79 @@ def run_migrations():
     print('Генерация и применение миграций...')
     cleanup_orphans()
     repair_alembic_version()
-    NgaT11tFHfUC = subprocess.run(['venv/bin/alembic', 'revision', '--autogenerate', '-m', 'Auto migration'], capture_output=1, text=1)
-    if 'No changes in schema detected' in NgaT11tFHfUC.stdout:
+    result = subprocess.run(['venv/bin/alembic', 'revision', '--autogenerate', '-m', 'Auto migration'], capture_output=1, text=1)
+    if 'No changes in schema detected' in result.stdout:
         print('ℹИзменений в моделях нет — миграция не требуется.')
     else:
         print('Миграция создана. Применяем...')
-        Hvn5kk0_vFwt = subprocess.run(['venv/bin/alembic', 'upgrade', 'head'], capture_output=1, text=1)
-        if Hvn5kk0_vFwt.returncode != 0:
+        upgrade_result = subprocess.run(['venv/bin/alembic', 'upgrade', 'head'], capture_output=1, text=1)
+        if upgrade_result.returncode != 0:
             print('❌ Ошибка при применении миграции:')
             print('STDOUT:')
-            print(Hvn5kk0_vFwt.stdout)
+            print(upgrade_result.stdout)
             print('STDERR:')
-            print(Hvn5kk0_vFwt.stderr)
+            print(upgrade_result.stderr)
             sys.exit(1)
         print('✅ Alembic upgrade успешно выполнен.')
 
 def migrate():
     init_alembic_env()
-    sLMMm8FcjIhp = Path('alembic/versions')
-    if not sLMMm8FcjIhp.exists():
-        sLMMm8FcjIhp.mkdir(parents=1)
+    versions_dir = Path('alembic/versions')
+    if not versions_dir.exists():
+        versions_dir.mkdir(parents=1)
     run_migrations()
 migrate()
 
 def install_cli_command():
-    bIHNKSXd0ieD, = (__import__('hashlib'),)
-    uYrXWAOakCA6 = os.path.abspath('cli_launcher.py')
-    zYU0AcfTUN9H = sys.executable
-    N5BOS5Ba7iBe = ['/usr/local/bin', '/usr/bin', os.path.expanduser('~/.local/bin')]
-    for H6bcNnJNBekj in N5BOS5Ba7iBe:
-        if os.path.isdir(H6bcNnJNBekj) and os.access(H6bcNnJNBekj, os.W_OK):
+    hashlib_mod, = (__import__('hashlib'),)
+    launcher_path = os.path.abspath('cli_launcher.py')
+    python_exe = sys.executable
+    search_dirs = ['/usr/local/bin', '/usr/bin', os.path.expanduser('~/.local/bin')]
+    for bin_dir in search_dirs:
+        if os.path.isdir(bin_dir) and os.access(bin_dir, os.W_OK):
             break
     else:
         print('❌ Не удалось найти подходящий каталог для установки команды.')
         return
-    pEfQPe06_bNU = 'solobot'
-    Nynw3IhkeoPb = pEfQPe06_bNU
-    AxqUYyg2kRoh = os.path.join(H6bcNnJNBekj, Nynw3IhkeoPb)
-    if os.path.exists(AxqUYyg2kRoh):
+    default_cmd_name = 'solobot'
+    cmd_name = default_cmd_name
+    cmd_path = os.path.join(bin_dir, cmd_name)
+    if os.path.exists(cmd_path):
         try:
-            with open(AxqUYyg2kRoh, 'r') as aKErMq2ffNB_:
-                t09X61UaTZUU = aKErMq2ffNB_.read()
-            if uYrXWAOakCA6 in t09X61UaTZUU:
+            with open(cmd_path, 'r') as fh:
+                content = fh.read()
+            if launcher_path in content:
                 return
             else:
-                print(f'⚠️ Команда `{Nynw3IhkeoPb}` уже установлена, но для другой копии бота.')
-                tbY49y6hEKQg = input('Введите другое имя команды (например, solobot-test): ').strip()
-                if not tbY49y6hEKQg:
+                print(f'⚠️ Команда `{cmd_name}` уже установлена, но для другой копии бота.')
+                new_name = input('Введите другое имя команды (например, solobot-test): ').strip()
+                if not new_name:
                     print('❌ Имя не указано. Пропускаем установку.')
                     return
-                Nynw3IhkeoPb = tbY49y6hEKQg
-                AxqUYyg2kRoh = os.path.join(H6bcNnJNBekj, Nynw3IhkeoPb)
-                if os.path.exists(AxqUYyg2kRoh):
-                    print(f'❌ Команда `{Nynw3IhkeoPb}` уже существует. Установка прервана.')
+                cmd_name = new_name
+                cmd_path = os.path.join(bin_dir, cmd_name)
+                if os.path.exists(cmd_path):
+                    print(f'❌ Команда `{cmd_name}` уже существует. Установка прервана.')
                     return
-        except Exception as err:
-            print(f'⚠️ Ошибка при чтении команды {Nynw3IhkeoPb}: {err}')
+        except Exception as exc:
+            print(f'⚠️ Ошибка при чтении команды {cmd_name}: {exc}')
             return
     try:
-        with open(AxqUYyg2kRoh, 'w') as aKErMq2ffNB_:
-            aKErMq2ffNB_.write(f"""#!/bin/bash\n'{zYU0AcfTUN9H}' '{uYrXWAOakCA6}' "$@"\n""")
-        os.chmod(AxqUYyg2kRoh, 493)
-        print(f'✅ Команда `{Nynw3IhkeoPb}` установлена! Используйте: {Nynw3IhkeoPb}')
-    except Exception as err:
-        print(f'❌ Ошибка установки команды {Nynw3IhkeoPb}: {err}')
+        with open(cmd_path, 'w') as fh:
+            fh.write(f"""#!/bin/bash\n'{python_exe}' '{launcher_path}' "$@"\n""")
+        os.chmod(cmd_path, 493)
+        print(f'✅ Команда `{cmd_name}` установлена! Используйте: {cmd_name}')
+    except Exception as exc:
+        print(f'❌ Ошибка установки команды {cmd_name}: {exc}')
 
 async def backup_loop():
-    while 1:
+    while True:
         await backup_database()
         await asyncio.sleep(BACKUP_TIME)
 
 async def api_server():
-    NruZidUcKdMe = uvicorn.Config('api.main:app', host=API_HOST, port=API_PORT, log_level='info' if API_LOGGING else 'critical')
-    server = uvicorn.Server(NruZidUcKdMe)
+    cfg = uvicorn.Config('api.main:app', host=API_HOST, port=API_PORT, log_level='info' if API_LOGGING else 'critical')
+    server = uvicorn.Server(cfg)
     await server.serve()
 
 async def on_startup(app):
@@ -202,21 +202,16 @@ async def on_shutdown(app):
         task.cancel()
     try:
         await asyncio.gather(*asyncio.all_tasks(), return_exceptions=1)
-    except Exception as err:
-        logger.error(f'Ошибка при завершении работы: {err}')
-
-async def iCccCTUyxALg(site):
-    logger.info('Остановка вебхуков...')
-    await site.stop()
-    logger.info('Остановка бота.')
+    except Exception as exc:
+        logger.error(f'Ошибка при завершении работы: {exc}')
 
 async def main():
-    bZnyVT5QtFH6 = await validate_client_code()
-    if not bZnyVT5QtFH6:
+    client_code_valid = await validate_client_code()
+    if not client_code_valid:
         print('❌ Бот не активирован. Проверьте ваш клиентский код.')
         sys.exit(1)
-    DAfvdd0x1Xo6 = 'SOLO-ACCESS-KEY-B4TN-92QX-L7ME'
-    if MAIN_SECRET != DAfvdd0x1Xo6:
+    expected_main_secret = 'SOLO-ACCESS-KEY-B4TN-92QX-L7ME'
+    if MAIN_SECRET != expected_main_secret:
         logger.error('Нарушена целостность файлов! Обновитесь с полной заменой папки!')
         return
     register_middleware(dp, sessionmaker=async_session_maker)
@@ -284,12 +279,12 @@ async def main():
             for task in pending:
                 try:
                     task.cancel()
-                except Exception as err:
-                    logger.error(err)
+                except Exception as exc:
+                    logger.error(exc)
             await asyncio.gather(*pending, return_exceptions=1)
 if __name__ == '__main__':
     install_cli_command()
     try:
         asyncio.run(main())
-    except Exception as err:
-        logger.error(f'Ошибка при запуске приложения:\n{err}')
+    except Exception as exc:
+        logger.error(f'Ошибка при запуске приложения:\n{exc}')

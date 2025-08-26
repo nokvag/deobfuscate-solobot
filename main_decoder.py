@@ -168,12 +168,16 @@ def step5a_drop_builtin_assignments(src: str) -> str:
     module.body = new_body
     return unparse(module)
 
-_DECODER_NAME = "u1KQ2EguJKQ7"
+_DECODER_NAME: str | None = None
 
 
-def _extract_decoder_lambda_line(code: str) -> str | None:
-    m = re.search(rf"^\s*{_DECODER_NAME}\s*=\s*lambda.*$", code, flags=re.M)
-    return m.group(0) if m else None
+def _extract_decoder_lambda_line(code: str) -> tuple[str, str] | None:
+    pattern = r"^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*lambda.*$"
+    for m in re.finditer(pattern, code, flags=re.M):
+        line = m.group(0)
+        if "bytes" in line and "^" in line and "enumerate" in line:
+            return m.group(1), line
+    return None
 
 
 def _extract_aliases_from_header(code: str) -> dict[str, str]:
@@ -198,9 +202,11 @@ def _extract_aliases_from_header(code: str) -> dict[str, str]:
     return {}
 
 def step6_decode_u1_calls(code: str) -> str:
-    line = _extract_decoder_lambda_line(code)
-    if not line:
+    global _DECODER_NAME
+    res = _extract_decoder_lambda_line(code)
+    if not res:
         return code
+    _DECODER_NAME, line = res
     # Построим песочницу с реальными объектами builtins согласно карте псевдонимов
     alias_map = _extract_aliases_from_header(code)
     sandbox: dict[str, object] = {}
@@ -405,6 +411,55 @@ def step6c_rewrite_import_wrapper(code: str) -> str:
     return unparse(new)
 
 
+def step6e_rewrite_import_attr_helper(code: str) -> str:
+    """TKizvQ0BnfYh('pkg', 'Attr') → importlib.import_module('pkg')"""
+    FUNC = "TKizvQ0BnfYh"
+    tree = ast.parse(code)
+
+    class Rewriter(ast.NodeTransformer):
+        def visit_Call(self, node: ast.Call):
+            self.generic_visit(node)
+            if (
+                isinstance(node.func, ast.Name)
+                and node.func.id == FUNC
+                and node.args
+                and isinstance(node.args[0], ast.Constant)
+                and isinstance(node.args[0].value, str)
+            ):
+                pkg = node.args[0].value
+                return ast.copy_location(
+                    ast.Call(
+                        func=ast.Attribute(
+                            value=ast.Name(id="importlib", ctx=ast.Load()),
+                            attr="import_module",
+                            ctx=ast.Load(),
+                        ),
+                        args=[ast.Constant(pkg)],
+                        keywords=[],
+                    ),
+                    node,
+                )
+            return node
+
+    new_tree = Rewriter().visit(tree)
+    ast.fix_missing_locations(new_tree)
+
+    used = False
+
+    class Finder(ast.NodeVisitor):
+        def visit_Name(self, n: ast.Name):
+            nonlocal used
+            if n.id == FUNC:
+                used = True
+
+    Finder().visit(new_tree)
+    if not used:
+        new_tree.body = [
+            n for n in new_tree.body if not (isinstance(n, ast.FunctionDef) and n.name == FUNC)
+        ]
+    return unparse(new_tree)
+
+
 def step6d_ensure_importlib_import(code: str) -> str:
     """Добавляет 'import importlib' в начало, если используется importlib но не импортирован."""
     if "importlib.import_module(" in code and not re.search(r"^\s*import\s+importlib\b", code, re.M):
@@ -573,7 +628,7 @@ def _importlib_from_attr(node: ast.AST) -> tuple[str, str] | None:
     attrs: list[str] = []
     cur = node
     while isinstance(cur, ast.Attribute):
-        attrs.append(cur.attr)
+        attrs.insert(0, cur.attr)
         cur = cur.value
     if (
         isinstance(cur, ast.Call)
@@ -589,7 +644,7 @@ def _importlib_from_attr(node: ast.AST) -> tuple[str, str] | None:
         ):
             pkg = cur.args[0].value
             if attrs:
-                return pkg, attrs[0] if len(attrs) == 1 else attrs[-1]
+                return pkg, attrs[-1]
             return pkg, pkg
         if isinstance(cur.func, ast.Name) and cur.func.id == "__import__":
             pkg = cur.args[0].value
@@ -670,6 +725,38 @@ RENAME_GLOBAL = {
     "_SvfhKl8rD1_": "is_valid_code",
     "OJeYPsgEnfYk": "Exception",
     "Re5W1iJwYiL7": "__name__",
+    "hpOdPEnuB1nq": "init_alembic_env",
+    "S83mpZdEbfAe": "cleanup_orphans",
+    "evBAxYgU6UhL": "repair_alembic_version",
+    "fd1cG9dodvxu": "run_migrations",
+    "FF7rBWnIKKwz": "migrate",
+    "ojhNuMDCAseB": "install_cli_command",
+    "DxjpDrvsrMP4": "venv_python",
+    "ADUIqZAL1Zgf": "installed_marker",
+    "Z_j91xwXUTad": "Exception",
+    "L6FQr_qnKyxU": "err",
+    "aZBzG1SNakiw": "backup_loop",
+    "aS_3er8YmEUc": "api_server",
+    "viz37pWwjaba": "on_startup",
+    "lIJ1MvvhYMYm": "on_shutdown",
+    "gcLcbFqq732j": "main",
+    "H5jTrq_05RA7": "__name__",
+    "eZAsA0WiSb2d": "input",
+    "hvuYJwbmJTFX": "runner",
+    "PGcAj_zEi4a3": "site",
+    "bOHUjA06et_u": "stop_event",
+    "tiaO4FDneUHs": "loop",
+    "pdYn9YoDs220": "sig",
+    "wTH9Qzhcarx_": "pending",
+    "Yf5fgZ__vH4z": "task",
+    "F0GRLd3hqdNj": "scheduler",
+    "FXVhbYJkNfzk": "send_stats",
+    "M79o_CyLR10K": "session",
+    "CJOEH5dagWs_": "server",
+    "dhwwiGt3_ntG": "app",
+    "HNBdWebD2ahJ": "ping_job",
+    "ktzqDrWNa2rM": "bg_tasks",
+    "gTBPDPy87BYI": "args",
 }
 
 
@@ -736,6 +823,34 @@ LOCAL_RENAME = {
     "DK9LsyO02L_J": "script_file",
     "HohFPgdHHRgg": "fh",
     "fchr": "chr",
+    "A2OFynpSEGYZ": "env_path",
+    "MHZivVbLpj_1": "config_patch",
+    "RM59qDe5AObi": "sync_url",
+    "examfTtmBk_5": "engine",
+    "dEYieqnzsigE": "conn",
+    "Vta6ea3F01Ju": "deleted_notifications",
+    "E2_KpJ7YAEeI": "deleted_referrals",
+    "NruZidUcKdMe": "cfg",
+    "hrgmUSq5vFaA": "script_dir",
+    "NgaT11tFHfUC": "result",
+    "IfwIp02ZI50t": "version",
+    "Hvn5kk0_vFwt": "upgrade_result",
+    "sLMMm8FcjIhp": "versions_dir",
+    "N5BOS5Ba7iBe": "search_dirs",
+    "H6bcNnJNBekj": "bin_dir",
+    "Nynw3IhkeoPb": "cmd_name",
+    "AxqUYyg2kRoh": "cmd_path",
+    "aKErMq2ffNB_": "fh",
+    "t09X61UaTZUU": "content",
+    "tbY49y6hEKQg": "new_name",
+    "bIHNKSXd0ieD": "hashlib_mod",
+    "uYrXWAOakCA6": "launcher_path",
+    "zYU0AcfTUN9H": "python_exe",
+    "CJOEH5dagWs_": "server",
+    "dhwwiGt3_ntG": "app",
+    "pEfQPe06_bNU": "default_cmd_name",
+    "bZnyVT5QtFH6": "client_code_valid",
+    "DAfvdd0x1Xo6": "expected_main_secret",
 }
 
 
@@ -840,16 +955,18 @@ def build_pipeline() -> list[Step]:
                     "sum",
                     "str",
                     "pow",
+                    "__import__",
                 },
             ),
         ),
         Step("drop builtin self-assigns", step5a_drop_builtin_assignments),
-        Step("decode u1KQ2EguJKQ7 calls", step6_decode_u1_calls),
+        Step("decode XOR lambda calls", step6_decode_u1_calls),
         Step("fold consts & getattr (pass1)", step7_fold_consts_and_getattr),
         Step("cleanup str decode", step6a_cleanup_str_decode),
         Step("fold consts & getattr (pre-import-fixes)", step7_fold_consts_and_getattr),
         Step("rewrite lazy import slBqQzRHEsUg", step6b_rewrite_lazy_import),
         Step("rewrite import wrapper JXzJajrdQAWB", step6c_rewrite_import_wrapper),
+        Step("rewrite import helper TKizvQ0BnfYh", step6e_rewrite_import_attr_helper),
         Step("ensure 'import importlib' header", step6d_ensure_importlib_import),
         Step("fold consts & getattr (post-import-fixes)", step7_fold_consts_and_getattr),
         Step("rename from tuple assigns", step8_rename_from_tuple_assignments),
@@ -862,12 +979,22 @@ def build_pipeline() -> list[Step]:
     ]
 
 
-def run_pipeline(initial_code: str, dump_layers: bool = False, dump_dir: Path | None = None) -> str:
+def run_pipeline(
+    initial_code: str,
+    dump_layers: bool = False,
+    dump_dir: Path | None = None,
+    collect_layers: bool = False,
+) -> str | tuple[str, list[str]]:
+    """Runs all decode steps, optionally dumping or collecting intermediate layers."""
+
     steps = build_pipeline()
     cur = initial_code
+    layers: list[str] | None = [] if collect_layers else None
+
     if dump_layers:
         dump_dir = dump_dir or Path("build_layers")
         dump_dir.mkdir(parents=True, exist_ok=True)
+
     for idx, step in enumerate(steps, start=1):
         try:
             nxt = step.func(cur)
@@ -875,8 +1002,16 @@ def run_pipeline(initial_code: str, dump_layers: bool = False, dump_dir: Path | 
             print(f"[!] Шаг {idx} '{step.name}' завершился с ошибкой: {exc}", file=sys.stderr)
             nxt = cur
         if dump_layers:
-            (dump_dir / f"layer{idx:02d}.py").write_text(nxt, encoding="utf-8")
+            path = dump_dir / f"layer{idx:02d}.py"
+            path.write_text(nxt, encoding="utf-8")
+        if layers is not None:
+            layers.append(nxt)
+        if dump_layers or layers is not None:
+            print(f"[{idx:02d}] {step.name}", file=sys.stderr)
         cur = nxt
+
+    if layers is not None:
+        return cur, layers
     return cur
 
 
