@@ -376,44 +376,117 @@ def step6b_rewrite_lazy_import(code: str) -> str:
     return unparse(new)
 
 
-def step6c_rewrite_import_wrapper(code: str) -> str:
-    """JXzJajrdQAWB('pkg') → importlib.import_module('pkg')"""
-    WRAPPER = {"JXzJajrdQAWB"}
+def step6c_rewrite_import_helpers(code: str) -> str:
+    """Автоматически разворачивает простые обёртки над importlib/__import__."""
     tree = ast.parse(code)
+
+    simple: set[str] = set()
+    attr: set[str] = set()
+
+    def _is_import_call(node: ast.AST) -> bool:
+        return (
+            isinstance(node, ast.Call)
+            and (
+                (
+                    isinstance(node.func, ast.Attribute)
+                    and isinstance(node.func.value, ast.Name)
+                    and node.func.value.id == "importlib"
+                    and node.func.attr == "import_module"
+                )
+                or (
+                    isinstance(node.func, ast.Name) and node.func.id == "__import__"
+                )
+            )
+            and bool(node.args)
+        )
+
+    for n in tree.body:
+        if isinstance(n, ast.FunctionDef) and len(n.body) == 1:
+            ret = n.body[0]
+            if isinstance(ret, ast.Return):
+                val = ret.value
+                if _is_import_call(val):
+                    simple.add(n.name)
+                elif (
+                    isinstance(val, ast.Call)
+                    and isinstance(val.func, ast.Name)
+                    and val.func.id == "getattr"
+                    and len(val.args) >= 2
+                    and _is_import_call(val.args[0])
+                ):
+                    attr.add(n.name)
 
     class Rewriter(ast.NodeTransformer):
         def visit_Call(self, node: ast.Call):
             self.generic_visit(node)
-            if (
-                isinstance(node.func, ast.Name)
-                and node.func.id in WRAPPER
-                and len(node.args) == 1
-                and isinstance(node.args[0], ast.Constant)
-                and isinstance(node.args[0].value, str)
-            ):
-                pkg = node.args[0].value
-                return ast.copy_location(
-                    ast.Call(
-                        func=ast.Attribute(
-                            value=ast.Name(id="importlib", ctx=ast.Load()),
-                            attr="import_module",
-                            ctx=ast.Load(),
+            if isinstance(node.func, ast.Name):
+                if node.func.id in simple and node.args:
+                    return ast.copy_location(
+                        ast.Call(
+                            func=ast.Attribute(
+                                value=ast.Name(id="importlib", ctx=ast.Load()),
+                                attr="import_module",
+                                ctx=ast.Load(),
+                            ),
+                            args=[node.args[0]],
+                            keywords=[],
                         ),
-                        args=[ast.Constant(pkg)],
-                        keywords=[],
-                    ),
-                    node,
-                )
+                        node,
+                    )
+                if node.func.id in attr and len(node.args) >= 2:
+                    return ast.copy_location(
+                        ast.Call(
+                            func=ast.Name(id="getattr", ctx=ast.Load()),
+                            args=[
+                                ast.Call(
+                                    func=ast.Attribute(
+                                        value=ast.Name(id="importlib", ctx=ast.Load()),
+                                        attr="import_module",
+                                        ctx=ast.Load(),
+                                    ),
+                                    args=[node.args[0]],
+                                    keywords=[],
+                                ),
+                                node.args[1],
+                            ],
+                            keywords=[],
+                        ),
+                        node,
+                    )
             return node
 
-    new = Rewriter().visit(tree)
-    ast.fix_missing_locations(new)
-    return unparse(new)
+    new_tree = Rewriter().visit(tree)
+    ast.fix_missing_locations(new_tree)
+
+    used: set[str] = set()
+
+    class Finder(ast.NodeVisitor):
+        def visit_Name(self, n: ast.Name):
+            if isinstance(n.ctx, ast.Load):
+                used.add(n.id)
+
+    Finder().visit(new_tree)
+    new_tree.body = [
+        n
+        for n in new_tree.body
+        if not (
+            isinstance(n, ast.FunctionDef)
+            and n.name in (simple | attr)
+            and n.name not in used
+        )
+    ]
+    return unparse(new_tree)
 
 
 def step6e_rewrite_import_attr_helper(code: str) -> str:
-    """TKizvQ0BnfYh('pkg', 'Attr') → importlib.import_module('pkg')"""
-    FUNC = "TKizvQ0BnfYh"
+    """
+    Преобразует обёртки вида TKizvQ0BnfYh/ VLTILgCobR2q в importlib.import_module.
+
+    TKizvQ0BnfYh('pkg', 'Attr') → importlib.import_module('pkg')
+    VLTILgCobR2q('pkg', 'Attr').Attr → importlib.import_module('pkg').Attr
+    """
+    SIMPLE_FUNCS = {"TKizvQ0BnfYh"}
+    ATTR_FUNCS = {"VLTILgCobR2q"}
     tree = ast.parse(code)
 
     class Rewriter(ast.NodeTransformer):
@@ -421,7 +494,7 @@ def step6e_rewrite_import_attr_helper(code: str) -> str:
             self.generic_visit(node)
             if (
                 isinstance(node.func, ast.Name)
-                and node.func.id == FUNC
+                and node.func.id in SIMPLE_FUNCS
                 and node.args
                 and isinstance(node.args[0], ast.Constant)
                 and isinstance(node.args[0].value, str)
@@ -441,22 +514,120 @@ def step6e_rewrite_import_attr_helper(code: str) -> str:
                 )
             return node
 
+        def visit_Attribute(self, node: ast.Attribute):
+            self.generic_visit(node)
+            if (
+                isinstance(node.value, ast.Call)
+                and isinstance(node.value.func, ast.Name)
+                and node.value.func.id in ATTR_FUNCS
+                and len(node.value.args) >= 2
+                and all(
+                    isinstance(a, ast.Constant) and isinstance(a.value, str)
+                    for a in node.value.args[:2]
+                )
+            ):
+                pkg = node.value.args[0].value
+                attr = node.value.args[1].value
+                return ast.copy_location(
+                    ast.Attribute(
+                        value=ast.Call(
+                            func=ast.Attribute(
+                                value=ast.Name(id="importlib", ctx=ast.Load()),
+                                attr="import_module",
+                                ctx=ast.Load(),
+                            ),
+                            args=[ast.Constant(pkg)],
+                            keywords=[],
+                        ),
+                        attr=attr,
+                        ctx=node.ctx,
+                    ),
+                    node,
+                )
+            return node
+
     new_tree = Rewriter().visit(tree)
     ast.fix_missing_locations(new_tree)
 
-    used = False
+    # убрать определения, если функции больше не используются
+    used: set[str] = set()
 
     class Finder(ast.NodeVisitor):
         def visit_Name(self, n: ast.Name):
-            nonlocal used
-            if n.id == FUNC:
-                used = True
+            if isinstance(n.ctx, ast.Load):
+                used.add(n.id)
 
     Finder().visit(new_tree)
-    if not used:
-        new_tree.body = [
-            n for n in new_tree.body if not (isinstance(n, ast.FunctionDef) and n.name == FUNC)
-        ]
+    new_tree.body = [
+        n
+        for n in new_tree.body
+        if not (
+            isinstance(n, ast.FunctionDef)
+            and n.name in SIMPLE_FUNCS | ATTR_FUNCS
+            and n.name not in used
+        )
+    ]
+    return unparse(new_tree)
+
+
+def step6f_inline_subprocess_wrapper(code: str) -> str:
+    """Заменяет вызовы простых обёрток над subprocess.run на сам subprocess.run."""
+    tree = ast.parse(code)
+    wrappers: set[str] = set()
+
+    for n in tree.body:
+        if isinstance(n, ast.FunctionDef) and len(n.body) == 1:
+            ret = n.body[0]
+            if isinstance(ret, ast.Return):
+                val = ret.value
+                if (
+                    isinstance(val, ast.Call)
+                    and isinstance(val.func, ast.Attribute)
+                    and isinstance(val.func.value, ast.Name)
+                    and val.func.value.id == "subprocess"
+                    and val.func.attr == "run"
+                ):
+                    wrappers.add(n.name)
+
+    class Rewriter(ast.NodeTransformer):
+        def visit_Call(self, node: ast.Call):
+            self.generic_visit(node)
+            if isinstance(node.func, ast.Name) and node.func.id in wrappers:
+                new_keywords = list(node.keywords)
+                if not any(kw.arg == "check" for kw in new_keywords):
+                    new_keywords.append(ast.keyword(arg="check", value=ast.Constant(1)))
+                return ast.copy_location(
+                    ast.Call(
+                        func=ast.Attribute(
+                            value=ast.Name(id="subprocess", ctx=ast.Load()),
+                            attr="run",
+                            ctx=ast.Load(),
+                        ),
+                        args=node.args,
+                        keywords=new_keywords,
+                    ),
+                    node,
+                )
+            return node
+
+    new_tree = Rewriter().visit(tree)
+    ast.fix_missing_locations(new_tree)
+
+    used: set[str] = set()
+
+    class Finder(ast.NodeVisitor):
+        def visit_Name(self, n: ast.Name):
+            if isinstance(n.ctx, ast.Load):
+                used.add(n.id)
+
+    Finder().visit(new_tree)
+    new_tree.body = [
+        n
+        for n in new_tree.body
+        if not (
+            isinstance(n, ast.FunctionDef) and n.name in wrappers and n.name not in used
+        )
+    ]
     return unparse(new_tree)
 
 
@@ -705,7 +876,85 @@ def step9_flatten_import_assigns(src: str) -> str:
     return result
 
 
+def _guess_name(node: ast.AST) -> str | None:
+    if isinstance(node, ast.Constant) and isinstance(node.value, str):
+        return re.sub(r"\W+", "_", node.value)
+    if isinstance(node, ast.Attribute):
+        return node.attr
+    if isinstance(node, ast.Name):
+        return node.id
+    if isinstance(node, ast.Call):
+        for a in reversed(node.args):
+            g = _guess_name(a)
+            if g:
+                return g
+        return _guess_name(node.func)
+    if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Div):
+        g = _guess_name(node.right)
+        if g:
+            return g
+        return _guess_name(node.left)
+    return None
+
+
+def step10_auto_rename(src: str) -> str:
+    tree = ast.parse(src)
+    rename: dict[str, str] = {}
+
+    class Finder(ast.NodeVisitor):
+        def visit_Assign(self, node: ast.Assign):
+            if len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+                name = _guess_name(node.value)
+                if name and name.isidentifier() and not keyword.iskeyword(name):
+                    rename[node.targets[0].id] = name
+            self.generic_visit(node)
+
+    Finder().visit(tree)
+    if not rename:
+        return src
+    out: list[tuple] = []
+    stream = io.StringIO(src)
+    for tok in tokenize.generate_tokens(stream.readline):
+        typ, val, *rest = tok
+        if typ == tokenize.NAME and val in rename:
+            val = rename[val]
+        out.append((typ, val, *rest))
+    return tokenize.untokenize(out)
+
+
 RENAME_GLOBAL = {
+    "KOMvfYWvxpvB": "venv_dir",
+    "qSlLeyQ7VdNv": "venv_python",
+    "GEubzOScffp0": "venv_pip",
+    "HizWI004zW0H": "installed_marker",
+    "ADrQh6Q0Xq4n": "get_pip_path",
+    "Pib7Isbe5Piv": "init_alembic_env",
+    "Yx6Nrcbtb4PN": "cleanup_orphans",
+    "ot1STj0Fihnd": "repair_alembic_version",
+    "NrMxwt71pAGc": "patch_alembic_env",
+    "o2KdGgnRtgxA": "restore_alembic_env",
+    "yfTW9tS0_kHo": "run_migrations",
+    "bqBdUDQyD_PG": "migrate",
+    "XpF3sTj6yajP": "install_cli",
+    "wM4UKfLL5p4k": "backup_loop",
+    "RnhunT1Pokyl": "api_server",
+    "M7xmJlQpYzNB": "on_startup",
+    "Fklfk5LsFLlG": "on_shutdown",
+    "of1m0QeKOPMV": "main",
+    "aNXQRddvjV1V": "ping_job",
+    "WaZ61jx33zZR": "send_stats",
+    "JUE22Ecu3lXC": "runner",
+    "Wg4y0tl9UCps": "site",
+    "pXePuUjRPloW": "stop_event",
+    "WwAfJLQPh73Q": "loop",
+    "q0B7Jzr9PNTf": "pending",
+    "NZRpUosWW30x": "bg_tasks",
+    "mq7VdOSYsKxq": "args",
+    "rWwUf66NWdyI": "Exception",
+    "umvpgGZGd92J": "exc",
+    "TQCuJzXXjNfR": "task",
+    "Kzqgqt2OnbBD": "app",
+    "gRRvVbYhM0LB": "console",
     "QK5bLxBOypkF": "install_cli",
     "D6P0eecBAFVv": "backup_loop",
     "M6flxKL4gRoX": "on_startup",
@@ -851,6 +1100,30 @@ LOCAL_RENAME = {
     "pEfQPe06_bNU": "default_cmd_name",
     "bZnyVT5QtFH6": "client_code_valid",
     "DAfvdd0x1Xo6": "expected_main_secret",
+    "Kzqgqt2OnbBD": "app",
+    "hpuZ2br8L5KF": "session",
+    "fVTKKdPXSc0s": "scheduler",
+    "Y3MtP52LbSQz": "client_code_valid",
+    "CFNWNYjIE8CO": "expected_main_secret",
+    "wI5a6NtuIHOG": "resp",
+    "VD5XtVzFLHb2": "fh",
+    "kkr6asGQBbL4": "Exception",
+    "i_5gN_6A5Aqj": "env_path",
+    "fvX0NPd8gKqD": "text",
+    "dvrwJuLJSlIR": "config_patch",
+    "xqQbR3mcDJZE": "sync_url",
+    "ya1W7oAVx8Q4": "engine",
+    "y3mYlbnvULnu": "conn",
+    "Erx7KqRlGK6W": "deleted_notifications",
+    "dWyzIwk5ehXI": "deleted_referrals",
+    "CRFlXIWSq7W1": "cfg",
+    "fkMzg2r6XODx": "script_dir",
+    "FCcaVPw_BfBa": "result",
+    "v8h0Nrd1Zgij": "version",
+    "P2gKpi9RnARy": "backup_path",
+    "GAGG3SzhZoAk": "original_text",
+    "guKuVpoPOUK0": "inject_code",
+    "LVPFufwjktJF": "upgrade_result",
 }
 
 
@@ -965,12 +1238,14 @@ def build_pipeline() -> list[Step]:
         Step("cleanup str decode", step6a_cleanup_str_decode),
         Step("fold consts & getattr (pre-import-fixes)", step7_fold_consts_and_getattr),
         Step("rewrite lazy import slBqQzRHEsUg", step6b_rewrite_lazy_import),
-        Step("rewrite import wrapper JXzJajrdQAWB", step6c_rewrite_import_wrapper),
-        Step("rewrite import helper TKizvQ0BnfYh", step6e_rewrite_import_attr_helper),
+        Step("rewrite import helpers", step6c_rewrite_import_helpers),
+        Step("rewrite legacy import helpers", step6e_rewrite_import_attr_helper),
+        Step("inline subprocess.run wrapper", step6f_inline_subprocess_wrapper),
         Step("ensure 'import importlib' header", step6d_ensure_importlib_import),
         Step("fold consts & getattr (post-import-fixes)", step7_fold_consts_and_getattr),
         Step("rename from tuple assigns", step8_rename_from_tuple_assignments),
         Step("flatten import assigns", step9_flatten_import_assigns),
+        Step("auto rename", step10_auto_rename),
         Step("global rename", step10_global_rename),
         Step("global text cleanup", step11_global_text_cleanup),
         Step("locals & constants", step12_locals_and_constants),
